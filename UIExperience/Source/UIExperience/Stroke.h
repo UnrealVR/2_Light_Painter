@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+
+#include "Components/SplineComponent.h"
+
 #include "Stroke.generated.h"
 
 UCLASS()
@@ -23,4 +26,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
+	UPROPERTY(VisibleAnywhere)
+	USplineComponent* Path;
+
+
 };

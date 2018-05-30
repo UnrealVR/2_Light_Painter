@@ -26,6 +26,10 @@ void APaintBrushHandController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (CurrentStroke)
+	{
+		CurrentStroke->UpdateStroke(GetActorLocation());
+	}
 }
 
 void APaintBrushHandController::RightTriggerPressed()
