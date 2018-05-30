@@ -37,8 +37,14 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	class UMaterialInterface* Material;
 
+	UPROPERTY(EditDefaultsOnly)
+	float MinDistanceThreshold = 5;
+
 	// Components
 	UPROPERTY(VisibleAnywhere)
 	USplineComponent* Path;
+
+	// State
+	FVector LastUpdatedLocation;
 
 };

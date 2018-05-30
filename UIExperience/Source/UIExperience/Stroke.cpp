@@ -32,6 +32,9 @@ void AStroke::Tick(float DeltaTime)
 
 void AStroke::UpdateStroke(FVector CurrentCursorLocation)
 {
+	if (FVector::Distance(LastUpdatedLocation, CurrentCursorLocation) < MinDistanceThreshold) return;
+
+	LastUpdatedLocation = CurrentCursorLocation;
 	Path->AddSplinePoint(CurrentCursorLocation, ESplineCoordinateSpace::World);
 
 	USplineMeshComponent* SplineMesh = CreateSpline();
