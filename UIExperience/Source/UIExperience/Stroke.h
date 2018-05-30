@@ -25,9 +25,20 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	
+
+private:
+	class USplineMeshComponent* CreateSpline();
+	void GetLastStartAndEnd(FVector & StartPos, FVector & StartTangent, FVector & EndPos, FVector & EndTangent) const;
+
+	// Configuration
+	UPROPERTY(EditDefaultsOnly)
+	class UStaticMesh* Mesh;
+
+	UPROPERTY(EditDefaultsOnly)
+	class UMaterialInterface* Material;
+
+	// Components
 	UPROPERTY(VisibleAnywhere)
 	USplineComponent* Path;
-
 
 };
