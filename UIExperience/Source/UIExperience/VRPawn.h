@@ -6,6 +6,7 @@
 #include "GameFramework/Pawn.h"
 #include "Camera/CameraComponent.h"
 #include "Components/WidgetInteractionComponent.h"
+#include "PaintBrushHandController.h"
 
 #include "VRPawn.generated.h"
 
@@ -30,9 +31,21 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+private:
+
+	void RightTriggerPressed() { RightHandController->RightTriggerPressed(); }
+	void RightTriggerReleased() { RightHandController->RightTriggerReleased(); }
+
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* Camera;
 	
 	UPROPERTY(VisibleAnywhere)
 	UWidgetInteractionComponent* WidgetInteractionComponent;
+
+	UPROPERTY(VisibleAnywhere)
+	APaintBrushHandController* RightHandController;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<APaintBrushHandController> RightHandControllerClass;
+
 };

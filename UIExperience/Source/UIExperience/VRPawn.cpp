@@ -2,6 +2,8 @@
 
 #include "VRPawn.h"
 
+#include "Components/InputComponent.h"
+#include "Engine/World.h"
 
 // Sets default values
 AVRPawn::AVRPawn()
@@ -22,6 +24,11 @@ void AVRPawn::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	if (RightHandControllerClass)
+	{
+		RightHandController = GetWorld()->SpawnActor<APaintBrushHandController>(RightHandControllerClass);
+		RightHandController->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
+	}
 }
 
 // Called every frame
@@ -36,5 +43,7 @@ void AVRPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Pressed, this, &AVRPawn::RightTriggerPressed);
+	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Released, this, &AVRPawn::RightTriggerReleased);
 }
 
