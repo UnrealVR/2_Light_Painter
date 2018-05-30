@@ -28,14 +28,20 @@ void AStroke::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	TimeSinceLastUpdated += DeltaTime;
 }
 
-void AStroke::UpdateStroke(FVector CurrentCursorLocation)
+void AStroke::UpdateStroke(FVector CurrentCursorLocation, FVector CurrentCursorVelocity)
 {
 	if (FVector::Distance(LastUpdatedLocation, CurrentCursorLocation) < MinDistanceThreshold) return;
+	if (TimeSinceLastUpdated < MinUpdateTime) return;
 
 	LastUpdatedLocation = CurrentCursorLocation;
-	Path->AddSplinePoint(CurrentCursorLocation, ESplineCoordinateSpace::World);
+	FVector AdjustedVelocity = TimeSinceLastUpdated * CurrentCursorVelocity;
+	TimeSinceLastUpdated = 0;
+	Path->AddSplinePoint(CurrentCursorLocation, ESplineCoordinateSpace::World, false);
+	int32 LastElemIndex = Path->GetNumberOfSplinePoints() - 1;
+	Path->SetTangentAtSplinePoint(LastElemIndex, AdjustedVelocity, ESplineCoordinateSpace::World, true);
 
 	USplineMeshComponent* SplineMesh = CreateSpline();
 	

@@ -20,7 +20,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	void UpdateStroke(FVector CurrentCursorLocation);
+	void UpdateStroke(FVector CurrentCursorLocation, FVector CurrentCursorVelocity);
 
 protected:
 	// Called when the game starts or when spawned
@@ -38,7 +38,10 @@ private:
 	class UMaterialInterface* Material;
 
 	UPROPERTY(EditDefaultsOnly)
-	float MinDistanceThreshold = 5;
+	float MinDistanceThreshold = 1;
+	UPROPERTY(EditDefaultsOnly)
+	float MinUpdateTime = 0.1;
+
 
 	// Components
 	UPROPERTY(VisibleAnywhere)
@@ -46,5 +49,6 @@ private:
 
 	// State
 	FVector LastUpdatedLocation;
+	float TimeSinceLastUpdated = 0;
 
 };

@@ -29,12 +29,18 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	// Components
 	UPROPERTY(VisibleAnywhere)
 	UMotionControllerComponent* MotionController;
 
+	// Config
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AStroke> StrokeClass;
+
+	// State
 	UPROPERTY(VisibleAnywhere)
 	AStroke* CurrentStroke;
 
-	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<AStroke> StrokeClass;
+	FVector LastLocation;
+
 };

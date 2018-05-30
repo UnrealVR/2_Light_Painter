@@ -26,9 +26,12 @@ void APaintBrushHandController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	FVector Velocity = (GetActorLocation() - LastLocation) / DeltaTime;
+	LastLocation = GetActorLocation();
+
 	if (CurrentStroke)
 	{
-		CurrentStroke->UpdateStroke(GetActorLocation());
+		CurrentStroke->UpdateStroke(GetActorLocation(), Velocity);
 	}
 }
 
