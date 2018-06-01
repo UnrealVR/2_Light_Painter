@@ -28,7 +28,6 @@ protected:
 
 private:
 	class USplineMeshComponent* CreateSpline();
-	void GetLastStartAndEnd(FVector & StartPos, FVector & StartTangent, FVector & EndPos, FVector & EndTangent) const;
 
 	// Configuration
 	UPROPERTY(EditDefaultsOnly)
@@ -43,12 +42,9 @@ private:
 	float MinUpdateTime = 0.1;
 
 
-	// Components
-	UPROPERTY(VisibleAnywhere)
-	USplineComponent* Path;
-
 	// State
 	FVector LastUpdatedLocation;
+	FVector LastUpdatedTangent;
 	float TimeSinceLastUpdated = 0;
 
 };
