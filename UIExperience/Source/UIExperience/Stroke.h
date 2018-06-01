@@ -46,5 +46,6 @@ private:
 	FVector LastUpdatedLocation;
 	FVector LastUpdatedTangent;
 	float TimeSinceLastUpdated = 0;
+	USplineMeshComponent* PendingSplineMesh;
 
 };
