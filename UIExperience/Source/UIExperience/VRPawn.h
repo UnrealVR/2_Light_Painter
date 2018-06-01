@@ -32,8 +32,8 @@ protected:
 	AHandControllerBase* RightHandController;
 
 private:
-	void RightTriggerPressed() { RightHandController->RightTriggerPressed(); }
-	void RightTriggerReleased() { RightHandController->RightTriggerReleased(); }
+	void RightTriggerPressed() { if (RightHandController) RightHandController->RightTriggerPressed(); }
+	void RightTriggerReleased() { if (RightHandController) RightHandController->RightTriggerReleased(); }
 
 	//COmponetns
 	UPROPERTY(VisibleAnywhere)

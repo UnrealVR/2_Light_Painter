@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+
+#include "Components/UniformGridPanel.h"
+
 #include "SaveGameList.generated.h"
 
 /**
@@ -14,7 +17,13 @@ class UIEXPERIENCE_API USaveGameList : public UUserWidget
 {
 	GENERATED_BODY()
 	
-	
-	
-	
+protected:
+	bool Initialize() override;
+
+private:
+	UPROPERTY(meta = (BindWidget))
+	UUniformGridPanel* Grid;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class USaveGameItem> SaveGameItemClass;
 };

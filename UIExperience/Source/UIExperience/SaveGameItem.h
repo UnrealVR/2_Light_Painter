@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+
+#include "Components/TextBlock.h"
+
 #include "SaveGameItem.generated.h"
 
 /**
@@ -13,8 +16,12 @@ UCLASS()
 class UIEXPERIENCE_API USaveGameItem : public UUserWidget
 {
 	GENERATED_BODY()
-	
-	
-	
+public:
+	FString GetName() const;
+	void SetName(const FString& Name);
+
+private:
+	UPROPERTY(meta = (BindWidget))
+	UTextBlock* Name;
 	
 };

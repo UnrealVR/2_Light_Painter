@@ -6,6 +6,7 @@
 #include "Engine/World.h"
 #include "EngineUtils.h"
 
+#include "PaintingListSaveGame.h"
 #include "Stroke.h"
 
 UPaintingSaveGame* UPaintingSaveGame::Create()
@@ -13,6 +14,10 @@ UPaintingSaveGame* UPaintingSaveGame::Create()
 	auto SaveGame = Cast<UPaintingSaveGame>(UGameplayStatics::CreateSaveGameObject(StaticClass()));
 	auto Guid = FGuid::NewGuid();
 	SaveGame->UniqueIdentifier = Guid.ToString();
+	auto List = UPaintingListSaveGame::Load();
+	List->AddPainting(SaveGame->UniqueIdentifier);
+	List->Save();
+	SaveGame->Save();
 	return SaveGame;
 }
 
