@@ -47,9 +47,11 @@ class UIEXPERIENCE_API UPaintingSaveGame : public USaveGame
 	
 public:
 
+	FString GetUniqueIdentifier() const { return UniqueIdentifier; }
+
 	static UPaintingSaveGame* Create();
 
-	static UPaintingSaveGame* Load();
+	static UPaintingSaveGame * Load(const FString & UniqueIdentifier);
 
 	bool Save();
 
@@ -58,6 +60,9 @@ public:
 	void RestoreLevel(UWorld * World);
 
 private:
+	UPROPERTY()
+	FString UniqueIdentifier;
+
 	UPROPERTY()
 	TArray<FStrokeData> Strokes;
 };

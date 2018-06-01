@@ -50,4 +50,6 @@ private:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<APaintBrushHandController> RightHandControllerClass;
 
+	FString UniquePaintingIdentifier = "";
+
 };

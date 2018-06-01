@@ -10,17 +10,20 @@
 
 UPaintingSaveGame* UPaintingSaveGame::Create()
 {
-	return Cast<UPaintingSaveGame>(UGameplayStatics::CreateSaveGameObject(StaticClass()));
+	auto SaveGame = Cast<UPaintingSaveGame>(UGameplayStatics::CreateSaveGameObject(StaticClass()));
+	auto Guid = FGuid::NewGuid();
+	SaveGame->UniqueIdentifier = Guid.ToString();
+	return SaveGame;
 }
 
-UPaintingSaveGame* UPaintingSaveGame::Load()
+UPaintingSaveGame* UPaintingSaveGame::Load(const FString& UniqueIdentifier)
 {
-	return Cast<UPaintingSaveGame>(UGameplayStatics::LoadGameFromSlot(TEXT("Slot"), 0));
+	return Cast<UPaintingSaveGame>(UGameplayStatics::LoadGameFromSlot(UniqueIdentifier, 0));
 }
 
 bool UPaintingSaveGame::Save()
 {
-	return UGameplayStatics::SaveGameToSlot(this, TEXT("Slot"), 0);
+	return UGameplayStatics::SaveGameToSlot(this, UniqueIdentifier, 0);
 }
 
 void UPaintingSaveGame::SnapshotLevel(UWorld* World)

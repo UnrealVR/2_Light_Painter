@@ -53,7 +53,13 @@ void AVRPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void AVRPawn::Save()
 {
-	auto SaveGame = UPaintingSaveGame::Create();
+	auto SaveGame = UPaintingSaveGame::Load(UniquePaintingIdentifier);
+	if (!SaveGame)
+	{
+		SaveGame = UPaintingSaveGame::Create();
+	}
+	UniquePaintingIdentifier = SaveGame->GetUniqueIdentifier();
+	UE_LOG(LogTemp, Warning, TEXT("UUID: %s"), *SaveGame->GetUniqueIdentifier());
 	SaveGame->SnapshotLevel(GetWorld());
 	bool bDidSave = SaveGame->Save();
 	if (bDidSave)
@@ -68,7 +74,7 @@ void AVRPawn::Save()
 
 void AVRPawn::Load()
 {
-	auto SaveGame = UPaintingSaveGame::Load();
+	auto SaveGame = UPaintingSaveGame::Load(UniquePaintingIdentifier);
 	if (SaveGame)
 	{
 		for (TActorIterator<AStroke> Itr(GetWorld()); Itr; ++Itr)
