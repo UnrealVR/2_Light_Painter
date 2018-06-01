@@ -2,6 +2,9 @@
 
 #include "VRPawn.h"
 
+#include "Engine/World.h"
+#include "Components/InputComponent.h"
+
 // Sets default values
 AVRPawn::AVRPawn()
 {
@@ -11,9 +14,6 @@ AVRPawn::AVRPawn()
 	SetRootComponent(CreateDefaultSubobject<USceneComponent>(TEXT("Root")));
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(RootComponent);
-
-	WidgetInteractionComponent = CreateDefaultSubobject<UWidgetInteractionComponent>(TEXT("WidgetInteractionComponent"));
-	WidgetInteractionComponent->SetupAttachment(Camera);
 }
 
 // Called when the game starts or when spawned
@@ -21,6 +21,19 @@ void AVRPawn::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	if (RightHandControllerClass)
+	{
+		RightHandController = GetWorld()->SpawnActor<AHandControllerBase>(RightHandControllerClass);
+		RightHandController->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
+	}
+}
+
+void AVRPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Pressed, this, &AVRPawn::RightTriggerPressed);
+	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Released, this, &AVRPawn::RightTriggerReleased);
 }
 
 // Called every frame

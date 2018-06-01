@@ -25,18 +25,8 @@ protected:
 	void BeginPlay();
 
 private:
-	void RightTriggerPressed() { RightHandController->RightTriggerPressed(); }
-	void RightTriggerReleased() { RightHandController->RightTriggerReleased(); }
 	void Save();
 	void Load();
-
-	//COmponetns
-	UPROPERTY(VisibleAnywhere)
-	APaintBrushHandController* RightHandController;
-
-	//Config
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<APaintBrushHandController> RightHandControllerClass;
 
 	//state
 	FString UniquePaintingIdentifier = "";

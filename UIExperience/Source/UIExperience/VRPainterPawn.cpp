@@ -12,12 +12,6 @@
 void AVRPainterPawn::BeginPlay()
 {
 	Super::BeginPlay();
-
-	if (RightHandControllerClass)
-	{
-		RightHandController = GetWorld()->SpawnActor<APaintBrushHandController>(RightHandControllerClass);
-		RightHandController->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
-	}
 }
 
 // Called to bind functionality to input
@@ -25,8 +19,6 @@ void AVRPainterPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Pressed, this, &AVRPainterPawn::RightTriggerPressed);
-	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Released, this, &AVRPainterPawn::RightTriggerReleased);
 	PlayerInputComponent->BindAction("Save", EInputEvent::IE_Released, this, &AVRPainterPawn::Save);
 	PlayerInputComponent->BindAction("Load", EInputEvent::IE_Released, this, &AVRPainterPawn::Load);
 }
