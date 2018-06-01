@@ -19,6 +19,8 @@ class UIEXPERIENCE_API AUIHandController : public AHandControllerBase
 
 public:
 	AUIHandController();
+	void RightTriggerPressed() override;
+	void RightTriggerReleased() override;
 
 private:
 	// Components
