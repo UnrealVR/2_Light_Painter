@@ -3,36 +3,30 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
+#include "HandControllerBase.h"
 
-#include "MotionControllerComponent.h"
 #include "Stroke.h"
 
 #include "PaintBrushHandController.generated.h"
 
 UCLASS()
-class UIEXPERIENCE_API APaintBrushHandController : public AActor
+class UIEXPERIENCE_API APaintBrushHandController : public AHandControllerBase
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
 	APaintBrushHandController();
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	void RightTriggerPressed();
-	void RightTriggerReleased();
+	void RightTriggerPressed() override;
+	void RightTriggerReleased() override;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
-	// Components
-	UPROPERTY(VisibleAnywhere)
-	UMotionControllerComponent* MotionController;
-
 	// Config
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AStroke> StrokeClass;
