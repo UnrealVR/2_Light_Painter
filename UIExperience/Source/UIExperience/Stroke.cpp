@@ -54,6 +54,7 @@ USplineMeshComponent* AStroke::CreateSpline()
 	SplineMesh->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
 	SplineMesh->SetStaticMesh(Mesh);
 	SplineMesh->SetMaterial(0, Material);
+	SplineMesh->SetMaterial(1, Material);
 	SplineMesh->RegisterComponent();
 	SplineMesh->SetStartAndEnd(LastUpdatedLocation, LastUpdatedTangent, LastUpdatedLocation, LastUpdatedTangent);
 	return SplineMesh;
