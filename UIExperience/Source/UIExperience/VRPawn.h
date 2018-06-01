@@ -35,6 +35,8 @@ private:
 
 	void RightTriggerPressed() { RightHandController->RightTriggerPressed(); }
 	void RightTriggerReleased() { RightHandController->RightTriggerReleased(); }
+	void Save();
+	void Load();
 
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* Camera;

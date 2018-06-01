@@ -2,6 +2,7 @@
 
 #include "Stroke.h"
 #include "Components/SplineMeshComponent.h"
+#include "Engine/World.h"
 
 // Sets default values
 AStroke::AStroke()
@@ -26,6 +27,22 @@ void AStroke::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	TimeSinceLastUpdated += DeltaTime;
+}
+
+FStrokeData AStroke::GetData() const
+{
+	FStrokeData Stroke;
+	Stroke.Material = Material;
+	Stroke.TheClass = GetClass();
+	Stroke.Transform = GetActorTransform();
+	return Stroke;
+}
+
+AStroke* AStroke::CreateFromData(UWorld * World, FStrokeData Stroke)
+{
+	AStroke* StrokeActor = World->SpawnActor<AStroke>(Stroke.TheClass, Stroke.Transform);
+	StrokeActor->Material = Stroke.Material;
+	return StrokeActor;
 }
 
 void AStroke::UpdateStroke(FVector CurrentCursorLocation, FVector CurrentCursorVelocity)

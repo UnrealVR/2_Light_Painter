@@ -7,7 +7,7 @@
 #include "StrokeSet.generated.h"
 
 USTRUCT()
-struct FStrokeColor
+struct FStrokeDataColor
 {
 	GENERATED_BODY()
 
@@ -27,6 +27,6 @@ class UIEXPERIENCE_API UStrokeSet : public UDataAsset
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere)
-	TArray<FStrokeColor> Colors;
+	TArray<FStrokeDataColor> Colors;
 	
 };

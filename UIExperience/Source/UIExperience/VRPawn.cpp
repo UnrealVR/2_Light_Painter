@@ -4,6 +4,8 @@
 
 #include "Components/InputComponent.h"
 #include "Engine/World.h"
+#include "PaintingSaveGame.h"
+#include "EngineUtils.h"
 
 // Sets default values
 AVRPawn::AVRPawn()
@@ -45,5 +47,40 @@ void AVRPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Pressed, this, &AVRPawn::RightTriggerPressed);
 	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Released, this, &AVRPawn::RightTriggerReleased);
+	PlayerInputComponent->BindAction("Save", EInputEvent::IE_Released, this, &AVRPawn::Save);
+	PlayerInputComponent->BindAction("Load", EInputEvent::IE_Released, this, &AVRPawn::Load);
 }
 
+void AVRPawn::Save()
+{
+	auto SaveGame = UPaintingSaveGame::Create();
+	SaveGame->SnapshotLevel(GetWorld());
+	bool bDidSave = SaveGame->Save();
+	if (bDidSave)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Did Save"))
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Did not save"));
+	}
+}
+
+void AVRPawn::Load()
+{
+	auto SaveGame = UPaintingSaveGame::Load();
+	if (SaveGame)
+	{
+		for (TActorIterator<AStroke> Itr(GetWorld()); Itr; ++Itr)
+		{
+			Itr->Destroy();
+		}
+
+		SaveGame->RestoreLevel(GetWorld());
+		UE_LOG(LogTemp, Warning, TEXT("Restored Level"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Could not restore level"));
+	}
+}

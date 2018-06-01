@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 
 #include "Components/SplineComponent.h"
+#include "PaintingSaveGame.h"
 
 #include "Stroke.generated.h"
 
@@ -21,6 +22,10 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	void UpdateStroke(FVector CurrentCursorLocation, FVector CurrentCursorVelocity);
+
+	FStrokeData GetData() const;
+
+	static AStroke* CreateFromData(UWorld* World, FStrokeData Stroke);
 
 protected:
 	// Called when the game starts or when spawned
