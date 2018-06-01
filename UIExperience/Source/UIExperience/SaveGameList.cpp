@@ -17,9 +17,10 @@ bool USaveGameList::Initialize()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Loading widget for %s"), *Name);
 		auto Widget = CreateWidget<USaveGameItem>(GetWorld(), SaveGameItemClass);
+		Widget->SetName(Name);
 		auto Slot = Grid->AddChildToUniformGrid(Widget);
-		//Slot->SetRow((int)i / 3);
-		//Slot->SetColumn(i % 3);
+		Slot->SetRow((int)i / 3);
+		Slot->SetColumn(i % 3);
 		++i;
 	}
 	return true;
