@@ -2,11 +2,6 @@
 
 #include "VRPawn.h"
 
-#include "Components/InputComponent.h"
-#include "Engine/World.h"
-#include "PaintingSaveGame.h"
-#include "EngineUtils.h"
-
 // Sets default values
 AVRPawn::AVRPawn()
 {
@@ -26,11 +21,6 @@ void AVRPawn::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	if (RightHandControllerClass)
-	{
-		RightHandController = GetWorld()->SpawnActor<APaintBrushHandController>(RightHandControllerClass);
-		RightHandController->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
-	}
 }
 
 // Called every frame
@@ -40,53 +30,4 @@ void AVRPawn::Tick(float DeltaTime)
 
 }
 
-// Called to bind functionality to input
-void AVRPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Pressed, this, &AVRPawn::RightTriggerPressed);
-	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Released, this, &AVRPawn::RightTriggerReleased);
-	PlayerInputComponent->BindAction("Save", EInputEvent::IE_Released, this, &AVRPawn::Save);
-	PlayerInputComponent->BindAction("Load", EInputEvent::IE_Released, this, &AVRPawn::Load);
-}
-
-void AVRPawn::Save()
-{
-	auto SaveGame = UPaintingSaveGame::Load(UniquePaintingIdentifier);
-	if (!SaveGame)
-	{
-		SaveGame = UPaintingSaveGame::Create();
-	}
-	UniquePaintingIdentifier = SaveGame->GetUniqueIdentifier();
-	UE_LOG(LogTemp, Warning, TEXT("UUID: %s"), *SaveGame->GetUniqueIdentifier());
-	SaveGame->SnapshotLevel(GetWorld());
-	bool bDidSave = SaveGame->Save();
-	if (bDidSave)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Did Save"))
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Did not save"));
-	}
-}
-
-void AVRPawn::Load()
-{
-	auto SaveGame = UPaintingSaveGame::Load(UniquePaintingIdentifier);
-	if (SaveGame)
-	{
-		for (TActorIterator<AStroke> Itr(GetWorld()); Itr; ++Itr)
-		{
-			Itr->Destroy();
-		}
-
-		SaveGame->RestoreLevel(GetWorld());
-		UE_LOG(LogTemp, Warning, TEXT("Restored Level"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Could not restore level"));
-	}
-}
