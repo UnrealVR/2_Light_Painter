@@ -3,6 +3,7 @@
 #include "Stroke.h"
 #include "Components/SplineMeshComponent.h"
 #include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AStroke::AStroke()
@@ -16,8 +17,10 @@ void AStroke::BeginPlay()
 {
 	Super::BeginPlay();
 
-	LastUpdatedLocation = FVector::ZeroVector;
-	LastUpdatedTangent = FVector::ZeroVector;
+	FStrokeDataPoints Point;
+	Point.LocalLocation = FVector::ZeroVector;
+	Point.LocalTangent = FVector::ZeroVector;
+	StrokePoints.Add(Point);
 	PendingSplineMesh = CreateSpline();
 }
 
@@ -35,6 +38,7 @@ FStrokeData AStroke::GetData() const
 	Stroke.Material = Material;
 	Stroke.TheClass = GetClass();
 	Stroke.Transform = GetActorTransform();
+	Stroke.StrokePoints = StrokePoints;
 	return Stroke;
 }
 
@@ -42,7 +46,24 @@ AStroke* AStroke::CreateFromData(UWorld * World, FStrokeData Stroke)
 {
 	AStroke* StrokeActor = World->SpawnActor<AStroke>(Stroke.TheClass, Stroke.Transform);
 	StrokeActor->Material = Stroke.Material;
+	for (FStrokeDataPoints Point : Stroke.StrokePoints)
+	{
+		StrokeActor->AddSplinePoint(Point);
+	}
 	return StrokeActor;
+}
+
+void AStroke::AddSplinePoint(FStrokeDataPoints Point)
+{
+	auto LastUpdatedLocation = StrokePoints.Last().LocalLocation;
+	auto LastUpdatedTangent = StrokePoints.Last().LocalTangent;
+
+	PendingSplineMesh->SetStartAndEnd(LastUpdatedLocation, LastUpdatedTangent, Point.LocalLocation, Point.LocalTangent);
+
+	StrokePoints.Add(Point);
+	UE_LOG(LogTemp, Warning, TEXT("Lent:%d"), StrokePoints.Num());
+
+	PendingSplineMesh = CreateSpline();
 }
 
 void AStroke::UpdateStroke(FVector CurrentCursorLocation, FVector CurrentCursorVelocity)
@@ -50,6 +71,9 @@ void AStroke::UpdateStroke(FVector CurrentCursorLocation, FVector CurrentCursorV
 	FVector LocalCurrentCursorLocation = GetTransform().InverseTransformPosition(CurrentCursorLocation);
 	FVector CurrentCursorTangent = TimeSinceLastUpdated * CurrentCursorVelocity;
 	FVector LocalCurrentCursorTangent = GetTransform().InverseTransformVector(CurrentCursorTangent);
+
+	auto LastUpdatedLocation = StrokePoints.Last().LocalLocation;
+	auto LastUpdatedTangent = StrokePoints.Last().LocalTangent;
 
 	PendingSplineMesh->SetStartAndEnd(LastUpdatedLocation, LastUpdatedTangent, LocalCurrentCursorLocation, LocalCurrentCursorTangent);
 
@@ -60,8 +84,10 @@ void AStroke::UpdateStroke(FVector CurrentCursorLocation, FVector CurrentCursorV
 
 	PendingSplineMesh = CreateSpline();
 
-	LastUpdatedLocation = LocalCurrentCursorLocation;
-	LastUpdatedTangent = LocalCurrentCursorTangent;
+	FStrokeDataPoints Point;
+	Point.LocalLocation = LocalCurrentCursorLocation;
+	Point.LocalTangent = LocalCurrentCursorTangent;
+	StrokePoints.Add(Point);
 }
 
 USplineMeshComponent* AStroke::CreateSpline()
@@ -73,6 +99,8 @@ USplineMeshComponent* AStroke::CreateSpline()
 	SplineMesh->SetMaterial(0, Material);
 	SplineMesh->SetMaterial(1, Material);
 	SplineMesh->RegisterComponent();
+	auto LastUpdatedLocation = StrokePoints.Last().LocalLocation;
+	auto LastUpdatedTangent = StrokePoints.Last().LocalTangent;
 	SplineMesh->SetStartAndEnd(LastUpdatedLocation, LastUpdatedTangent, LastUpdatedLocation, LastUpdatedTangent);
 	return SplineMesh;
 }

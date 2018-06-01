@@ -33,6 +33,7 @@ protected:
 
 private:
 	class USplineMeshComponent* CreateSpline();
+	void AddSplinePoint(FStrokeDataPoints Point);
 
 	// Configuration
 	UPROPERTY(EditDefaultsOnly)
@@ -48,9 +49,8 @@ private:
 
 
 	// State
-	FVector LastUpdatedLocation;
-	FVector LastUpdatedTangent;
 	float TimeSinceLastUpdated = 0;
 	USplineMeshComponent* PendingSplineMesh;
+	TArray<FStrokeDataPoints> StrokePoints;
 
 };
