@@ -2,6 +2,9 @@
 
 #include "LaserPainterGameInstance.h"
 
+#include "Kismet/StereoLayerFunctionLibrary.h"
 
-
-
+void ULaserPainterGameInstance::Init()
+{
+	UStereoLayerFunctionLibrary::SetSplashScreen(SplashScreen);
+}

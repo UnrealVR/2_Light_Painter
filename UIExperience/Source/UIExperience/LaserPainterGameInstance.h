@@ -18,7 +18,12 @@ public:
 	void SetSaveGameToLoad(const FString & InSaveGameToLoad) { SaveGameToLoad = InSaveGameToLoad; }
 	FString GetSaveGameToLoad() { return SaveGameToLoad; }
 
+	void Init() override;
+
 private:
+
+	UPROPERTY(EditAnywhere)
+	class UTexture* SplashScreen;
 
 	FString SaveGameToLoad;
 	

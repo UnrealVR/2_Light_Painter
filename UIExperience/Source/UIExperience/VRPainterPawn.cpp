@@ -4,6 +4,10 @@
 
 #include "Components/InputComponent.h"
 #include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/StereoLayerFunctionLibrary.h"
+
+#include "LaserPainterGameInstance.h"
 #include "PaintingSaveGame.h"
 #include "EngineUtils.h"
 
@@ -25,8 +29,13 @@ void AVRPainterPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 void AVRPainterPawn::Save()
 {
-	auto SaveGame = UPaintingSaveGame::Load(UniquePaintingIdentifier);
-	if (!SaveGame)
+	auto GameInstance = Cast<ULaserPainterGameInstance>(GetWorld()->GetGameInstance());
+	UPaintingSaveGame* SaveGame;
+	if (GameInstance)  
+	{
+		SaveGame = UPaintingSaveGame::Load(GameInstance->GetSaveGameToLoad());
+	}
+	else
 	{
 		SaveGame = UPaintingSaveGame::Create();
 	}
@@ -37,11 +46,16 @@ void AVRPainterPawn::Save()
 	if (bDidSave)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Did Save"))
+		UStereoLayerFunctionLibrary::ShowSplashScreen();
+
+		UGameplayStatics::OpenLevel(GetWorld(), "LoadMenu");
 	}
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Did not save"));
 	}
+
+
 }
 
 void AVRPainterPawn::Load()

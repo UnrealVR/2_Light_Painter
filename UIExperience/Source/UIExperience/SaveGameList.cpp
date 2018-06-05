@@ -15,7 +15,6 @@ bool USaveGameList::Initialize()
 	uint32 i = 0;
 	for (const FString& Name : List->GetPaintings())
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Loading widget for %s"), *Name);
 		auto Widget = CreateWidget<USaveGameItem>(GetWorld(), SaveGameItemClass);
 		Widget->SetName(Name);
 		auto Slot = Grid->AddChildToUniformGrid(Widget);

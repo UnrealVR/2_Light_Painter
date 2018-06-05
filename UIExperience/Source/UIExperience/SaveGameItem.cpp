@@ -3,6 +3,7 @@
 #include "SaveGameItem.h"
 
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/StereoLayerFunctionLibrary.h"
 
 #include "LaserPainterGameInstance.h"
 #include "PaintingSaveGame.h"
@@ -14,12 +15,14 @@ void USaveGameItem::SetName(const FString & NameText)
 
 void USaveGameItem::Clicked()
 {
-	UE_LOG(LogTemp, Warning, TEXT("cLICKED"));
 	auto GameInstance = Cast<ULaserPainterGameInstance>(GetWorld()->GetGameInstance());
 	if (GameInstance)
 	{
 		GameInstance->SetSaveGameToLoad(GetName());
-		UGameplayStatics::OpenLevel(GetWorld(), "Canvas");
+
+		UStereoLayerFunctionLibrary::ShowSplashScreen();
+
+		UGameplayStatics::OpenLevel(GetWorld(), "Canvas", true, "SaveGame=" + GetName());
 	}
 }
 
