@@ -31,5 +31,5 @@ private:
 	// Components
 	UPROPERTY(VisibleAnywhere)
 	UMotionControllerComponent* MotionController;
-	
+
 };

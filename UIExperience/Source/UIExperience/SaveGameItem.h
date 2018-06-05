@@ -20,6 +20,9 @@ public:
 	FString GetName() const;
 	void SetName(const FString& Name);
 
+	UFUNCTION(BlueprintCallable)
+	void Clicked();
+
 private:
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* Name;
