@@ -27,6 +27,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UCameraComponent* GetCamera() const { return Camera; }
+
 	//Components
 	UPROPERTY(VisibleAnywhere)
 	AHandControllerBase* RightHandController;

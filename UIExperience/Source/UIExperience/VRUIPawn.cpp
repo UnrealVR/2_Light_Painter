@@ -2,6 +2,11 @@
 
 #include "VRUIPawn.h"
 
+#include "HeadMountedDisplayFunctionLibrary.h"
 
-
-
+void AVRUIPawn::BeginPlay()
+{
+	Super::BeginPlay();
+	UHeadMountedDisplayFunctionLibrary::SetTrackingOrigin(EHMDTrackingOrigin::Eye);
+	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
+}
