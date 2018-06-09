@@ -32,4 +32,7 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	UMotionControllerComponent* MotionController;
 
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* CollisionMesh;
+
 };

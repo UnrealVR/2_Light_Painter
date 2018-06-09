@@ -6,6 +6,7 @@
 #include "HandControllerBase.h"
 
 #include "Components/WidgetInteractionComponent.h"
+#include "Components/StaticMeshComponent.h"
 
 #include "UIHandController.generated.h"
 
@@ -26,6 +27,5 @@ private:
 	// Components
 	UPROPERTY(VisibleAnywhere)
 	UWidgetInteractionComponent* WidgetInteractionComponent;
-	
 	
 };

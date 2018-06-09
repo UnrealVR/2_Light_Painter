@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 
-#include "Components/CapsuleComponent.h"
+#include "Components/ArrowComponent.h"
 #include "Components/WidgetComponent.h"
 
 #include "3DVRButton.generated.h"
@@ -28,11 +28,23 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
+	// Config
+	UPROPERTY(EditAnywhere)
+	float TraceRadius = 5;
+	UPROPERTY(EditAnywhere)
+	float TraceDepth = 1;
+
 	// Components
 	UPROPERTY(VisibleAnywhere)
-	UCapsuleComponent* Collider;
+	USceneComponent* Root;
+
+	UPROPERTY(VisibleAnywhere)
+	UArrowComponent* TraceStart;
 
 	UPROPERTY(VisibleAnywhere)
 	UWidgetComponent* Widget;
 	
+	UPROPERTY(VisibleAnywhere)
+	UWidgetComponent* TriggerPlaneWidget;
+
 };

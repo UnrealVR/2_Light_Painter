@@ -11,8 +11,11 @@ AHandControllerBase::AHandControllerBase()
 
 	MotionController = CreateDefaultSubobject<UMotionControllerComponent>(TEXT("MotionController"));
 	SetRootComponent(MotionController);
-	MotionController->SetShowDeviceModel(true);
 	MotionController->SetTrackingSource(EControllerHand::Right);
+
+	CollisionMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CollisionMesh"));
+	CollisionMesh->SetupAttachment(MotionController);
+	CollisionMesh->SetCollisionProfileName("BlockAllDynamic");
 }
 
 // Called when the game starts or when spawned
