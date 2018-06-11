@@ -38,7 +38,7 @@ void A3DVRButton::Tick(float DeltaTime)
 	FVector Start = TraceStart->GetComponentLocation();
 	FVector End = GetActorLocation();
 	FQuat Rot = TraceStart->GetComponentQuat();
-	FCollisionShape Shape = FCollisionShape::MakeCapsule(TraceRadius, TraceDepth / 2);
+	FCollisionShape Shape = FCollisionShape::MakeBox(FVector(TraceDepth / 2, TraceRadius, TraceRadius));
 	auto Params = FCollisionQueryParams::DefaultQueryParam;
 	Params.AddIgnoredActor(this);
 
