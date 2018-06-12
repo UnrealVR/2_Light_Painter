@@ -25,8 +25,8 @@ private:
 
 	UPROPERTY(meta = (BindWidget))
 	UButton* CreateNewButton;
-	
-	UPROPERTY(meta = (BindWidget))
+		
+	UPROPERTY(meta = (BindWidget))	
 	UButton* DeleteButton;
 
 	UPROPERTY(meta = (BindWidget))
