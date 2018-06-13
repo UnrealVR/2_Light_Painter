@@ -19,6 +19,8 @@ public:
 
 	void StartPlay() override;
 
+	FString GetGameId() const { return SaveGameId; }
+
 private:
 	FString SaveGameId;
 	

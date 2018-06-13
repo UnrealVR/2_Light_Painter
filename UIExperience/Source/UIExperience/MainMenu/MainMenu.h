@@ -7,6 +7,7 @@
 
 #include "Components/WidgetComponent.h"
 
+
 #include "MainMenu.generated.h"
 
 UCLASS()
@@ -19,6 +20,7 @@ public:
 	AMainMenu();
 
 	void AddSlot();
+	void ClickedItem(FString ItemID);
 
 protected:
 	// Called when the game starts or when spawned

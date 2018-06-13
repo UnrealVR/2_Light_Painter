@@ -6,6 +6,7 @@
 #include "Blueprint/UserWidget.h"
 
 #include "Components/UniformGridPanel.h"
+#include "MainMenu.h"
 
 #include "SaveGameList.generated.h"
 
@@ -19,11 +20,17 @@ class UIEXPERIENCE_API USaveGameList : public UUserWidget
 	
 public:
 	void ReloadSlots();
+	void ClickedItem(FString ItemID) { if (Parent) Parent->ClickedItem(ItemID); }
+
+	void SetParent(AMainMenu* NewParent) { Parent = NewParent; }
 
 protected:
 	bool Initialize() override;
 
 private:
+
+	AMainMenu * Parent;
+
 	UPROPERTY(meta = (BindWidget))
 	UUniformGridPanel* Grid;
 

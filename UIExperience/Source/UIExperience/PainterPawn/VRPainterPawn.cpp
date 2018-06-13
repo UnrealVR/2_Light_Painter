@@ -7,9 +7,9 @@
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/StereoLayerFunctionLibrary.h"
 
-#include "LaserPainterGameInstance.h"
 #include "Data/PaintingSaveGame.h"
 #include "EngineUtils.h"
+#include "UIGameModeBase.h"
 
 
 // Called when the game starts or when spawned
@@ -29,11 +29,12 @@ void AVRPainterPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 void AVRPainterPawn::Save()
 {
-	auto GameInstance = Cast<ULaserPainterGameInstance>(GetWorld()->GetGameInstance());
+	
+	auto GameMode = Cast<AUIGameModeBase>(GetWorld()->GetAuthGameMode());
 	UPaintingSaveGame* SaveGame;
-	if (GameInstance)  
+	if (GameMode)
 	{
-		SaveGame = UPaintingSaveGame::Load(GameInstance->GetSaveGameToLoad());
+		SaveGame = UPaintingSaveGame::Load(GameMode->GetGameId());
 	}
 	else
 	{

@@ -2,28 +2,9 @@
 
 #include "SaveGameItem.h"
 
-#include "Kismet/GameplayStatics.h"
-#include "Kismet/StereoLayerFunctionLibrary.h"
-
-#include "LaserPainterGameInstance.h"
-#include "Data/PaintingSaveGame.h"
-
 void USaveGameItem::SetName(const FString & NameText)
 {
 	Name->SetText(FText::FromString(NameText));
-}
-
-void USaveGameItem::Clicked()
-{
-	auto GameInstance = Cast<ULaserPainterGameInstance>(GetWorld()->GetGameInstance());
-	if (GameInstance)
-	{
-		GameInstance->SetSaveGameToLoad(GetName());
-
-		UStereoLayerFunctionLibrary::ShowSplashScreen();
-
-		UGameplayStatics::OpenLevel(GetWorld(), "Canvas", true, "SaveGame=" + GetName());
-	}
 }
 
 FString USaveGameItem::GetName() const

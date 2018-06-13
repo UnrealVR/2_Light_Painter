@@ -6,6 +6,7 @@
 #include "Blueprint/UserWidget.h"
 
 #include "Components/TextBlock.h"
+#include "SaveGameList.h"
 
 #include "SaveGameItem.generated.h"
 
@@ -21,9 +22,14 @@ public:
 	void SetName(const FString& Name);
 
 	UFUNCTION(BlueprintCallable)
-	void Clicked();
+	void Clicked() { if (Parent) Parent->ClickedItem(GetName()); }
+
+	void SetParent(USaveGameList* NewParent) { Parent = NewParent; }
 
 private:
+
+	USaveGameList* Parent;
+	
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* Name;
 	

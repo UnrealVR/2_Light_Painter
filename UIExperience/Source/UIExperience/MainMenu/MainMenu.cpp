@@ -5,6 +5,8 @@
 #include "SaveGameList.h"
 #include "PaintingListSaveGameButtons.h"
 
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/StereoLayerFunctionLibrary.h"
 #include "Data/PaintingSaveGame.h"
 
 // Sets default values
@@ -28,6 +30,11 @@ void AMainMenu::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	if (auto List = GetSaveGameList())
+	{
+		List->SetParent(this);
+	}
+
 	if (auto Buttons = GetSaveGameListButtons())
 	{
 		Buttons->SetParent(this);
@@ -50,6 +57,13 @@ void AMainMenu::AddSlot()
 	{
 		List->ReloadSlots();
 	}
+}
+
+void AMainMenu::ClickedItem(FString ItemID)
+{
+	UStereoLayerFunctionLibrary::ShowSplashScreen();
+
+	UGameplayStatics::OpenLevel(GetWorld(), "Canvas", true, "SaveGame=" + ItemID);
 }
 
 USaveGameList * AMainMenu::GetSaveGameList() const

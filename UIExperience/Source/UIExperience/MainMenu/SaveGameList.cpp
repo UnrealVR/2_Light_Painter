@@ -24,6 +24,7 @@ void USaveGameList::ReloadSlots()
 	{
 		auto Widget = CreateWidget<USaveGameItem>(GetWorld(), SaveGameItemClass);
 		Widget->SetName(Name);
+		Widget->SetParent(this);
 		auto Slot = Grid->AddChildToUniformGrid(Widget);
 		Slot->SetRow((int)i / 3);
 		Slot->SetColumn(i % 3);
