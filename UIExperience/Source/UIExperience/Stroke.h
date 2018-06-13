@@ -6,7 +6,7 @@
 #include "GameFramework/Actor.h"
 
 #include "Components/SplineComponent.h"
-#include "PaintingSaveGame.h"
+#include "Data/PaintingSaveGame.h"
 
 #include "Stroke.generated.h"
 

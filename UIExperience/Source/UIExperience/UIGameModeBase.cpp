@@ -5,7 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/StereoLayerFunctionLibrary.h"
 
-#include "PaintingSaveGame.h"
+#include "Data/PaintingSaveGame.h"
 
 void AUIGameModeBase::InitGame(const FString & MapName, const FString & Options, FString & ErrorMessage)
 {

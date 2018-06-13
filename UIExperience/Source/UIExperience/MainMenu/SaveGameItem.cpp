@@ -6,7 +6,7 @@
 #include "Kismet/StereoLayerFunctionLibrary.h"
 
 #include "LaserPainterGameInstance.h"
-#include "PaintingSaveGame.h"
+#include "Data/PaintingSaveGame.h"
 
 void USaveGameItem::SetName(const FString & NameText)
 {

@@ -7,8 +7,6 @@
 
 #include "Components/Button.h"
 
-#include "PaintingListSaveGame.h"
-
 #include "PaintingListSaveGameButtons.generated.h"
 
 /**
@@ -20,9 +18,6 @@ class UIEXPERIENCE_API UPaintingListSaveGameButtons : public UUserWidget
 	GENERATED_BODY()
 	
 private:
-	UPROPERTY(EditAnywhere)
-	UPaintingListSaveGame* SaveGameList;
-
 	UPROPERTY(meta = (BindWidget))
 	UButton* CreateNewButton;
 		
