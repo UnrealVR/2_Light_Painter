@@ -24,6 +24,9 @@ public:
 
 	void SetParent(AMainMenu* NewParent) { Parent = NewParent; }
 
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool IsDeleteMode() const { return Parent->IsDeleteMode(); };
+
 protected:
 	bool Initialize() override;
 

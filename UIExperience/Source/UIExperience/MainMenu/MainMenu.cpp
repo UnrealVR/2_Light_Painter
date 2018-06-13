@@ -71,9 +71,9 @@ void AMainMenu::ClickedItem(FString ItemID)
 	}
 }
 
-void AMainMenu::BeginDelete()
+void AMainMenu::ToggleDeleteMode()
 {
-	DeleteMode = true;
+	DeleteMode = !DeleteMode;
 }
 
 void AMainMenu::OpenLevel(FString ItemID)
@@ -92,7 +92,6 @@ void AMainMenu::DeleteItem(FString ItemID)
 	{
 		List->ReloadSlots();
 	}
-	DeleteMode = false;
 }
 
 USaveGameList * AMainMenu::GetSaveGameList() const

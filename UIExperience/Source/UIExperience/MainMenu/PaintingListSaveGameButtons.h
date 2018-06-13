@@ -21,6 +21,21 @@ class UIEXPERIENCE_API UPaintingListSaveGameButtons : public UUserWidget
 public:
 	void SetParent(AMainMenu* NewParent) { Parent = NewParent; }
 
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool IsDeleteMode() const { return Parent->IsDeleteMode(); };
+
+	UPROPERTY(BlueprintReadonly, meta = (BindWidget))
+	UButton* CreateNewButton;
+
+	UPROPERTY(BlueprintReadonly, meta = (BindWidget))
+	UButton* DeleteButton;
+
+	UPROPERTY(BlueprintReadonly, meta = (BindWidget))
+	UButton* PrevPageButton;
+
+	UPROPERTY(BlueprintReadonly, meta = (BindWidget))
+	UButton* NextPageButton;
+
 protected:
 	bool Initialize() override;
 
@@ -32,18 +47,6 @@ private:
 	void CreateNewButtonClicked() { Parent->AddSlot(); };
 
 	UFUNCTION()
-	void DeleteButtonClicked() { Parent->BeginDelete(); };
-
-	UPROPERTY(meta = (BindWidget))
-	UButton* CreateNewButton;
-		
-	UPROPERTY(meta = (BindWidget))	
-	UButton* DeleteButton;
-
-	UPROPERTY(meta = (BindWidget))
-	UButton* PrevPageButton;
-
-	UPROPERTY(meta = (BindWidget))
-	UButton* NextPageButton;
+	void DeleteButtonClicked() { Parent->ToggleDeleteMode(); };
 
 };

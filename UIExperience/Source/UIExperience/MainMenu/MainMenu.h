@@ -21,7 +21,8 @@ public:
 
 	void AddSlot();
 	void ClickedItem(FString ItemID);
-	void BeginDelete();
+	void ToggleDeleteMode();
+	bool IsDeleteMode() const { return DeleteMode; }
 
 protected:
 	// Called when the game starts or when spawned
