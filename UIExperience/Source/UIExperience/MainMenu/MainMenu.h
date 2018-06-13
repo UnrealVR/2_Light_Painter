@@ -18,6 +18,8 @@ public:
 	// Sets default values for this actor's properties
 	AMainMenu();
 
+	void AddSlot();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -27,6 +29,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
+
+	class USaveGameList* GetSaveGameList() const;
+	class UPaintingListSaveGameButtons* GetSaveGameListButtons() const;
 
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Root;

@@ -7,6 +7,8 @@
 
 #include "Components/Button.h"
 
+#include "MainMenu.h"
+
 #include "PaintingListSaveGameButtons.generated.h"
 
 /**
@@ -16,8 +18,19 @@ UCLASS()
 class UIEXPERIENCE_API UPaintingListSaveGameButtons : public UUserWidget
 {
 	GENERATED_BODY()
-	
+public:
+	void SetParent(AMainMenu* NewParent) { Parent = NewParent; }
+
+protected:
+	bool Initialize() override;
+
 private:
+
+	AMainMenu* Parent;
+
+	UFUNCTION()
+	void CreatNewButtonClicked() { Parent->AddSlot(); };
+
 	UPROPERTY(meta = (BindWidget))
 	UButton* CreateNewButton;
 		

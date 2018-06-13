@@ -3,5 +3,11 @@
 #include "PaintingListSaveGameButtons.h"
 
 
+bool UPaintingListSaveGameButtons::Initialize()
+{
+	if (!Super::Initialize()) return false;
+	CreateNewButton->OnClicked.AddDynamic(this, &UPaintingListSaveGameButtons::CreatNewButtonClicked);
+	return true;
+}
 
 

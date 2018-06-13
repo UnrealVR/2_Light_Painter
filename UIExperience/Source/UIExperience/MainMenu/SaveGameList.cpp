@@ -26,3 +26,6 @@ bool USaveGameList::Initialize()
 }
 
 
+void USaveGameList::ReloadGames()
+{
+}

@@ -2,6 +2,8 @@
 
 #include "MainMenu.h"
 
+#include "SaveGameList.h"
+#include "PaintingListSaveGameButtons.h"
 
 // Sets default values
 AMainMenu::AMainMenu()
@@ -24,6 +26,10 @@ void AMainMenu::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	if (auto Buttons = GetSaveGameListButtons())
+	{
+		Buttons->SetParent(this);
+	}
 }
 
 // Called every frame
@@ -33,3 +39,17 @@ void AMainMenu::Tick(float DeltaTime)
 
 }
 
+void AMainMenu::AddSlot()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Button callback called"));
+}
+
+USaveGameList * AMainMenu::GetSaveGameList() const
+{
+	return Cast<USaveGameList>(Menu->GetUserWidgetObject());
+}
+
+UPaintingListSaveGameButtons * AMainMenu::GetSaveGameListButtons() const
+{
+	return Cast<UPaintingListSaveGameButtons>(MenuButtons->GetUserWidgetObject());
+}
