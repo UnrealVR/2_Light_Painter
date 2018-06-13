@@ -61,9 +61,38 @@ void AMainMenu::AddSlot()
 
 void AMainMenu::ClickedItem(FString ItemID)
 {
+	if (DeleteMode)
+	{
+		DeleteItem(ItemID);
+	}
+	else
+	{
+		OpenLevel(ItemID);
+	}
+}
+
+void AMainMenu::BeginDelete()
+{
+	DeleteMode = true;
+}
+
+void AMainMenu::OpenLevel(FString ItemID)
+{
 	UStereoLayerFunctionLibrary::ShowSplashScreen();
 
 	UGameplayStatics::OpenLevel(GetWorld(), "Canvas", true, "SaveGame=" + ItemID);
+}
+
+void AMainMenu::DeleteItem(FString ItemID)
+{
+	auto Slot = UPaintingSaveGame::Load(ItemID);
+	Slot->Delete();
+
+	if (auto List = GetSaveGameList())
+	{
+		List->ReloadSlots();
+	}
+	DeleteMode = false;
 }
 
 USaveGameList * AMainMenu::GetSaveGameList() const

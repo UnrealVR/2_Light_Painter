@@ -31,6 +31,14 @@ bool UPaintingSaveGame::Save()
 	return UGameplayStatics::SaveGameToSlot(this, UniqueIdentifier, 0);
 }
 
+void UPaintingSaveGame::Delete()
+{
+	auto List = UPaintingListSaveGame::Load();
+	List->RemovePainting(UniqueIdentifier);
+	List->Save();
+	UGameplayStatics::DeleteGameInSlot(UniqueIdentifier, 0);
+}
+
 void UPaintingSaveGame::SnapshotLevel(UWorld* World)
 {
 	for (TActorIterator<AStroke> Itr(World); Itr; ++Itr)

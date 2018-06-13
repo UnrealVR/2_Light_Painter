@@ -55,6 +55,8 @@ public:
 
 	bool Save();
 
+	void Delete();
+
 	void SnapshotLevel(UWorld * World);
 
 	void RestoreLevel(UWorld * World);

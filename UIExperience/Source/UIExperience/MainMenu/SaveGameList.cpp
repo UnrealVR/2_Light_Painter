@@ -20,6 +20,7 @@ void USaveGameList::ReloadSlots()
 {
 	auto List = UPaintingListSaveGame::Load();
 	uint32 i = 0;
+	Grid->ClearChildren();
 	for (const FString& Name : List->GetPaintings())
 	{
 		auto Widget = CreateWidget<USaveGameItem>(GetWorld(), SaveGameItemClass);

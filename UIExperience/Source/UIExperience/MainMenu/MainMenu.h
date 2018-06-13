@@ -21,6 +21,7 @@ public:
 
 	void AddSlot();
 	void ClickedItem(FString ItemID);
+	void BeginDelete();
 
 protected:
 	// Called when the game starts or when spawned
@@ -31,6 +32,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
+
+	void OpenLevel(FString ItemID);
+	void DeleteItem(FString ItemID);
 
 	class USaveGameList* GetSaveGameList() const;
 	class UPaintingListSaveGameButtons* GetSaveGameListButtons() const;
@@ -43,5 +47,8 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	UWidgetComponent* MenuButtons;
+
+	// State
+	bool DeleteMode = false;
 	
 };

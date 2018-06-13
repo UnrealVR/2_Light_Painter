@@ -6,7 +6,8 @@
 bool UPaintingListSaveGameButtons::Initialize()
 {
 	if (!Super::Initialize()) return false;
-	CreateNewButton->OnClicked.AddDynamic(this, &UPaintingListSaveGameButtons::CreatNewButtonClicked);
+	CreateNewButton->OnClicked.AddDynamic(this, &UPaintingListSaveGameButtons::CreateNewButtonClicked);
+	DeleteButton->OnClicked.AddDynamic(this, &UPaintingListSaveGameButtons::DeleteButtonClicked);
 	return true;
 }
 

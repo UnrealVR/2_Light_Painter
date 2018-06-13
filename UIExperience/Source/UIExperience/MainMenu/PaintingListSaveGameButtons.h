@@ -29,7 +29,10 @@ private:
 	AMainMenu* Parent;
 
 	UFUNCTION()
-	void CreatNewButtonClicked() { Parent->AddSlot(); };
+	void CreateNewButtonClicked() { Parent->AddSlot(); };
+
+	UFUNCTION()
+	void DeleteButtonClicked() { Parent->BeginDelete(); };
 
 	UPROPERTY(meta = (BindWidget))
 	UButton* CreateNewButton;

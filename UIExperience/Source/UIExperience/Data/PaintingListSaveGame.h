@@ -20,6 +20,7 @@ public:
 
 	TArray<FString> GetPaintings() const { return Paintings; }
 	void AddPainting(const FString& Name) { Paintings.Add(Name); }
+	void RemovePainting(const FString& Name) { Paintings.Remove(Name); }
 
 private:
 	UPROPERTY()
