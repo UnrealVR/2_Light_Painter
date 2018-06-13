@@ -18,7 +18,7 @@ class UIEXPERIENCE_API USaveGameList : public UUserWidget
 	GENERATED_BODY()
 	
 public:
-	void ReloadGames();
+	void ReloadSlots();
 
 protected:
 	bool Initialize() override;

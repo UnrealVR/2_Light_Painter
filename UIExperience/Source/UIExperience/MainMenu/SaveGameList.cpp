@@ -11,6 +11,13 @@ bool USaveGameList::Initialize()
 {
 	if (!Super::Initialize()) return false;
 
+	ReloadSlots();
+	return true;
+}
+
+
+void USaveGameList::ReloadSlots()
+{
 	auto List = UPaintingListSaveGame::Load();
 	uint32 i = 0;
 	for (const FString& Name : List->GetPaintings())
@@ -22,10 +29,4 @@ bool USaveGameList::Initialize()
 		Slot->SetColumn(i % 3);
 		++i;
 	}
-	return true;
-}
-
-
-void USaveGameList::ReloadGames()
-{
 }

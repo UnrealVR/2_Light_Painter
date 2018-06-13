@@ -5,6 +5,8 @@
 #include "SaveGameList.h"
 #include "PaintingListSaveGameButtons.h"
 
+#include "Data/PaintingSaveGame.h"
+
 // Sets default values
 AMainMenu::AMainMenu()
 {
@@ -41,7 +43,13 @@ void AMainMenu::Tick(float DeltaTime)
 
 void AMainMenu::AddSlot()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Button callback called"));
+	auto NewSlot = UPaintingSaveGame::Create();
+	NewSlot->Save();
+
+	if (auto List = GetSaveGameList())
+	{
+		List->ReloadSlots();
+	}
 }
 
 USaveGameList * AMainMenu::GetSaveGameList() const
