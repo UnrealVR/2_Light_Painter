@@ -34,6 +34,20 @@ void APaintBrushHandController::Tick(float DeltaTime)
 	{
 		CurrentStroke->UpdateStroke(StrokeSpawnPoint->GetComponentLocation(), Velocity);
 	}
+
+	auto HitResult = WidgetInteractionComponent->GetLastHitResult();
+	float ClickDistance = StrokeSpawnPoint->GetRelativeTransform().GetLocation().X;
+	bool ShouldClick = WidgetInteractionComponent->IsOverInteractableWidget() && HitResult.Distance < ClickDistance;
+	if (ShouldClick)
+	{
+			WidgetInteractionComponent->PressPointerKey(EKeys::LeftMouseButton);
+			ButtonIsPressed = true;
+	}
+	else if (ButtonIsPressed)
+	{
+		WidgetInteractionComponent->ReleasePointerKey(EKeys::LeftMouseButton);
+	}
+
 }
 
 void APaintBrushHandController::RightTriggerPressed()

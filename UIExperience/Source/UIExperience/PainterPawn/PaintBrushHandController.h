@@ -46,4 +46,6 @@ private:
 
 	FVector LastLocation;
 
+	bool ButtonIsPressed = false;
+
 };
