@@ -5,9 +5,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
-#include "Engine/GameViewportClient.h"
-#include "Misc/FileHelper.h"
-#include "ImageUtils.h"
+#include "Kismet/KismetRenderingLibrary.h"
+#include "HAL/FileManager.h"
 
 #include "PaintingListSaveGame.h"
 #include "Stroke.h"
@@ -40,6 +39,11 @@ void UPaintingSaveGame::Delete()
 	List->RemovePainting(UniqueIdentifier);
 	List->Save();
 	UGameplayStatics::DeleteGameInSlot(UniqueIdentifier, 0);
+
+	FString ThumbnailDir = FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Thumbs"));
+	FString FileName = UniqueIdentifier + ".png";
+	
+	IFileManager::Get().Delete(*FPaths::Combine(ThumbnailDir, FileName));
 }
 
 void UPaintingSaveGame::SnapshotLevel(UWorld* World)
@@ -50,18 +54,11 @@ void UPaintingSaveGame::SnapshotLevel(UWorld* World)
 		Strokes.Add(Stroke);
 	}
 
-	TArray<FColor> Pixels;
-	
-	if(World->GetGameViewport()->Viewport->ReadPixels(Pixels))
-	{
-		FVector2D ViewportSize;
-		World->GetGameViewport()->GetViewportSize(ViewportSize);
-
-		TArray<uint8> PNGData;
-		FImageUtils::CompressImageArray(ViewportSize.X, ViewportSize.Y, Pixels, PNGData);
-
-		FFileHelper::SaveArrayToFile(PNGData, TEXT("C:\\Users\\Samuel Pattuzzi\\Documents\\Courses\\Unreal VR\\section_2_proto\\UIExperience\\Saved\\test.png"));
-	}
+	UTextureRenderTarget2D* RenderTarget = LoadObject<UTextureRenderTarget2D>(NULL, TEXT("/Game/NewTextureRenderTarget2D"));
+	FString ThumbnailDir = FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Thumbs"));
+	IFileManager::Get().MakeDirectory(*ThumbnailDir, true);
+	FString FileName = UniqueIdentifier + ".png";
+	UKismetRenderingLibrary::ExportRenderTarget(World, RenderTarget, ThumbnailDir, FileName);
 }
 
 void UPaintingSaveGame::RestoreLevel(UWorld* World)
