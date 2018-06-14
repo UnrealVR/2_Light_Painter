@@ -27,6 +27,10 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	// Components
+	UPROPERTY(VisibleAnywhere)
+	USceneComponent* StrokeSpawnPoint;
+
 	// Config
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AStroke> StrokeClass;

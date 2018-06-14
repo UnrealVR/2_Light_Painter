@@ -8,6 +8,9 @@ APaintBrushHandController::APaintBrushHandController()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	StrokeSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("StrokeSpawnPoint"));
+	StrokeSpawnPoint->SetupAttachment(GetRootComponent());
 }
 
 // Called when the game starts or when spawned
@@ -26,7 +29,7 @@ void APaintBrushHandController::Tick(float DeltaTime)
 
 	if (CurrentStroke)
 	{
-		CurrentStroke->UpdateStroke(GetActorLocation(), Velocity);
+		CurrentStroke->UpdateStroke(StrokeSpawnPoint->GetComponentLocation(), Velocity);
 	}
 }
 
@@ -34,7 +37,7 @@ void APaintBrushHandController::RightTriggerPressed()
 {
 	if (StrokeClass)
 	{
-		CurrentStroke = GetWorld()->SpawnActor<AStroke>(StrokeClass, GetActorLocation(), FRotator::ZeroRotator);
+		CurrentStroke = GetWorld()->SpawnActor<AStroke>(StrokeClass, StrokeSpawnPoint->GetComponentLocation(), FRotator::ZeroRotator);
 	}
 }
 
