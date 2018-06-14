@@ -27,6 +27,14 @@ void APaintBrushHandController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	TickStrokeUpdate(DeltaTime);
+
+	TickButtonPressDetection();
+
+}
+
+void APaintBrushHandController::TickStrokeUpdate(float DeltaTime)
+{
 	FVector Velocity = (GetActorLocation() - LastLocation) / DeltaTime;
 	LastLocation = GetActorLocation();
 
@@ -34,20 +42,22 @@ void APaintBrushHandController::Tick(float DeltaTime)
 	{
 		CurrentStroke->UpdateStroke(StrokeSpawnPoint->GetComponentLocation(), Velocity);
 	}
+}
 
+void APaintBrushHandController::TickButtonPressDetection()
+{
 	auto HitResult = WidgetInteractionComponent->GetLastHitResult();
 	float ClickDistance = StrokeSpawnPoint->GetRelativeTransform().GetLocation().X;
 	bool ShouldClick = WidgetInteractionComponent->IsOverInteractableWidget() && HitResult.Distance < ClickDistance;
 	if (ShouldClick)
 	{
-			WidgetInteractionComponent->PressPointerKey(EKeys::LeftMouseButton);
-			ButtonIsPressed = true;
+		WidgetInteractionComponent->PressPointerKey(EKeys::LeftMouseButton);
+		ButtonIsPressed = true;
 	}
 	else if (ButtonIsPressed)
 	{
 		WidgetInteractionComponent->ReleasePointerKey(EKeys::LeftMouseButton);
 	}
-
 }
 
 void APaintBrushHandController::RightTriggerPressed()

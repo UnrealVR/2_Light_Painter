@@ -29,6 +29,10 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+
+	void TickStrokeUpdate(float DeltaTime);
+	void TickButtonPressDetection();
+
 	// Components
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* StrokeSpawnPoint;
