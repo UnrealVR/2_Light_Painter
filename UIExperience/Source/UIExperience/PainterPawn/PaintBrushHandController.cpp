@@ -11,6 +11,9 @@ APaintBrushHandController::APaintBrushHandController()
 
 	StrokeSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("StrokeSpawnPoint"));
 	StrokeSpawnPoint->SetupAttachment(GetRootComponent());
+
+	WidgetInteractionComponent = CreateDefaultSubobject<UWidgetInteractionComponent>(TEXT("WidgetInteractionComponent"));
+	WidgetInteractionComponent->SetupAttachment(GetRootComponent());
 }
 
 // Called when the game starts or when spawned

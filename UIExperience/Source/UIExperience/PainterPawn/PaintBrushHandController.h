@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "HandControllerBase.h"
 
+#include "Components/WidgetInteractionComponent.h"
+
 #include "Stroke.h"
 
 #include "PaintBrushHandController.generated.h"
@@ -30,6 +32,9 @@ private:
 	// Components
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* StrokeSpawnPoint;
+
+	UPROPERTY(VisibleAnywhere)
+	UWidgetInteractionComponent* WidgetInteractionComponent;
 
 	// Config
 	UPROPERTY(EditDefaultsOnly)
