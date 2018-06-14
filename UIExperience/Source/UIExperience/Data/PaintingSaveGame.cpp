@@ -5,11 +5,12 @@
 #include "Kismet/GameplayStatics.h"
 #include "Engine/World.h"
 #include "EngineUtils.h"
-#include "Kismet/KismetRenderingLibrary.h"
 #include "HAL/FileManager.h"
+#include "Paths.h"
 
 #include "PaintingListSaveGame.h"
 #include "Stroke.h"
+#include "SnapshotCamera.h"
 
 UPaintingSaveGame* UPaintingSaveGame::Create()
 {
@@ -54,11 +55,15 @@ void UPaintingSaveGame::SnapshotLevel(UWorld* World)
 		Strokes.Add(Stroke);
 	}
 
-	UTextureRenderTarget2D* RenderTarget = LoadObject<UTextureRenderTarget2D>(NULL, TEXT("/Game/NewTextureRenderTarget2D"));
-	FString ThumbnailDir = FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Thumbs"));
-	IFileManager::Get().MakeDirectory(*ThumbnailDir, true);
-	FString FileName = UniqueIdentifier + ".png";
-	UKismetRenderingLibrary::ExportRenderTarget(World, RenderTarget, ThumbnailDir, FileName);
+	for (TActorIterator<ASnapshotCamera> SnapshotCamera(World); SnapshotCamera; ++SnapshotCamera)
+	{
+		FString ThumbnailDir = FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Thumbs"));
+		IFileManager::Get().MakeDirectory(*ThumbnailDir, true);
+		FString FileName = UniqueIdentifier + ".png";
+
+		SnapshotCamera->CaptureScreenshot(ThumbnailDir, FileName);
+		break; // Only snapshot the first camera in a scene.
+	}
 }
 
 void UPaintingSaveGame::RestoreLevel(UWorld* World)
