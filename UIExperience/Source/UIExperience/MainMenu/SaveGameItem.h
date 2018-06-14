@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 
-#include "Components/TextBlock.h"
+#include "Components/Image.h"
 #include "SaveGameList.h"
 
 #include "SaveGameItem.generated.h"
@@ -31,6 +31,8 @@ private:
 	USaveGameList* Parent;
 	
 	UPROPERTY(meta = (BindWidget))
-	UTextBlock* Name;
+	UImage* Thumbnail;
+
+	FString Name;
 	
 };

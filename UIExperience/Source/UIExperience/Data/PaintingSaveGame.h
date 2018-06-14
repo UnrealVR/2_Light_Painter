@@ -53,6 +53,8 @@ public:
 
 	static UPaintingSaveGame * Load(const FString & UniqueIdentifier);
 
+	static FString GetImagePath(const FString & UniqueIdentifier);
+
 	bool Save();
 
 	void Delete();

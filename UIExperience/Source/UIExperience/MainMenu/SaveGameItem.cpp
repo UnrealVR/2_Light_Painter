@@ -2,12 +2,24 @@
 
 #include "SaveGameItem.h"
 
+#include "Brushes/SlateDynamicImageBrush.h"
+#include "HAL/FileManager.h"
+
+#include "Data/PaintingSaveGame.h"
+
 void USaveGameItem::SetName(const FString & NameText)
 {
-	Name->SetText(FText::FromString(NameText));
+	Name = NameText;
+
+	FString ImagePath = UPaintingSaveGame::GetImagePath(Name);
+	if (IFileManager::Get().FileExists(*ImagePath))
+	{
+		FSlateDynamicImageBrush Brush(*ImagePath, FVector2D(1000, 1000), FLinearColor::White);
+		Thumbnail->SetBrush(Brush);
+	}
 }
 
 FString USaveGameItem::GetName() const
 {
-	return Name->GetText().ToString();
+	return Name;
 }

@@ -29,6 +29,14 @@ UPaintingSaveGame* UPaintingSaveGame::Load(const FString& UniqueIdentifier)
 	return Cast<UPaintingSaveGame>(UGameplayStatics::LoadGameFromSlot(UniqueIdentifier, 0));
 }
 
+FString UPaintingSaveGame::GetImagePath(const FString & UniqueIdentifier)
+{
+	FString ThumbnailDir = FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Thumbs"));
+	FString FileName = UniqueIdentifier + ".png";
+
+	return FPaths::Combine(ThumbnailDir, FileName);
+}
+
 bool UPaintingSaveGame::Save()
 {
 	return UGameplayStatics::SaveGameToSlot(this, UniqueIdentifier, 0);
@@ -40,11 +48,8 @@ void UPaintingSaveGame::Delete()
 	List->RemovePainting(UniqueIdentifier);
 	List->Save();
 	UGameplayStatics::DeleteGameInSlot(UniqueIdentifier, 0);
-
-	FString ThumbnailDir = FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Thumbs"));
-	FString FileName = UniqueIdentifier + ".png";
 	
-	IFileManager::Get().Delete(*FPaths::Combine(ThumbnailDir, FileName));
+	IFileManager::Get().Delete(*GetImagePath(UniqueIdentifier));
 }
 
 void UPaintingSaveGame::SnapshotLevel(UWorld* World)
