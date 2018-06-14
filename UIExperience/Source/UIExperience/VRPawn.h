@@ -29,7 +29,11 @@ protected:
 
 	//Components
 	UPROPERTY(VisibleAnywhere)
+	AHandControllerBase* LeftHandController;
+
+	UPROPERTY(VisibleAnywhere)
 	AHandControllerBase* RightHandController;
+
 
 private:
 	void RightTriggerPressed() { if (RightHandController) RightHandController->RightTriggerPressed(); }
@@ -40,6 +44,9 @@ private:
 	UCameraComponent* Camera;
 
 	//Config
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<AHandControllerBase> LeftHandControllerClass;
+
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AHandControllerBase> RightHandControllerClass;
 

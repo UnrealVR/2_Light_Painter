@@ -21,6 +21,12 @@ void AVRPawn::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	if (LeftHandControllerClass)
+	{
+		LeftHandController = GetWorld()->SpawnActor<AHandControllerBase>(LeftHandControllerClass);
+		LeftHandController->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
+	}
+
 	if (RightHandControllerClass)
 	{
 		RightHandController = GetWorld()->SpawnActor<AHandControllerBase>(RightHandControllerClass);
