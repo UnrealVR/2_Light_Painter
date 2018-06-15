@@ -11,6 +11,13 @@
 
 #include "PaintBrushHandController.generated.h"
 
+UENUM()
+enum class EBrushState
+{
+	Painting,
+	Erasing
+};
+
 UCLASS()
 class UIEXPERIENCE_API APaintBrushHandController : public AHandControllerBase
 {
@@ -23,6 +30,9 @@ public:
 
 	void RightTriggerPressed() override;
 	void RightTriggerReleased() override;
+
+	EBrushState GetState() const { return State; }
+	void SetState(const EBrushState& NewState) { State = NewState; }
 
 protected:
 	// Called when the game starts or when spawned
@@ -47,6 +57,8 @@ private:
 	// State
 	UPROPERTY(VisibleAnywhere)
 	AStroke* CurrentStroke;
+
+	EBrushState State;
 
 	FVector LastLocation;
 

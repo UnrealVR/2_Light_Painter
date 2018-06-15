@@ -30,7 +30,6 @@ void APaintBrushHandController::Tick(float DeltaTime)
 	TickStrokeUpdate(DeltaTime);
 
 	TickButtonPressDetection();
-
 }
 
 void APaintBrushHandController::TickStrokeUpdate(float DeltaTime)

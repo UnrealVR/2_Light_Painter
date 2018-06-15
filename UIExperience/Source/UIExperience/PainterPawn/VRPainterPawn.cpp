@@ -23,11 +23,11 @@ void AVRPainterPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAction("Save", EInputEvent::IE_Released, this, &AVRPainterPawn::Save);
+	PlayerInputComponent->BindAction("Save", EInputEvent::IE_Released, this, &AVRPainterPawn::SaveAndQuit);
 	PlayerInputComponent->BindAction("Load", EInputEvent::IE_Released, this, &AVRPainterPawn::Load);
 }
 
-void AVRPainterPawn::Save()
+void AVRPainterPawn::SaveAndQuit()
 {
 	
 	auto GameMode = Cast<AUIGameModeBase>(GetWorld()->GetAuthGameMode());

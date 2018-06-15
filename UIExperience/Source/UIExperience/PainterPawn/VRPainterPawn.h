@@ -20,12 +20,12 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	void SaveAndQuit();
 
 protected:
 	void BeginPlay();
 
 private:
-	void Save();
 	void Load();
 
 	//state
