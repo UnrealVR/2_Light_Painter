@@ -31,12 +31,25 @@ protected:
 	bool Initialize() override;
 
 private:
+	
+	void ClearSlots();
+	TArray<UPanelWidget *> GetSlots() const;
 
+	// References
 	AMainMenu * Parent;
-
+	
 	UPROPERTY(meta = (BindWidget))
 	UUniformGridPanel* Grid;
 
+	// Config
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class USaveGameItem> SaveGameItemClass;
+
+	UPROPERTY(EditAnywhere)
+	int NumberOfRows = 3;
+	UPROPERTY(EditAnywhere)
+	int NumberOfColumns = 3;
+
+	// State
+	int CurrentPage = 0;
 };

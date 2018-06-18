@@ -18,17 +18,40 @@ bool USaveGameList::Initialize()
 
 void USaveGameList::ReloadSlots()
 {
+	ClearSlots();
 	auto List = UPaintingListSaveGame::Load();
-	uint32 i = 0;
-	Grid->ClearChildren();
-	for (const FString& Name : List->GetPaintings())
+	auto Slots = GetSlots();
+	auto Paintings = List->GetPaintings();
+	int PaintingsOffset = CurrentPage * Slots.Num();
+	for (auto Slot : Slots)
 	{
+		if (PaintingsOffset >= Paintings.Num()) break;
+		auto Name = Paintings[PaintingsOffset];
 		auto Widget = CreateWidget<USaveGameItem>(GetWorld(), SaveGameItemClass);
+		if (!Widget) return;
 		Widget->SetName(Name);
 		Widget->SetParent(this);
-		auto Slot = Grid->AddChildToUniformGrid(Widget);
-		Slot->SetRow((int)i / 3);
-		Slot->SetColumn(i % 3);
-		++i;
+		Slot->AddChild(Widget);
+		++PaintingsOffset;
 	}
+}
+
+void USaveGameList::ClearSlots()
+{
+	for (auto Slot : GetSlots())
+	{
+		Slot->ClearChildren();
+	}
+}
+
+TArray<UPanelWidget *> USaveGameList::GetSlots() const
+{
+	TArray<UPanelWidget *> Result;
+	for (auto Slot : Grid->GetSlots())
+	{
+		auto SlotWidget = Cast<UPanelWidget>(Slot->Content);
+		if (!SlotWidget) continue;
+		Result.Add(SlotWidget);
+	}
+	return Result;
 }
