@@ -54,6 +54,7 @@ void UPaintingSaveGame::Delete()
 
 void UPaintingSaveGame::SnapshotLevel(UWorld* World)
 {
+	Strokes.Empty();
 	for (TActorIterator<AStroke> Itr(World); Itr; ++Itr)
 	{
 		FStrokeData Stroke = Itr->GetData();
