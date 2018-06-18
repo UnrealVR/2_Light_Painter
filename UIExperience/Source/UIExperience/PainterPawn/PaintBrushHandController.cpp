@@ -9,9 +9,6 @@ APaintBrushHandController::APaintBrushHandController()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	StrokeSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("StrokeSpawnPoint"));
-	StrokeSpawnPoint->SetupAttachment(GetRootComponent());
-
 	WidgetInteractionComponent = CreateDefaultSubobject<UWidgetInteractionComponent>(TEXT("WidgetInteractionComponent"));
 	WidgetInteractionComponent->SetupAttachment(GetRootComponent());
 }
@@ -20,6 +17,8 @@ APaintBrushHandController::APaintBrushHandController()
 void APaintBrushHandController::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SetState(EBrushState::Painting);
 }
 
 // Called every frame
@@ -27,26 +26,46 @@ void APaintBrushHandController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	TickStrokeUpdate(DeltaTime);
+		TickStrokeUpdate(DeltaTime);
+		TickEraserUpdate();
 
 	TickButtonPressDetection();
 }
 
+EBrushState APaintBrushHandController::GetState() const
+{
+	if (!CurrentBrush) return EBrushState::NONE;
+	return CurrentBrush->GetState();
+}
+
+void APaintBrushHandController::SetState(const EBrushState & NewState)
+{
+	for (auto Component : GetComponents())
+	{
+		if (auto Brush = Cast<IVRBrushInterface>(Component))
+		{
+			if (Brush->GetState() == NewState)
+			{
+				if (CurrentBrush) CurrentBrush->Activate(false);
+				Brush->Activate(true);
+				CurrentBrush = Brush;
+			}
+		}
+	}
+}
+
 void APaintBrushHandController::TickStrokeUpdate(float DeltaTime)
 {
-	FVector Velocity = (GetActorLocation() - LastLocation) / DeltaTime;
-	LastLocation = GetActorLocation();
+}
 
-	if (CurrentStroke)
-	{
-		CurrentStroke->UpdateStroke(StrokeSpawnPoint->GetComponentLocation(), Velocity);
-	}
+void APaintBrushHandController::TickEraserUpdate()
+{
 }
 
 void APaintBrushHandController::TickButtonPressDetection()
 {
 	auto HitResult = WidgetInteractionComponent->GetLastHitResult();
-	float ClickDistance = StrokeSpawnPoint->GetRelativeTransform().GetLocation().X;
+	float ClickDistance = 9;
 	bool ShouldClick = WidgetInteractionComponent->IsOverInteractableWidget() && HitResult.Distance < ClickDistance;
 	if (ShouldClick)
 	{
@@ -61,15 +80,12 @@ void APaintBrushHandController::TickButtonPressDetection()
 
 void APaintBrushHandController::RightTriggerPressed()
 {
-	if (StrokeClass)
-	{
-		CurrentStroke = GetWorld()->SpawnActor<AStroke>(StrokeClass, StrokeSpawnPoint->GetComponentLocation(), FRotator::ZeroRotator);
-	}
+	if (CurrentBrush) CurrentBrush->StartBrushing();
 }
 
 void APaintBrushHandController::RightTriggerReleased()
 {
-	CurrentStroke = nullptr;
+	if (CurrentBrush) CurrentBrush->StopBrushing();
 }
 
 

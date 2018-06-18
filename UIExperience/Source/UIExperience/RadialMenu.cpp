@@ -2,8 +2,13 @@
 
 #include "RadialMenu.h"
 
-#include "PainterPawn/VRPainterPawn.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/StereoLayerFunctionLibrary.h"
+#include "EngineUtils.h"
 
+#include "UIGameModeBase.h"
+#include "Data/PaintingSaveGame.h"
+#include "PainterPawn/PaintBrushHandController.h"
 
 bool URadialMenu::Initialize()
 {
@@ -16,19 +21,53 @@ bool URadialMenu::Initialize()
 
 void URadialMenu::BrushButtonClicked()
 {
+	for (TActorIterator<APaintBrushHandController> Itr(GetWorld()); Itr; ++Itr)
+	{
+		Itr->SetState(EBrushState::Painting);
+	}
 }
 
 void URadialMenu::EraserButtonClicked()
-{
+{	
+	for (TActorIterator<APaintBrushHandController> Itr(GetWorld()); Itr; ++Itr)
+	{
+		Itr->SetState(EBrushState::Erasing);
+	}
 }
 
 void URadialMenu::BackButtonClicked()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Bakc"));
-	auto Pawn = Cast<AVRPainterPawn>(GetOwningPlayerPawn());
-	if (Pawn)
+	SaveAndQuit();
+}
+
+void URadialMenu::SaveAndQuit()
+{
+
+	auto GameMode = Cast<AUIGameModeBase>(GetWorld()->GetAuthGameMode());
+	UPaintingSaveGame* SaveGame;
+	if (GameMode)
 	{
-		Pawn->SaveAndQuit();
+		SaveGame = UPaintingSaveGame::Load(GameMode->GetGameId());
+	}
+	else
+	{
+		SaveGame = UPaintingSaveGame::Create();
+	}
+	auto UniquePaintingIdentifier = SaveGame->GetUniqueIdentifier();
+	UE_LOG(LogTemp, Warning, TEXT("UUID: %s"), *SaveGame->GetUniqueIdentifier());
+	SaveGame->SnapshotLevel(GetWorld());
+	bool bDidSave = SaveGame->Save();
+	if (bDidSave)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Did Save"))
+			UStereoLayerFunctionLibrary::ShowSplashScreen();
+
+		UGameplayStatics::OpenLevel(GetWorld(), "LoadMenu");
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Did not save"));
 	}
 }
+
 

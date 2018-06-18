@@ -32,6 +32,8 @@ protected:
 	bool Initialize() override;
 
 private:
+
+	void SaveAndQuit();
 	
 	UFUNCTION()
 	void BrushButtonClicked();

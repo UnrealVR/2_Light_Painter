@@ -7,16 +7,9 @@
 
 #include "Components/WidgetInteractionComponent.h"
 
-#include "Stroke.h"
+#include "VRBrushInterface.h"
 
 #include "PaintBrushHandController.generated.h"
-
-UENUM()
-enum class EBrushState
-{
-	Painting,
-	Erasing
-};
 
 UCLASS()
 class UIEXPERIENCE_API APaintBrushHandController : public AHandControllerBase
@@ -31,8 +24,8 @@ public:
 	void RightTriggerPressed() override;
 	void RightTriggerReleased() override;
 
-	EBrushState GetState() const { return State; }
-	void SetState(const EBrushState& NewState) { State = NewState; }
+	EBrushState GetState() const;
+	void SetState(const EBrushState& NewState);
 
 protected:
 	// Called when the game starts or when spawned
@@ -41,26 +34,13 @@ protected:
 private:
 
 	void TickStrokeUpdate(float DeltaTime);
+	void TickEraserUpdate();
 	void TickButtonPressDetection();
-
-	// Components
-	UPROPERTY(VisibleAnywhere)
-	USceneComponent* StrokeSpawnPoint;
 
 	UPROPERTY(VisibleAnywhere)
 	UWidgetInteractionComponent* WidgetInteractionComponent;
 
-	// Config
-	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<AStroke> StrokeClass;
-
-	// State
-	UPROPERTY(VisibleAnywhere)
-	AStroke* CurrentStroke;
-
-	EBrushState State;
-
-	FVector LastLocation;
+	IVRBrushInterface* CurrentBrush;
 
 	bool ButtonIsPressed = false;
 
