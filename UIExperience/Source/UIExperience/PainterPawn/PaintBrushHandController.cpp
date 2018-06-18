@@ -26,9 +26,6 @@ void APaintBrushHandController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-		TickStrokeUpdate(DeltaTime);
-		TickEraserUpdate();
-
 	TickButtonPressDetection();
 }
 
@@ -52,14 +49,6 @@ void APaintBrushHandController::SetState(const EBrushState & NewState)
 			}
 		}
 	}
-}
-
-void APaintBrushHandController::TickStrokeUpdate(float DeltaTime)
-{
-}
-
-void APaintBrushHandController::TickEraserUpdate()
-{
 }
 
 void APaintBrushHandController::TickButtonPressDetection()

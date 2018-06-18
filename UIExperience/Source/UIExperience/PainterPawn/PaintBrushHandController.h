@@ -33,8 +33,6 @@ protected:
 
 private:
 
-	void TickStrokeUpdate(float DeltaTime);
-	void TickEraserUpdate();
 	void TickButtonPressDetection();
 
 	UPROPERTY(VisibleAnywhere)

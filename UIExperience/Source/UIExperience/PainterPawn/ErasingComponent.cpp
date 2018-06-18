@@ -2,6 +2,7 @@
 
 #include "ErasingComponent.h"
 
+#include "Components/PrimitiveComponent.h"
 
 // Sets default values for this component's properties
 UErasingComponent::UErasingComponent()
@@ -34,6 +35,14 @@ void UErasingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 
 void UErasingComponent::StartBrushing()
 {
+	auto Collider = Cast<UPrimitiveComponent>(GetChildComponent(0));
+	if (!Collider) return;
+	TSet<AActor *> OverlappingActors;
+	Collider->GetOverlappingActors(OverlappingActors);
+	for (auto Actor : OverlappingActors)
+	{
+		Actor->Destroy();
+	}
 }
 
 void UErasingComponent::StopBrushing()

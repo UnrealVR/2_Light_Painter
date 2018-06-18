@@ -99,6 +99,7 @@ USplineMeshComponent* AStroke::CreateSpline()
 	SplineMesh->SetMaterial(0, Material);
 	SplineMesh->SetMaterial(1, Material);
 	SplineMesh->RegisterComponent();
+	SplineMesh->SetCollisionProfileName("OverlapAllDynamic");
 	auto LastUpdatedLocation = StrokePoints.Last().LocalLocation;
 	auto LastUpdatedTangent = StrokePoints.Last().LocalTangent;
 	SplineMesh->SetStartAndEnd(LastUpdatedLocation, LastUpdatedTangent, LastUpdatedLocation, LastUpdatedTangent);
