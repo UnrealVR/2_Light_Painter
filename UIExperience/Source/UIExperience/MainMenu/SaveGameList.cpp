@@ -7,17 +7,15 @@
 #include "Data/PaintingListSaveGame.h"
 #include "SaveGameItem.h"
 
-bool USaveGameList::Initialize()
-{
-	if (!Super::Initialize()) return false;
-
-	ReloadSlots();
-	return true;
-}
-
 
 void USaveGameList::ReloadSlots()
 {
+	if (!Parent)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Can't reload slots without a parent."));
+		return;
+	}
+
 	ClearSlots();
 	auto List = UPaintingListSaveGame::Load();
 	auto Slots = GetSlots();

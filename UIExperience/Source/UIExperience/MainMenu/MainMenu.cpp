@@ -32,6 +32,7 @@ void AMainMenu::BeginPlay()
 	if (auto List = GetSaveGameList())
 	{
 		List->SetParent(this);
+		List->ReloadSlots();
 	}
 
 	if (auto Buttons = GetSaveGameListButtons())
@@ -70,8 +71,24 @@ void AMainMenu::ToggleDeleteMode()
 
 bool AMainMenu::HasNextPage() const { return GetSaveGameList() && CurrentPage + 1 < GetSaveGameList()->GetNumberOfPages(); }
 bool AMainMenu::HasPrevPage() const { return CurrentPage > 0; }
-void AMainMenu::NextPage() { if (HasNextPage()) ++CurrentPage; }
-void AMainMenu::PrevPage() { if (HasPrevPage()) --CurrentPage; }
+
+void AMainMenu::NextPage() 
+{ 
+	if (HasNextPage())
+	{
+		++CurrentPage;
+		if (GetSaveGameList()) GetSaveGameList()->ReloadSlots();
+	}
+}
+
+void AMainMenu::PrevPage() 
+{ 
+	if (HasPrevPage()) 
+	{
+		--CurrentPage;
+		if (GetSaveGameList()) GetSaveGameList()->ReloadSlots();
+	}
+}
 
 void AMainMenu::OpenLevel(FString ItemID)
 {

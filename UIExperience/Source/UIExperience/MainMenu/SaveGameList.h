@@ -31,9 +31,6 @@ public:
 
 	int32 GetNumberOfPages() const;
 
-protected:
-	bool Initialize() override;
-
 private:
 	
 	void AddWidgetToSlot(UPanelWidget *Slot, const FString& Name);
