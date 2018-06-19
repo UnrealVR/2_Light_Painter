@@ -7,7 +7,7 @@
 #include "PaintingSaveGame.generated.h"
 
 USTRUCT()
-struct FStrokeDataPoints
+struct FStrokeDataPoint
 {
 	GENERATED_BODY()
 
@@ -34,11 +34,11 @@ struct FStrokeData
 	class UMaterialInterface* Material;
 
 	UPROPERTY()
-	TArray<FStrokeDataPoints> StrokePoints;
+	TArray<FStrokeDataPoint> StrokePoints;
 };
 
 /**
- * 
+ * Captures the strokes of a painting and persists them.
  */
 UCLASS()
 class UIEXPERIENCE_API UPaintingSaveGame : public USaveGame

@@ -10,15 +10,19 @@
 
 #include "Stroke.generated.h"
 
+/**
+ * Represents a single stroke in the scene.
+ *
+ * The stroke is a spline mesh with many control points. Has methods for 
+ * building the stroke up from cursor movement data.
+ */
 UCLASS()
 class UIEXPERIENCE_API AStroke : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	AStroke();
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	void UpdateStroke(FVector CurrentCursorLocation, FVector CurrentCursorVelocity);
@@ -28,12 +32,14 @@ public:
 	static AStroke* CreateFromData(UWorld* World, FStrokeData Stroke);
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
-	class USplineMeshComponent* CreateSpline();
-	void AddSplinePoint(FStrokeDataPoints Point);
+
+	void UpdatePendingSpline(FStrokeDataPoint ProvisionalPoint);
+	FStrokeDataPoint MakePoint(FVector GlobalLocation, FVector GlobalVelocity) const;
+	class USplineMeshComponent* CreateSplineStartingAtLastPoint();
+	void AddSplinePoint(FStrokeDataPoint Point);
 
 	// Configuration
 	UPROPERTY(EditDefaultsOnly)
@@ -51,6 +57,6 @@ private:
 	// State
 	float TimeSinceLastUpdated = 0;
 	USplineMeshComponent* PendingSplineMesh;
-	TArray<FStrokeDataPoints> StrokePoints;
+	TArray<FStrokeDataPoint> StrokePoints;
 
 };

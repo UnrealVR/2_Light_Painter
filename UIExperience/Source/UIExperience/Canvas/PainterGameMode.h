@@ -7,7 +7,9 @@
 #include "PainterGameMode.generated.h"
 
 /**
- * 
+ * Stores the current painting's ID.
+ *
+ * It get's this id in InitGame where it is launched. It is also responsible for loading the saved game.
  */
 UCLASS()
 class UIEXPERIENCE_API APainterGameMode : public AGameModeBase

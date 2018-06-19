@@ -7,7 +7,7 @@
 #include "PaintingListSaveGame.generated.h"
 
 /**
- * 
+ * Acts as an index of UPaintingSaveGame.
  */
 UCLASS()
 class UIEXPERIENCE_API UPaintingListSaveGame : public USaveGame
