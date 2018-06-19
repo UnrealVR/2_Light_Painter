@@ -10,13 +10,18 @@
 
 #include "MainMenu.generated.h"
 
+/**
+ * The root actor for the main menu.
+ *
+ * This class handles the routing of UI messages between the various widget
+ * elements. State of the UI should be stored here.
+ */
 UCLASS()
 class UIEXPERIENCE_API AMainMenu : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	AMainMenu();
 
 	void AddSlot();
@@ -27,14 +32,10 @@ public:
 	bool HasPrevPage() const;
 	void NextPage();
 	void PrevPage();
+	int32 GetCurrentPage() const { return CurrentPage; }
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 
 private:
 
@@ -55,5 +56,6 @@ private:
 
 	// State
 	bool DeleteMode = false;
-	
+	int CurrentPage = 0;
+
 };

@@ -11,6 +11,12 @@
 
 #include "PaintBrushHandController.generated.h"
 
+/**
+ * Hand controller for painting in the world.
+ *
+ * Will use the currently active brush to paint, erase, etc. Also furnished
+ * with UI selection by touching.
+ */
 UCLASS()
 class UIEXPERIENCE_API APaintBrushHandController : public AHandControllerBase
 {
@@ -35,9 +41,15 @@ private:
 
 	void TickButtonPressDetection();
 
+	// Config
+	UPROPERTY(EditAnywhere)
+	float ClickDistance = 9;
+
+	// Components
 	UPROPERTY(VisibleAnywhere)
 	UWidgetInteractionComponent* WidgetInteractionComponent;
 
+	// State
 	IVRBrushInterface* CurrentBrush;
 
 	bool ButtonIsPressed = false;

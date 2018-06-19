@@ -39,14 +39,13 @@ void APaintBrushHandController::SetState(const EBrushState & NewState)
 {
 	for (auto Component : GetComponents())
 	{
-		if (auto Brush = Cast<IVRBrushInterface>(Component))
+		auto Brush = Cast<IVRBrushInterface>(Component);
+		if (!Brush) continue;
+		if (Brush->GetState() == NewState)
 		{
-			if (Brush->GetState() == NewState)
-			{
-				if (CurrentBrush) CurrentBrush->Activate(false);
-				Brush->Activate(true);
-				CurrentBrush = Brush;
-			}
+			if (CurrentBrush) CurrentBrush->Activate(false);
+			Brush->Activate(true);
+			CurrentBrush = Brush;
 		}
 	}
 }
@@ -54,7 +53,6 @@ void APaintBrushHandController::SetState(const EBrushState & NewState)
 void APaintBrushHandController::TickButtonPressDetection()
 {
 	auto HitResult = WidgetInteractionComponent->GetLastHitResult();
-	float ClickDistance = 9;
 	bool ShouldClick = WidgetInteractionComponent->IsOverInteractableWidget() && HitResult.Distance < ClickDistance;
 	if (ShouldClick)
 	{

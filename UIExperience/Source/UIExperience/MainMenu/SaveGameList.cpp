@@ -22,18 +22,23 @@ void USaveGameList::ReloadSlots()
 	auto List = UPaintingListSaveGame::Load();
 	auto Slots = GetSlots();
 	auto Paintings = List->GetPaintings();
-	int PaintingsOffset = CurrentPage * Slots.Num();
+	int PaintingsOffset = Parent->GetCurrentPage() * Slots.Num();
 	for (auto Slot : Slots)
 	{
 		if (PaintingsOffset >= Paintings.Num()) break;
 		auto Name = Paintings[PaintingsOffset];
-		auto Widget = CreateWidget<USaveGameItem>(GetWorld(), SaveGameItemClass);
-		if (!Widget) return;
-		Widget->SetName(Name);
-		Widget->SetParent(this);
-		Slot->AddChild(Widget);
+		AddWidgetToSlot(Slot, Name);
 		++PaintingsOffset;
 	}
+}
+
+void USaveGameList::AddWidgetToSlot(UPanelWidget * Slot, const FString & Name)
+{
+	auto Widget = CreateWidget<USaveGameItem>(GetWorld(), SaveGameItemClass);
+	if (!Widget) return;
+	Widget->SetName(Name);
+	Widget->SetParent(this);
+	Slot->AddChild(Widget);
 }
 
 void USaveGameList::ClearSlots()

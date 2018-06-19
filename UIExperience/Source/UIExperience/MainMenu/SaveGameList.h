@@ -11,7 +11,9 @@
 #include "SaveGameList.generated.h"
 
 /**
- * 
+ * List of save game thumbnails.
+ *
+ * Has support for deletion mode, pagination and item selection.
  */
 UCLASS()
 class UIEXPERIENCE_API USaveGameList : public UUserWidget
@@ -27,17 +29,14 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	bool IsDeleteMode() const { return Parent->IsDeleteMode(); };
 
-	bool HasNextPage() const { return CurrentPage + 1 < GetNumberOfPages(); }
-	bool HasPrevPage() const { return CurrentPage > 0; }
-	void NextPage() { ++CurrentPage; ReloadSlots(); }
-	void PrevPage() { --CurrentPage; ReloadSlots(); }
+	int32 GetNumberOfPages() const;
 
 protected:
 	bool Initialize() override;
 
 private:
 	
-	int32 GetNumberOfPages() const;
+	void AddWidgetToSlot(UPanelWidget *Slot, const FString& Name);
 	void ClearSlots();
 	TArray<UPanelWidget *> GetSlots() const;
 
@@ -51,11 +50,4 @@ private:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class USaveGameItem> SaveGameItemClass;
 
-	UPROPERTY(EditAnywhere)
-	int NumberOfRows = 3;
-	UPROPERTY(EditAnywhere)
-	int NumberOfColumns = 3;
-
-	// State
-	int CurrentPage = 0;
 };

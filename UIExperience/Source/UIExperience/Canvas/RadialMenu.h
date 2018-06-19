@@ -10,7 +10,7 @@
 #include "RadialMenu.generated.h"
 
 /**
- * 
+ * Menu that provides tools while drawing.
  */
 UCLASS()
 class UIEXPERIENCE_API URadialMenu : public UUserWidget

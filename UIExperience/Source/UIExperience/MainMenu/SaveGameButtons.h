@@ -12,7 +12,7 @@
 #include "SaveGameButtons.generated.h"
 
 /**
- * 
+ * Underslung action buttons for the main menu.
  */
 UCLASS()
 class UIEXPERIENCE_API USaveGameButtons : public UUserWidget

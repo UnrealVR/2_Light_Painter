@@ -15,17 +15,6 @@ UPaintingComponent::UPaintingComponent()
 	// ...
 }
 
-
-// Called when the game starts
-void UPaintingComponent::BeginPlay()
-{
-	Super::BeginPlay();
-
-	// ...
-	
-}
-
-
 // Called every frame
 void UPaintingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {

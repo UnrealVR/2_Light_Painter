@@ -9,6 +9,12 @@
 
 #include "SnapshotCamera.generated.h"
 
+/**
+ * Camera actor that takes snapshots of the scene for preview.
+ *
+ * Place the actor at the location in the canvas where the screenshot should be 
+ * taken from. This actor is used by the save system.
+ */
 UCLASS()
 class UIEXPERIENCE_API ASnapshotCamera : public AActor
 {

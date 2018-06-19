@@ -11,7 +11,7 @@
 #include "SaveGameItem.generated.h"
 
 /**
- * 
+ * Single card for showing save game thumbnail.
  */
 UCLASS()
 class UIEXPERIENCE_API USaveGameItem : public UUserWidget

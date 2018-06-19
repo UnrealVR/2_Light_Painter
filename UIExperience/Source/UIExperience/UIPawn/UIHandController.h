@@ -10,7 +10,7 @@
 #include "UIHandController.generated.h"
 
 /**
- * 
+ * Hand Controller for selecting UI elements at a distance.
  */
 UCLASS()
 class UIEXPERIENCE_API AUIHandController : public AHandControllerBase

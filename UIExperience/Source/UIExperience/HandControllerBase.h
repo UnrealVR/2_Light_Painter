@@ -9,6 +9,11 @@
 
 #include "HandControllerBase.generated.h"
 
+/**
+ * Base for all hand controllers.
+ *
+ * Provides hand controller tracking and trigger callbacks.
+ */
 UCLASS()
 class UIEXPERIENCE_API AHandControllerBase : public AActor
 {

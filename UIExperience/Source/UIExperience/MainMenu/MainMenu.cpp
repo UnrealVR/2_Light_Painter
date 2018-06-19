@@ -25,7 +25,6 @@ AMainMenu::AMainMenu()
 	MenuButtons->SetupAttachment(Root);
 }
 
-// Called when the game starts or when spawned
 void AMainMenu::BeginPlay()
 {
 	Super::BeginPlay();
@@ -39,13 +38,6 @@ void AMainMenu::BeginPlay()
 	{
 		Buttons->SetParent(this);
 	}
-}
-
-// Called every frame
-void AMainMenu::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
 }
 
 void AMainMenu::AddSlot()
@@ -76,10 +68,10 @@ void AMainMenu::ToggleDeleteMode()
 	DeleteMode = !DeleteMode;
 }
 
-bool AMainMenu::HasNextPage() const { return GetSaveGameList() && GetSaveGameList()->HasNextPage(); }
-bool AMainMenu::HasPrevPage() const { return GetSaveGameList() && GetSaveGameList()->HasPrevPage(); }
-void AMainMenu::NextPage() { if (GetSaveGameList()) GetSaveGameList()->NextPage(); }
-void AMainMenu::PrevPage() { if (GetSaveGameList()) GetSaveGameList()->PrevPage(); }
+bool AMainMenu::HasNextPage() const { return GetSaveGameList() && CurrentPage + 1 < GetSaveGameList()->GetNumberOfPages(); }
+bool AMainMenu::HasPrevPage() const { return CurrentPage > 0; }
+void AMainMenu::NextPage() { if (HasNextPage()) ++CurrentPage; }
+void AMainMenu::PrevPage() { if (HasPrevPage()) --CurrentPage; }
 
 void AMainMenu::OpenLevel(FString ItemID)
 {

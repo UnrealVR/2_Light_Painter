@@ -10,6 +10,11 @@
 #include "VRPawnBase.generated.h"
 
 
+/**
+ * The base class for all VR Pawns.
+ *
+ * Spawns left and right hand controllers of the given type. Will also direct input to theses.
+ */
 UCLASS()
 class UIEXPERIENCE_API AVRPawnBase : public APawn
 {
