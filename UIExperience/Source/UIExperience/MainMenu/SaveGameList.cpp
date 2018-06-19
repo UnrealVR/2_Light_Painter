@@ -44,6 +44,16 @@ void USaveGameList::ClearSlots()
 	}
 }
 
+int32 USaveGameList::GetNumberOfPages() const
+{
+	auto List = UPaintingListSaveGame::Load();
+	auto Paintings = List->GetPaintings();
+
+	auto Slots = GetSlots();
+
+	return FMath::CeilToInt((float)Paintings.Num() / Slots.Num());
+}
+
 TArray<UPanelWidget *> USaveGameList::GetSlots() const
 {
 	TArray<UPanelWidget *> Result;

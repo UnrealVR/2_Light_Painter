@@ -27,11 +27,17 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	bool IsDeleteMode() const { return Parent->IsDeleteMode(); };
 
+	bool HasNextPage() const { return CurrentPage + 1 < GetNumberOfPages(); }
+	bool HasPrevPage() const { return CurrentPage > 0; }
+	void NextPage() { ++CurrentPage; ReloadSlots(); }
+	void PrevPage() { --CurrentPage; ReloadSlots(); }
+
 protected:
 	bool Initialize() override;
 
 private:
 	
+	int32 GetNumberOfPages() const;
 	void ClearSlots();
 	TArray<UPanelWidget *> GetSlots() const;
 

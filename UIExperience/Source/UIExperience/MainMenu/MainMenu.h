@@ -23,6 +23,10 @@ public:
 	void ClickedItem(FString ItemID);
 	void ToggleDeleteMode();
 	bool IsDeleteMode() const { return DeleteMode; }
+	bool HasNextPage() const;
+	bool HasPrevPage() const;
+	void NextPage();
+	void PrevPage();
 
 protected:
 	// Called when the game starts or when spawned

@@ -76,6 +76,11 @@ void AMainMenu::ToggleDeleteMode()
 	DeleteMode = !DeleteMode;
 }
 
+bool AMainMenu::HasNextPage() const { return GetSaveGameList() && GetSaveGameList()->HasNextPage(); }
+bool AMainMenu::HasPrevPage() const { return GetSaveGameList() && GetSaveGameList()->HasPrevPage(); }
+void AMainMenu::NextPage() { if (GetSaveGameList()) GetSaveGameList()->NextPage(); }
+void AMainMenu::PrevPage() { if (GetSaveGameList()) GetSaveGameList()->PrevPage(); }
+
 void AMainMenu::OpenLevel(FString ItemID)
 {
 	UStereoLayerFunctionLibrary::ShowSplashScreen();

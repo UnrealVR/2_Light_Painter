@@ -24,6 +24,12 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	bool IsDeleteMode() const { return Parent->IsDeleteMode(); };
 
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool HasNextPage() const { return Parent && Parent->HasNextPage(); }
+
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	bool HasPrevPage() const { return Parent && Parent->HasPrevPage(); }
+
 	UPROPERTY(BlueprintReadonly, meta = (BindWidget))
 	UButton* CreateNewButton;
 
@@ -48,5 +54,11 @@ private:
 
 	UFUNCTION()
 	void DeleteButtonClicked() { Parent->ToggleDeleteMode(); };
+
+	UFUNCTION()
+	void NextPage() { if (Parent) Parent->NextPage(); }
+
+	UFUNCTION()
+	void PrevPage() { if (Parent) Parent->PrevPage(); }
 
 };
