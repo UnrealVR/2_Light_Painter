@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "UIGameModeBase.generated.h"
+#include "PainterGameMode.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class UIEXPERIENCE_API AUIGameModeBase : public AGameModeBase
+class UIEXPERIENCE_API APainterGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 	

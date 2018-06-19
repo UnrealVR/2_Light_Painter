@@ -6,7 +6,7 @@
 #include "Kismet/StereoLayerFunctionLibrary.h"
 #include "EngineUtils.h"
 
-#include "UIGameModeBase.h"
+#include "PainterGameMode.h"
 #include "Data/PaintingSaveGame.h"
 #include "PainterPawn/PaintBrushHandController.h"
 
@@ -43,7 +43,7 @@ void URadialMenu::BackButtonClicked()
 void URadialMenu::SaveAndQuit()
 {
 
-	auto GameMode = Cast<AUIGameModeBase>(GetWorld()->GetAuthGameMode());
+	auto GameMode = Cast<APainterGameMode>(GetWorld()->GetAuthGameMode());
 	UPaintingSaveGame* SaveGame;
 	if (GameMode)
 	{

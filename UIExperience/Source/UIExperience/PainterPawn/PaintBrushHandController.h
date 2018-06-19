@@ -7,7 +7,7 @@
 
 #include "Components/WidgetInteractionComponent.h"
 
-#include "VRBrushInterface.h"
+#include "Brushes/VRBrushInterface.h"
 
 #include "PaintBrushHandController.generated.h"
 

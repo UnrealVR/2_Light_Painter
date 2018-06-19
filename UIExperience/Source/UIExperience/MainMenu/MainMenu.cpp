@@ -3,7 +3,7 @@
 #include "MainMenu.h"
 
 #include "SaveGameList.h"
-#include "PaintingListSaveGameButtons.h"
+#include "SaveGameButtons.h"
 
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/StereoLayerFunctionLibrary.h"
@@ -104,7 +104,7 @@ USaveGameList * AMainMenu::GetSaveGameList() const
 	return Cast<USaveGameList>(Menu->GetUserWidgetObject());
 }
 
-UPaintingListSaveGameButtons * AMainMenu::GetSaveGameListButtons() const
+USaveGameButtons * AMainMenu::GetSaveGameListButtons() const
 {
-	return Cast<UPaintingListSaveGameButtons>(MenuButtons->GetUserWidgetObject());
+	return Cast<USaveGameButtons>(MenuButtons->GetUserWidgetObject());
 }

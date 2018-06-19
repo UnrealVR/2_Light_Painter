@@ -9,13 +9,13 @@
 
 #include "MainMenu.h"
 
-#include "PaintingListSaveGameButtons.generated.h"
+#include "SaveGameButtons.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class UIEXPERIENCE_API UPaintingListSaveGameButtons : public UUserWidget
+class UIEXPERIENCE_API USaveGameButtons : public UUserWidget
 {
 	GENERATED_BODY()
 public:

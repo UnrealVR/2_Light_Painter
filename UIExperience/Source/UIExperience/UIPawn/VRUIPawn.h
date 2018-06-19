@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "VRPawn.h"
+#include "VRPawnBase.h"
 #include "VRUIPawn.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class UIEXPERIENCE_API AVRUIPawn : public AVRPawn
+class UIEXPERIENCE_API AVRUIPawn : public AVRPawnBase
 {
 	GENERATED_BODY()
 	

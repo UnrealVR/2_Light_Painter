@@ -1,12 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "VRPawn.h"
+#include "VRPawnBase.h"
 
 #include "Engine/World.h"
 #include "Components/InputComponent.h"
 
 // Sets default values
-AVRPawn::AVRPawn()
+AVRPawnBase::AVRPawnBase()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -17,7 +17,7 @@ AVRPawn::AVRPawn()
 }
 
 // Called when the game starts or when spawned
-void AVRPawn::BeginPlay()
+void AVRPawnBase::BeginPlay()
 {
 	Super::BeginPlay();
 	
@@ -34,16 +34,16 @@ void AVRPawn::BeginPlay()
 	}
 }
 
-void AVRPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AVRPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Pressed, this, &AVRPawn::RightTriggerPressed);
-	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Released, this, &AVRPawn::RightTriggerReleased);
+	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Pressed, this, &AVRPawnBase::RightTriggerPressed);
+	PlayerInputComponent->BindAction("RightTrigger", EInputEvent::IE_Released, this, &AVRPawnBase::RightTriggerReleased);
 }
 
 // Called every frame
-void AVRPawn::Tick(float DeltaTime)
+void AVRPawnBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 

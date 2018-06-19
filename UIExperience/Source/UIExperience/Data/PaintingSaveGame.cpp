@@ -9,8 +9,8 @@
 #include "Paths.h"
 
 #include "PaintingListSaveGame.h"
-#include "Stroke.h"
-#include "SnapshotCamera.h"
+#include "Canvas/Stroke.h"
+#include "Canvas/SnapshotCamera.h"
 
 UPaintingSaveGame* UPaintingSaveGame::Create()
 {

@@ -6,7 +6,7 @@
 #include "Components/SceneComponent.h"
 
 #include "VRBrushInterface.h"
-#include "Stroke.h"
+#include "Canvas/Stroke.h"
 
 #include "PaintingComponent.generated.h"
 

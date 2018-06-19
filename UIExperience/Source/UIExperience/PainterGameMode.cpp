@@ -1,19 +1,19 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "UIGameModeBase.h"
+#include "PainterGameMode.h"
 
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/StereoLayerFunctionLibrary.h"
 
 #include "Data/PaintingSaveGame.h"
 
-void AUIGameModeBase::InitGame(const FString & MapName, const FString & Options, FString & ErrorMessage)
+void APainterGameMode::InitGame(const FString & MapName, const FString & Options, FString & ErrorMessage)
 {
 	Super::InitGame(MapName, Options, ErrorMessage);
 	SaveGameId = UGameplayStatics::ParseOption(Options, "SaveGame");
 }
 
-void AUIGameModeBase::StartPlay()
+void APainterGameMode::StartPlay()
 {
 	Super::StartPlay();
 	if (SaveGameId == "") return;

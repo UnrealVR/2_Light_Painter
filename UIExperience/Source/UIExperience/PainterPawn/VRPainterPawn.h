@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "VRPawn.h"
+#include "VRPawnBase.h"
 
 #include "PaintBrushHandController.h"
 
@@ -13,7 +13,7 @@
  * 
  */
 UCLASS()
-class UIEXPERIENCE_API AVRPainterPawn : public AVRPawn
+class UIEXPERIENCE_API AVRPainterPawn : public AVRPawnBase
 {
 	GENERATED_BODY()
 public:

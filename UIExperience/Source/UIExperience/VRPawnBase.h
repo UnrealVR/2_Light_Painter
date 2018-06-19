@@ -7,17 +7,17 @@
 #include "Camera/CameraComponent.h"
 #include "HandControllerBase.h"
 
-#include "VRPawn.generated.h"
+#include "VRPawnBase.generated.h"
 
 
 UCLASS()
-class UIEXPERIENCE_API AVRPawn : public APawn
+class UIEXPERIENCE_API AVRPawnBase : public APawn
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this pawn's properties
-	AVRPawn();
+	AVRPawnBase();
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	// Called to bind functionality to input

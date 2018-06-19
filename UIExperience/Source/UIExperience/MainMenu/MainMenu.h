@@ -42,7 +42,7 @@ private:
 	void DeleteItem(FString ItemID);
 
 	class USaveGameList* GetSaveGameList() const;
-	class UPaintingListSaveGameButtons* GetSaveGameListButtons() const;
+	class USaveGameButtons* GetSaveGameListButtons() const;
 
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Root;
