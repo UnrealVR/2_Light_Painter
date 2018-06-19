@@ -62,7 +62,7 @@ void URadialMenu::SaveAndQuit()
 		UE_LOG(LogTemp, Warning, TEXT("Did Save"))
 			UStereoLayerFunctionLibrary::ShowSplashScreen();
 
-		UGameplayStatics::OpenLevel(GetWorld(), "LoadMenu");
+		UGameplayStatics::OpenLevel(GetWorld(), "Menu");
 	}
 	else
 	{
