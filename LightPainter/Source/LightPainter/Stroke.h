@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+
+#include "Components/SplineMeshComponent.h"
+
 #include "Stroke.generated.h"
 
 UCLASS()
@@ -21,8 +24,12 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	USplineMeshComponent * CreateSplineMesh(const FVector & CursorLocation);
+
 	// Config
 	UPROPERTY(EditAnywhere)
 	UStaticMesh* Mesh;
 
+	// State
+	FVector PreviousCursorLocation;
 };
