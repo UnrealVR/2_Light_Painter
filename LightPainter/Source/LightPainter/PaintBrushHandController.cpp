@@ -2,6 +2,8 @@
 
 #include "PaintBrushHandController.h"
 
+#include "Engine/World.h"
+
 
 // Sets default values
 APaintBrushHandController::APaintBrushHandController()
@@ -29,3 +31,15 @@ void APaintBrushHandController::Tick(float DeltaTime)
 
 }
 
+void APaintBrushHandController::TriggerPressed()
+{
+	AStroke* Stroke = GetWorld()->SpawnActor<AStroke>(StrokeClass);
+	if (Stroke)
+	{
+		Stroke->SetActorLocation(GetActorLocation());
+	}
+}
+
+void APaintBrushHandController::TriggerReleased()
+{
+}

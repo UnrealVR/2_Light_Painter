@@ -23,6 +23,10 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+
+	void RightTriggerPressed() { if (RightHandController) RightHandController->TriggerPressed(); }
+	void RightTriggerReleased() { if (RightHandController) RightHandController->TriggerReleased(); }
+
 	// Config
 
 	UPROPERTY(EditDefaultsOnly)
