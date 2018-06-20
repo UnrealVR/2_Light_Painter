@@ -29,17 +29,22 @@ void APaintBrushHandController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (CurrentStroke)
+	{
+		CurrentStroke->Update(GetActorLocation());
+	}
 }
 
 void APaintBrushHandController::TriggerPressed()
 {
-	AStroke* Stroke = GetWorld()->SpawnActor<AStroke>(StrokeClass);
-	if (Stroke)
+	CurrentStroke = GetWorld()->SpawnActor<AStroke>(StrokeClass);
+	if (CurrentStroke)
 	{
-		Stroke->SetActorLocation(GetActorLocation());
+		CurrentStroke->SetActorLocation(GetActorLocation());
 	}
 }
 
 void APaintBrushHandController::TriggerReleased()
 {
+	CurrentStroke = nullptr;
 }

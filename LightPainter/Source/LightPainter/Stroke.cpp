@@ -2,6 +2,7 @@
 
 #include "Stroke.h"
 
+#include "Components/SplineMeshComponent.h"
 
 // Sets default values
 AStroke::AStroke()
@@ -23,5 +24,15 @@ void AStroke::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AStroke::Update(const FVector & CursorLocation)
+{
+	USplineMeshComponent* SplineMesh = NewObject<USplineMeshComponent>(this);
+	SplineMesh->SetMobility(EComponentMobility::Movable);
+	SplineMesh->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
+	SplineMesh->SetWorldLocation(CursorLocation);
+	SplineMesh->SetStaticMesh(Mesh);
+	SplineMesh->RegisterComponent();
 }
 

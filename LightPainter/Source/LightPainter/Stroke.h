@@ -15,7 +15,14 @@ public:
 	AStroke();
 	virtual void Tick(float DeltaTime) override;
 
+	void Update(const FVector& CursorLocation);
+
 protected:
 	virtual void BeginPlay() override;
-	
+
+private:
+	// Config
+	UPROPERTY(EditAnywhere)
+	UStaticMesh* Mesh;
+
 };
