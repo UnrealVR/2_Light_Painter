@@ -30,6 +30,11 @@ private:
 	UPROPERTY(EditAnywhere)
 	UStaticMesh* Mesh;
 
+	UPROPERTY(EditAnywhere)
+	float MaxStrokeTime = 0.2;
+
 	// State
 	FVector PreviousCursorLocation;
+
+	float TimeSinceLastStroke;
 };

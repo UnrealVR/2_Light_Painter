@@ -21,6 +21,7 @@ void AStroke::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	TimeSinceLastStroke += DeltaTime;
 }
 
 void AStroke::Update(const FVector & CursorLocation)
@@ -31,6 +32,8 @@ void AStroke::Update(const FVector & CursorLocation)
 		return;
 	}
 
+	if (TimeSinceLastStroke < MaxStrokeTime) return;
+
 	USplineMeshComponent* SplineMesh = CreateSplineMesh(CursorLocation);
 
 	FVector LocalCursorLocation = SplineMesh->GetComponentTransform().InverseTransformPosition(CursorLocation);
@@ -39,6 +42,7 @@ void AStroke::Update(const FVector & CursorLocation)
 	SplineMesh->SetStartAndEnd(LocalPreviousCursorLocation, FVector::ZeroVector, LocalCursorLocation, FVector::ZeroVector);
 
 	PreviousCursorLocation = CursorLocation;
+	TimeSinceLastStroke = 0;
 }
 
 USplineMeshComponent* AStroke::CreateSplineMesh(const FVector & CursorLocation)
