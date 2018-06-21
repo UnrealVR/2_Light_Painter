@@ -8,7 +8,7 @@
 
 //TODO: Eliminate
 UENUM()
-enum class EBrushState
+enum class EBrushMode
 {
 	Painting,
 	Erasing,
@@ -34,7 +34,7 @@ class UIEXPERIENCE_API IVRBrushInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	
-	virtual EBrushState GetState() const = 0;
+	virtual EBrushMode GetState() const = 0;
 	virtual void StartBrushing() = 0;
 	virtual void StopBrushing() = 0;
 	virtual void Activate(bool bNewActive) = 0;

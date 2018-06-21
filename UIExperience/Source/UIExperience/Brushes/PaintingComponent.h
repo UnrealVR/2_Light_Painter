@@ -20,7 +20,7 @@ public:
 
 	UPaintingComponent();
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	virtual EBrushState GetState() const override { return EBrushState::Painting; }
+	virtual EBrushMode GetState() const override { return EBrushMode::Painting; }
 	virtual void StartBrushing() override;
 	virtual void StopBrushing() override;
 	virtual void Activate(bool bNewActive) override { SetActive(bNewActive); }

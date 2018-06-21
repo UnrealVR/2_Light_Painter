@@ -30,8 +30,8 @@ public:
 	void RightTriggerPressed() override;
 	void RightTriggerReleased() override;
 
-	EBrushState GetState() const;
-	void SetState(const EBrushState& NewState);
+	EBrushMode GetState() const;
+	void SetState(EBrushMode NewState);
 
 protected:
 	// Called when the game starts or when spawned
@@ -39,7 +39,7 @@ protected:
 
 private:
 
-	void TickButtonPressDetection();
+	void TickUIButtonPressDetection();
 
 	// Config
 	UPROPERTY(EditAnywhere)
@@ -52,6 +52,6 @@ private:
 	// State
 	IVRBrushInterface* CurrentBrush;
 
-	bool ButtonIsPressed = false;
+	bool UIButtonIsPressed = false;
 
 };

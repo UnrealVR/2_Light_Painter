@@ -46,7 +46,6 @@ void AVRPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 void AVRPawnBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 

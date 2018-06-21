@@ -18,7 +18,7 @@ void APaintBrushHandController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SetState(EBrushState::Painting);
+	SetState(EBrushMode::Painting);
 }
 
 // Called every frame
@@ -26,16 +26,16 @@ void APaintBrushHandController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	TickButtonPressDetection();
+	TickUIButtonPressDetection();
 }
 
-EBrushState APaintBrushHandController::GetState() const
+EBrushMode APaintBrushHandController::GetState() const
 {
-	if (!CurrentBrush) return EBrushState::NONE;
+	if (!CurrentBrush) return EBrushMode::NONE;
 	return CurrentBrush->GetState();
 }
 
-void APaintBrushHandController::SetState(const EBrushState & NewState)
+void APaintBrushHandController::SetState(EBrushMode NewState)
 {
 	for (auto Component : GetComponents())
 	{
@@ -50,16 +50,16 @@ void APaintBrushHandController::SetState(const EBrushState & NewState)
 	}
 }
 
-void APaintBrushHandController::TickButtonPressDetection()
+void APaintBrushHandController::TickUIButtonPressDetection()
 {
 	auto HitResult = WidgetInteractionComponent->GetLastHitResult();
 	bool ShouldClick = WidgetInteractionComponent->IsOverInteractableWidget() && HitResult.Distance < ClickDistance;
 	if (ShouldClick)
 	{
 		WidgetInteractionComponent->PressPointerKey(EKeys::LeftMouseButton);
-		ButtonIsPressed = true;
+		UIButtonIsPressed = true;
 	}
-	else if (ButtonIsPressed)
+	else if (UIButtonIsPressed)
 	{
 		WidgetInteractionComponent->ReleasePointerKey(EKeys::LeftMouseButton);
 	}

@@ -23,7 +23,7 @@ void URadialMenu::BrushButtonClicked()
 {
 	for (TActorIterator<APaintBrushHandController> Itr(GetWorld()); Itr; ++Itr)
 	{
-		Itr->SetState(EBrushState::Painting);
+		Itr->SetState(EBrushMode::Painting);
 	}
 }
 
@@ -31,7 +31,7 @@ void URadialMenu::EraserButtonClicked()
 {	
 	for (TActorIterator<APaintBrushHandController> Itr(GetWorld()); Itr; ++Itr)
 	{
-		Itr->SetState(EBrushState::Erasing);
+		Itr->SetState(EBrushMode::Erasing);
 	}
 }
 
@@ -62,7 +62,7 @@ void URadialMenu::SaveAndQuit()
 		UE_LOG(LogTemp, Warning, TEXT("Did Save"))
 			UStereoLayerFunctionLibrary::ShowSplashScreen();
 
-		UGameplayStatics::OpenLevel(GetWorld(), "Menu");
+		UGameplayStatics::OpenLevel(GetWorld(), "/Game/Maps/Menu");
 	}
 	else
 	{
