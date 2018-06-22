@@ -37,4 +37,5 @@ private:
 	// State
 	AStroke* CurrentStroke;
 	
+	FVector LastFrameLocation;
 };

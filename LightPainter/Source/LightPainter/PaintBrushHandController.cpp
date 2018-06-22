@@ -31,8 +31,11 @@ void APaintBrushHandController::Tick(float DeltaTime)
 
 	if (CurrentStroke)
 	{
-		CurrentStroke->Update(GetActorLocation());
+		FVector Velocity = (GetActorLocation() - LastFrameLocation)/DeltaTime;
+		CurrentStroke->Update(GetActorLocation(), Velocity);
 	}
+
+	LastFrameLocation = GetActorLocation();
 }
 
 void APaintBrushHandController::TriggerPressed()

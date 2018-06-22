@@ -18,13 +18,13 @@ public:
 	AStroke();
 	virtual void Tick(float DeltaTime) override;
 
-	void Update(const FVector& CursorLocation);
+	void Update(FVector CursorLocation, FVector CursorVelocity);
 
 protected:
 	virtual void BeginPlay() override;
 
 private:
-	USplineMeshComponent * CreateSplineMesh(const FVector & CursorLocation);
+	USplineMeshComponent * CreateSplineMesh(FVector CursorLocation);
 
 	// Config
 	UPROPERTY(EditAnywhere)
@@ -35,6 +35,7 @@ private:
 
 	// State
 	FVector PreviousCursorLocation;
+	FVector PreviousCursorVelocity;
 
 	float TimeSinceLastStroke;
 };

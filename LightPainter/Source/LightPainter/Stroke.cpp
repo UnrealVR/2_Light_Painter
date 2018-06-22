@@ -24,7 +24,7 @@ void AStroke::Tick(float DeltaTime)
 	TimeSinceLastStroke += DeltaTime;
 }
 
-void AStroke::Update(const FVector & CursorLocation)
+void AStroke::Update(FVector CursorLocation, FVector CursorVelocity)
 {
 	if (PreviousCursorLocation.IsNearlyZero())
 	{
@@ -38,14 +38,19 @@ void AStroke::Update(const FVector & CursorLocation)
 
 	FVector LocalCursorLocation = SplineMesh->GetComponentTransform().InverseTransformPosition(CursorLocation);
 	FVector LocalPreviousCursorLocation = SplineMesh->GetComponentTransform().InverseTransformPosition(PreviousCursorLocation);
+	FVector LocalCursorVelocity = SplineMesh->GetComponentTransform().InverseTransformVector(CursorVelocity);
+	FVector LocalPreviousCursorVelocity = SplineMesh->GetComponentTransform().InverseTransformVector(PreviousCursorVelocity);
+	FVector LocalCursorTangent = LocalCursorVelocity * TimeSinceLastStroke;
+	FVector LocalPreviousCursorTangent = PreviousCursorVelocity * TimeSinceLastStroke;
 
-	SplineMesh->SetStartAndEnd(LocalPreviousCursorLocation, FVector::ZeroVector, LocalCursorLocation, FVector::ZeroVector);
+	SplineMesh->SetStartAndEnd(LocalPreviousCursorLocation, LocalPreviousCursorTangent, LocalCursorLocation, LocalCursorTangent);
 
 	PreviousCursorLocation = CursorLocation;
+	PreviousCursorVelocity = CursorVelocity;
 	TimeSinceLastStroke = 0;
 }
 
-USplineMeshComponent* AStroke::CreateSplineMesh(const FVector & CursorLocation)
+USplineMeshComponent* AStroke::CreateSplineMesh(FVector CursorLocation)
 {
 	USplineMeshComponent* SplineMesh = NewObject<USplineMeshComponent>(this);
 	SplineMesh->SetMobility(EComponentMobility::Movable);
