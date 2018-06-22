@@ -37,5 +37,5 @@ public:
 	virtual EBrushMode GetState() const = 0;
 	virtual void StartBrushing() = 0;
 	virtual void StopBrushing() = 0;
-	virtual void Activate(bool bNewActive) = 0;
+	virtual void SetActive(bool bNewActive) = 0;
 };

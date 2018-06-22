@@ -21,6 +21,22 @@ void AStroke::BeginPlay()
 	PendingSplineMesh = CreateSplineStartingAtLastPoint();
 }
 
+void AStroke::UpdateStroke(FVector CurrentCursorLocation, FVector CurrentCursorVelocity)
+{
+	FStrokeDataPoint ProvisionalPoint = MakePoint(CurrentCursorLocation, CurrentCursorVelocity);
+
+	UpdatePendingSpline(ProvisionalPoint);
+
+	if (FVector::Distance(StrokePoints.Last().LocalLocation, ProvisionalPoint.LocalLocation) < MinDistanceThreshold) return;
+	if (TimeSinceLastUpdated < MinUpdateTime) return;
+
+	TimeSinceLastUpdated = 0;
+
+	PendingSplineMesh = CreateSplineStartingAtLastPoint();
+
+	StrokePoints.Add(ProvisionalPoint);
+}
+
 void AStroke::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -61,22 +77,6 @@ void AStroke::AddSplinePoint(FStrokeDataPoint Point)
 	PendingSplineMesh = CreateSplineStartingAtLastPoint();
 }
 
-void AStroke::UpdateStroke(FVector CurrentCursorLocation, FVector CurrentCursorVelocity)
-{
-	FStrokeDataPoint ProvisionalPoint = MakePoint(CurrentCursorLocation, CurrentCursorVelocity);
-
-	UpdatePendingSpline(ProvisionalPoint);
-
-	if (FVector::Distance(StrokePoints.Last().LocalLocation, ProvisionalPoint.LocalLocation) < MinDistanceThreshold) return;
-	if (TimeSinceLastUpdated < MinUpdateTime) return;
-
-	TimeSinceLastUpdated = 0;
-
-	PendingSplineMesh = CreateSplineStartingAtLastPoint();
-
-	StrokePoints.Add(ProvisionalPoint);
-}
-
 void AStroke::UpdatePendingSpline(FStrokeDataPoint ProvisionalPoint)
 {
 	FStrokeDataPoint LastUpdatedPoint = StrokePoints.Last();
@@ -95,6 +95,7 @@ FStrokeDataPoint AStroke::MakePoint(FVector GlobalLocation, FVector GlobalVeloci
 
 USplineMeshComponent* AStroke::CreateSplineStartingAtLastPoint()
 {
+	// TODO: Move this to USplineMeshComponent BP.
 	USplineMeshComponent* SplineMesh = NewObject<USplineMeshComponent>(this);
 	SplineMesh->SetMobility(EComponentMobility::Movable);
 	SplineMesh->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);

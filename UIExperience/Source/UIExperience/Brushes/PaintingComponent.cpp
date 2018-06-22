@@ -20,8 +20,8 @@ void UPaintingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAc
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	FVector Velocity = (GetComponentLocation() - LastLocation) / DeltaTime;
-	LastLocation = GetComponentLocation();
+	FVector Velocity = (GetComponentLocation() - LocationLastFrame) / DeltaTime;
+	LocationLastFrame = GetComponentLocation();
 
 	if (CurrentStroke)
 	{

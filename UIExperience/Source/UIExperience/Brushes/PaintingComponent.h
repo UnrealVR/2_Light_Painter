@@ -20,10 +20,12 @@ public:
 
 	UPaintingComponent();
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+	// Brushing Interface
 	virtual EBrushMode GetState() const override { return EBrushMode::Painting; }
 	virtual void StartBrushing() override;
 	virtual void StopBrushing() override;
-	virtual void Activate(bool bNewActive) override { SetActive(bNewActive); }
+	virtual void SetActive(bool bNewActive) override { SetActive(bNewActive); }
 
 private:
 
@@ -35,6 +37,6 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	AStroke* CurrentStroke;
 
-	FVector LastLocation;
+	FVector LocationLastFrame;
 	
 };

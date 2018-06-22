@@ -19,9 +19,10 @@ public:
 
 	UErasingComponent();
 
+	// Brush Interface
 	virtual EBrushMode GetState() const override { return EBrushMode::Erasing; }
 	virtual void StartBrushing() override;
 	virtual void StopBrushing() override;
-	virtual void Activate(bool bNewActive) override { SetActive(bNewActive); }
+	virtual void SetActive(bool bNewActive) override { SetActive(bNewActive); }
 
 };

@@ -37,14 +37,15 @@ EBrushMode APaintBrushHandController::GetState() const
 
 void APaintBrushHandController::SetState(EBrushMode NewState)
 {
+	// TODO: Compare with class referencing approach.
 	for (auto Component : GetComponents())
 	{
 		auto Brush = Cast<IVRBrushInterface>(Component);
 		if (!Brush) continue;
 		if (Brush->GetState() == NewState)
 		{
-			if (CurrentBrush) CurrentBrush->Activate(false);
-			Brush->Activate(true);
+			if (CurrentBrush) CurrentBrush->SetActive(false);
+			Brush->SetActive(true);
 			CurrentBrush = Brush;
 		}
 	}
