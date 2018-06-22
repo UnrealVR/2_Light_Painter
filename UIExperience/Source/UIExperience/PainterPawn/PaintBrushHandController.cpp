@@ -44,8 +44,8 @@ void APaintBrushHandController::SetState(EBrushMode NewState)
 		if (!Brush) continue;
 		if (Brush->GetState() == NewState)
 		{
-			if (CurrentBrush) CurrentBrush->SetActive(false);
-			Brush->SetActive(true);
+			if (CurrentBrush) CurrentBrush->SetBrushActive(false);
+			Brush->SetBrushActive(true);
 			CurrentBrush = Brush;
 		}
 	}

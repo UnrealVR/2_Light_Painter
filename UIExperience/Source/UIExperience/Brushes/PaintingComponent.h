@@ -25,7 +25,7 @@ public:
 	virtual EBrushMode GetState() const override { return EBrushMode::Painting; }
 	virtual void StartBrushing() override;
 	virtual void StopBrushing() override;
-	virtual void SetActive(bool bNewActive) override { SetActive(bNewActive); }
+	virtual void SetBrushActive(bool bNewActive) override { SetActive(bNewActive); }
 
 private:
 
