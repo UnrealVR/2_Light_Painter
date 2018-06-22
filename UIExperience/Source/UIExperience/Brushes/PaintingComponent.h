@@ -5,14 +5,14 @@
 #include "CoreMinimal.h"
 #include "Components/SceneComponent.h"
 
-#include "VRBrushInterface.h"
+#include "VRBrushBase.h"
 #include "Canvas/Stroke.h"
 
 #include "PaintingComponent.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class UIEXPERIENCE_API UPaintingComponent : public USceneComponent, public IVRBrushInterface
+class UIEXPERIENCE_API UPaintingComponent : public UVRBrushBase
 {
 	GENERATED_BODY()
 
@@ -25,7 +25,6 @@ public:
 	virtual EBrushMode GetState() const override { return EBrushMode::Painting; }
 	virtual void StartBrushing() override;
 	virtual void StopBrushing() override;
-	virtual void SetBrushActive(bool bNewActive) override { SetActive(bNewActive); }
 
 private:
 

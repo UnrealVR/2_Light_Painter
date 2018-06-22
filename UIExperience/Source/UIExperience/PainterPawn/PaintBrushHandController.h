@@ -7,7 +7,7 @@
 
 #include "Components/WidgetInteractionComponent.h"
 
-#include "Brushes/VRBrushInterface.h"
+#include "Brushes/VRBrushBase.h"
 
 #include "PaintBrushHandController.generated.h"
 
@@ -50,7 +50,7 @@ private:
 	UWidgetInteractionComponent* WidgetInteractionComponent;
 
 	// State
-	IVRBrushInterface* CurrentBrush;
+	UVRBrushBase* CurrentBrush;
 
 	bool UIButtonIsPressed = false;
 

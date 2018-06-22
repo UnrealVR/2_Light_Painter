@@ -25,7 +25,3 @@ void UErasingComponent::StartBrushing()
 		Actor->Destroy();
 	}
 }
-
-void UErasingComponent::StopBrushing()
-{
-}

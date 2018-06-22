@@ -5,13 +5,13 @@
 #include "CoreMinimal.h"
 #include "Components/SceneComponent.h"
 
-#include "VRBrushInterface.h"
+#include "VRBrushBase.h"
 
 #include "ErasingComponent.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class UIEXPERIENCE_API UErasingComponent : public USceneComponent, public IVRBrushInterface
+class UIEXPERIENCE_API UErasingComponent : public UVRBrushBase
 {
 	GENERATED_BODY()
 
@@ -22,7 +22,5 @@ public:
 	// Brush Interface
 	virtual EBrushMode GetState() const override { return EBrushMode::Erasing; }
 	virtual void StartBrushing() override;
-	virtual void StopBrushing() override;
-	virtual void SetBrushActive(bool bNewActive) override { SetActive(bNewActive); }
 
 };
