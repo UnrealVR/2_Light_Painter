@@ -24,6 +24,10 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	void CommitPendingSpline(FVector CursorLocation, FVector CursorVelocity);
+
+	void UpdatePendingSpline(FVector CursorLocation, FVector CursorVelocity);
+
 	USplineMeshComponent * CreateSplineMesh(FVector CursorLocation);
 
 	// Config
@@ -36,6 +40,8 @@ private:
 	// State
 	FVector PreviousCursorLocation;
 	FVector PreviousCursorVelocity;
+
+	USplineMeshComponent* PendingSpline;
 
 	float TimeSinceLastStroke;
 };

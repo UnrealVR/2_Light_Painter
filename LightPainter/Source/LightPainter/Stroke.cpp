@@ -26,28 +26,41 @@ void AStroke::Tick(float DeltaTime)
 
 void AStroke::Update(FVector CursorLocation, FVector CursorVelocity)
 {
-	if (PreviousCursorLocation.IsNearlyZero())
+	if (!PendingSpline)
 	{
-		PreviousCursorLocation = CursorLocation;
+		CommitPendingSpline(CursorLocation, CursorVelocity);
 		return;
 	}
 
-	if (TimeSinceLastStroke < MaxStrokeTime) return;
+	UpdatePendingSpline(CursorLocation, CursorVelocity);
 
-	USplineMeshComponent* SplineMesh = CreateSplineMesh(CursorLocation);
+	if (TimeSinceLastStroke > MaxStrokeTime)
+	{
+		CommitPendingSpline(CursorLocation, CursorVelocity);
+	}
+}
 
-	FVector LocalCursorLocation = SplineMesh->GetComponentTransform().InverseTransformPosition(CursorLocation);
-	FVector LocalPreviousCursorLocation = SplineMesh->GetComponentTransform().InverseTransformPosition(PreviousCursorLocation);
-	FVector LocalCursorVelocity = SplineMesh->GetComponentTransform().InverseTransformVector(CursorVelocity);
-	FVector LocalPreviousCursorVelocity = SplineMesh->GetComponentTransform().InverseTransformVector(PreviousCursorVelocity);
-	FVector LocalCursorTangent = LocalCursorVelocity * TimeSinceLastStroke;
-	FVector LocalPreviousCursorTangent = PreviousCursorVelocity * TimeSinceLastStroke;
-
-	SplineMesh->SetStartAndEnd(LocalPreviousCursorLocation, LocalPreviousCursorTangent, LocalCursorLocation, LocalCursorTangent);
+void AStroke::CommitPendingSpline(FVector CursorLocation, FVector CursorVelocity)
+{
+	PendingSpline = CreateSplineMesh(CursorLocation);
 
 	PreviousCursorLocation = CursorLocation;
 	PreviousCursorVelocity = CursorVelocity;
 	TimeSinceLastStroke = 0;
+
+	UpdatePendingSpline(CursorLocation, CursorVelocity);
+}
+
+void AStroke::UpdatePendingSpline(FVector CursorLocation, FVector CursorVelocity)
+{
+	FVector LocalCursorLocation = PendingSpline->GetComponentTransform().InverseTransformPosition(CursorLocation);
+	FVector LocalPreviousCursorLocation = PendingSpline->GetComponentTransform().InverseTransformPosition(PreviousCursorLocation);
+	FVector LocalCursorVelocity = PendingSpline->GetComponentTransform().InverseTransformVector(CursorVelocity);
+	FVector LocalPreviousCursorVelocity = PendingSpline->GetComponentTransform().InverseTransformVector(PreviousCursorVelocity);
+	FVector LocalCursorTangent = LocalCursorVelocity * TimeSinceLastStroke;
+	FVector LocalPreviousCursorTangent = PreviousCursorVelocity * TimeSinceLastStroke;
+
+	PendingSpline->SetStartAndEnd(LocalPreviousCursorLocation, LocalPreviousCursorTangent, LocalCursorLocation, LocalCursorTangent);
 }
 
 USplineMeshComponent* AStroke::CreateSplineMesh(FVector CursorLocation)
