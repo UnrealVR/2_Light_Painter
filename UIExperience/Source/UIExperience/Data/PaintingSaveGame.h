@@ -55,15 +55,21 @@ public:
 
 	static FString GetImagePath(const FString & UniqueIdentifier);
 
+	// SaveGame to Disk.
 	bool Save();
 
 	void Delete();
 
+	// Move world data to the SaveGame.
 	void SnapshotLevel(UWorld * World);
 
+	// Move SaveGame data to world.
 	void RestoreLevel(UWorld * World);
 
 private:
+
+	static void AddToIndex(const FString& UUID);
+
 	UPROPERTY()
 	FString UniqueIdentifier;
 

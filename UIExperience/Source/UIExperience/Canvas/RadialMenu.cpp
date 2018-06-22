@@ -42,7 +42,7 @@ void URadialMenu::BackButtonClicked()
 
 void URadialMenu::SaveAndQuit()
 {
-
+	// TODO extract: GetSaveGame
 	auto GameMode = Cast<APainterGameMode>(GetWorld()->GetAuthGameMode());
 	UPaintingSaveGame* SaveGame;
 	if (GameMode)
@@ -53,14 +53,13 @@ void URadialMenu::SaveAndQuit()
 	{
 		SaveGame = UPaintingSaveGame::Create();
 	}
-	auto UniquePaintingIdentifier = SaveGame->GetUniqueIdentifier();
-	UE_LOG(LogTemp, Warning, TEXT("UUID: %s"), *SaveGame->GetUniqueIdentifier());
+	//
+
 	SaveGame->SnapshotLevel(GetWorld());
 	bool bDidSave = SaveGame->Save();
 	if (bDidSave)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Did Save"))
-			UStereoLayerFunctionLibrary::ShowSplashScreen();
+		UStereoLayerFunctionLibrary::ShowSplashScreen();
 
 		UGameplayStatics::OpenLevel(GetWorld(), "/Game/Maps/Menu");
 	}

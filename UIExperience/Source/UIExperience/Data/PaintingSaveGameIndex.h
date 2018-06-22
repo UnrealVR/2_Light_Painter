@@ -4,18 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
-#include "PaintingListSaveGame.generated.h"
+#include "PaintingSaveGameIndex.generated.h"
 
 /**
  * Acts as an index of UPaintingSaveGame.
  */
 UCLASS()
-class UIEXPERIENCE_API UPaintingListSaveGame : public USaveGame
+class UIEXPERIENCE_API UPaintingSaveGameIndex : public USaveGame
 {
 	GENERATED_BODY()
 	
 public:
-	static UPaintingListSaveGame* Load();
+	static UPaintingSaveGameIndex* Load();
 	bool Save();
 
 	TArray<FString> GetPaintings() const { return Paintings; }

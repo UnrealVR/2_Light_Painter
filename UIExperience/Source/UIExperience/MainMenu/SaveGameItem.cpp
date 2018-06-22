@@ -14,6 +14,7 @@ void USaveGameItem::SetName(const FString & NameText)
 	FString ImagePath = UPaintingSaveGame::GetImagePath(Name);
 	if (IFileManager::Get().FileExists(*ImagePath))
 	{
+		// TODO: Parameter for size
 		FSlateDynamicImageBrush Brush(*ImagePath, FVector2D(1000, 1000), FLinearColor::White);
 		Thumbnail->SetBrush(Brush);
 	}

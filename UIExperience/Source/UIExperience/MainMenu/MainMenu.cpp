@@ -69,8 +69,15 @@ void AMainMenu::ToggleDeleteMode()
 	DeleteMode = !DeleteMode;
 }
 
-bool AMainMenu::HasNextPage() const { return GetSaveGameList() && CurrentPage + 1 < GetSaveGameList()->GetNumberOfPages(); }
-bool AMainMenu::HasPrevPage() const { return CurrentPage > 0; }
+bool AMainMenu::HasNextPage() const 
+{ 
+	return GetSaveGameList() && CurrentPage + 1 < GetSaveGameList()->GetNumberOfPages(); 
+}
+
+bool AMainMenu::HasPrevPage() const
+{ 
+	return CurrentPage > 0; 
+}
 
 void AMainMenu::NextPage() 
 { 
@@ -92,6 +99,7 @@ void AMainMenu::PrevPage()
 
 void AMainMenu::OpenLevel(FString ItemID)
 {
+	// Otherwise it will hang when we OpenLevel. Don't forget to hide afterward.
 	UStereoLayerFunctionLibrary::ShowSplashScreen();
 
 	UGameplayStatics::OpenLevel(GetWorld(), "Canvas", true, "SaveGame=" + ItemID);

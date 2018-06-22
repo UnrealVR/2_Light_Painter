@@ -4,7 +4,7 @@
 
 #include "Components/UniformGridSlot.h"
 
-#include "Data/PaintingListSaveGame.h"
+#include "Data/PaintingSaveGameIndex.h"
 #include "SaveGameItem.h"
 
 
@@ -17,10 +17,13 @@ void USaveGameList::ReloadSlots()
 	}
 
 	ClearSlots();
-	auto List = UPaintingListSaveGame::Load();
+
+	auto List = UPaintingSaveGameIndex::Load();
 	auto Slots = GetSlots();
 	auto Paintings = List->GetPaintings();
 	int PaintingsOffset = Parent->GetCurrentPage() * Slots.Num();
+
+	// TODO extract: PopulateSlots
 	for (auto Slot : Slots)
 	{
 		if (PaintingsOffset >= Paintings.Num()) break;
@@ -49,7 +52,7 @@ void USaveGameList::ClearSlots()
 
 int32 USaveGameList::GetNumberOfPages() const
 {
-	auto List = UPaintingListSaveGame::Load();
+	auto List = UPaintingSaveGameIndex::Load();
 	auto Paintings = List->GetPaintings();
 
 	auto Slots = GetSlots();

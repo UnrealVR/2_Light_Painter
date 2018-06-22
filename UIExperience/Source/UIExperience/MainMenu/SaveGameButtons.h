@@ -22,7 +22,7 @@ public:
 	void SetParent(AMainMenu* NewParent) { Parent = NewParent; }
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
-	bool IsDeleteMode() const { return Parent->IsDeleteMode(); };
+	bool IsDeleteMode() const { return Parent && Parent->IsDeleteMode(); };
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	bool HasNextPage() const { return Parent && Parent->HasNextPage(); }
@@ -50,10 +50,10 @@ private:
 	AMainMenu* Parent;
 
 	UFUNCTION()
-	void CreateNewButtonClicked() { Parent->AddSlot(); };
+	void CreateNewButtonClicked() { if (Parent) Parent->AddSlot(); }
 
 	UFUNCTION()
-	void DeleteButtonClicked() { Parent->ToggleDeleteMode(); };
+	void DeleteButtonClicked() { if (Parent) Parent->ToggleDeleteMode(); }
 
 	UFUNCTION()
 	void NextPage() { if (Parent) Parent->NextPage(); }

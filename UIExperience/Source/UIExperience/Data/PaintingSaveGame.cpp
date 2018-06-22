@@ -8,7 +8,7 @@
 #include "HAL/FileManager.h"
 #include "Paths.h"
 
-#include "PaintingListSaveGame.h"
+#include "PaintingSaveGameIndex.h"
 #include "Canvas/Stroke.h"
 #include "Canvas/SnapshotCamera.h"
 
@@ -17,9 +17,7 @@ UPaintingSaveGame* UPaintingSaveGame::Create()
 	auto SaveGame = Cast<UPaintingSaveGame>(UGameplayStatics::CreateSaveGameObject(StaticClass()));
 	auto Guid = FGuid::NewGuid();
 	SaveGame->UniqueIdentifier = Guid.ToString();
-	auto List = UPaintingListSaveGame::Load();
-	List->AddPainting(SaveGame->UniqueIdentifier);
-	List->Save();
+	AddToIndex(SaveGame->UniqueIdentifier);
 	SaveGame->Save();
 	return SaveGame;
 }
@@ -29,14 +27,6 @@ UPaintingSaveGame* UPaintingSaveGame::Load(const FString& UniqueIdentifier)
 	return Cast<UPaintingSaveGame>(UGameplayStatics::LoadGameFromSlot(UniqueIdentifier, 0));
 }
 
-FString UPaintingSaveGame::GetImagePath(const FString & UniqueIdentifier)
-{
-	FString ThumbnailDir = FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Thumbs"));
-	FString FileName = UniqueIdentifier + ".png";
-
-	return FPaths::Combine(ThumbnailDir, FileName);
-}
-
 bool UPaintingSaveGame::Save()
 {
 	return UGameplayStatics::SaveGameToSlot(this, UniqueIdentifier, 0);
@@ -44,9 +34,11 @@ bool UPaintingSaveGame::Save()
 
 void UPaintingSaveGame::Delete()
 {
-	auto List = UPaintingListSaveGame::Load();
+	// TODO: extract
+	auto List = UPaintingSaveGameIndex::Load();
 	List->RemovePainting(UniqueIdentifier);
 	List->Save();
+
 	UGameplayStatics::DeleteGameInSlot(UniqueIdentifier, 0);
 	
 	IFileManager::Get().Delete(*GetImagePath(UniqueIdentifier));
@@ -61,6 +53,7 @@ void UPaintingSaveGame::SnapshotLevel(UWorld* World)
 		Strokes.Add(Stroke);
 	}
 
+	// TODO: extract
 	for (TActorIterator<ASnapshotCamera> SnapshotCamera(World); SnapshotCamera; ++SnapshotCamera)
 	{
 		FString ThumbnailDir = FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Thumbs"));
@@ -78,4 +71,19 @@ void UPaintingSaveGame::RestoreLevel(UWorld* World)
 	{
 		AStroke::CreateFromData(World, Stroke);
 	}
+}
+
+void UPaintingSaveGame::AddToIndex(const FString& UUID)
+{
+	auto List = UPaintingSaveGameIndex::Load();
+	List->AddPainting(UUID);
+	List->Save();
+}
+
+FString UPaintingSaveGame::GetImagePath(const FString & UniqueIdentifier)
+{
+	FString ThumbnailDir = FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Thumbs"));
+	FString FileName = UniqueIdentifier + ".png";
+
+	return FPaths::Combine(ThumbnailDir, FileName);
 }
