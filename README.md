@@ -13,3 +13,15 @@ Section 2 of the GameDev.tv Unreal VR Course, [available on Udemy](http://gdev.t
 **After watching (learning outcomes)…**
 
 Know what we are aiming for this section.
+
+### 2 Creating A VR Pawn Setup ###
+
+**In this video (objectives)…**
+
+1. Overview of the desired setup.
+2. Creating the C++.
+3. Hooking up the Blueprint.
+
+**After watching (learning outcomes)…**
+
+Have an alternative way of setting up VR Pawns.
