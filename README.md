@@ -25,3 +25,16 @@ Know what we are aiming for this section.
 **After watching (learning outcomes)…**
 
 Have an alternative way of setting up VR Pawns.
+
+### 3 Binding Actions To Motion Controllers ###
+
+**In this video (objectives)…**
+
+1. Overview of the painting architecture.
+2. Creating a Stroke actor.
+3. Setup the input handling.
+4. Spawning a stroke.
+
+**After watching (learning outcomes)…**
+
+Forward hand controller actions to their actors.

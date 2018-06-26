@@ -2,6 +2,7 @@
 
 #include "HandController.h"
 
+#include "Engine/World.h"
 
 AHandController::AHandController()
 {
@@ -25,3 +26,12 @@ void AHandController::Tick(float DeltaTime)
 
 }
 
+void AHandController::TriggerPressed()
+{
+	AStroke* Stroke = GetWorld()->SpawnActor<AStroke>(StrokeClass);
+	Stroke->SetActorLocation(GetActorLocation());
+}
+
+void AHandController::TriggerReleased()
+{
+}
