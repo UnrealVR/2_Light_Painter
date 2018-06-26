@@ -38,3 +38,16 @@ Have an alternative way of setting up VR Pawns.
 **After watching (learning outcomes)…**
 
 Forward hand controller actions to their actors.
+
+### 4 3D Painting With Spline Meshes ###
+
+**In this video (objectives)…**
+
+1. Writing and using the interface.
+2. Outlining the algorithm.
+3. Creating a spline mesh.
+4. Updating the end-points.
+
+**After watching (learning outcomes)…**
+
+Use spline meshes for 3D drawing.
