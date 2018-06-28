@@ -51,3 +51,15 @@ Forward hand controller actions to their actors.
 **After watching (learning outcomes)…**
 
 Use spline meshes for 3D drawing.
+
+### 5 Basic Performance Profiling ###
+
+**In this video (objectives)…**
+
+1. How to view your FPS.
+2. The quick and dirty approach.
+3. Reduce the stroke spawn rate.
+
+**After watching (learning outcomes)…**
+
+How to check performance of your VR app.
