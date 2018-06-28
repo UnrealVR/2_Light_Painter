@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+
+#include "Components/InstancedStaticMeshComponent.h"
+
 #include "Stroke.generated.h"
 
 UCLASS()
@@ -22,6 +25,9 @@ private:
 	// Components
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Root;
+
+	UPROPERTY(VisibleAnywhere)
+	UInstancedStaticMeshComponent* StrokeMeshes;
 
 	// Config
 	UPROPERTY(EditDefaultsOnly)

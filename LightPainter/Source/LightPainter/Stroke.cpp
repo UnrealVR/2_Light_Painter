@@ -10,17 +10,16 @@ AStroke::AStroke()
 
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	SetRootComponent(Root);
+
+	StrokeMeshes = CreateDefaultSubobject<UInstancedStaticMeshComponent>(TEXT("StrokeMeshes"));
+	StrokeMeshes->SetupAttachment(Root);
 }
 
 void AStroke::Update(FVector CursorLocation)
 {
-	USplineMeshComponent* Spline = CreateSplineMesh();
+	FVector LocalLocation = GetTransform().InverseTransformPosition(CursorLocation);
+	StrokeMeshes->AddInstance(FTransform(LocalLocation));
 	
-	FVector StartPosition = GetActorTransform().InverseTransformPosition(CursorLocation);
-	FVector EndPosition = GetActorTransform().InverseTransformPosition(PreviousCursorLocation);
-
-	Spline->SetStartAndEnd(StartPosition, FVector::ZeroVector, EndPosition, FVector::ZeroVector);
-
 	PreviousCursorLocation = CursorLocation;
 }
 
