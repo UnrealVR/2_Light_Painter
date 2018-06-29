@@ -63,3 +63,15 @@ Use spline meshes for 3D drawing.
 **After watching (learning outcomes)…**
 
 Why frame rate is important and how to measure it.
+
+### 6 Performance Bottlenecks ###
+
+**In this video (objectives)…**
+
+1. What are bottlenecks?
+2. Tools to identify bottlenecks.
+3. Game, render or GPU bound?
+
+**After watching (learning outcomes)…**
+
+Identify CPU or GPU bottlenecks in own games.
