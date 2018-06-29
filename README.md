@@ -75,3 +75,15 @@ Why frame rate is important and how to measure it.
 **After watching (learning outcomes)…**
 
 Identify CPU or GPU bottlenecks in own games.
+
+### 7 Performance Optimisation ###
+
+**In this video (objectives)…**
+
+1. Likely causes of bottlenecks.
+2. Identifying vertex vs pixel bound.
+3. Improving the empty scene frame time.
+
+**After watching (learning outcomes)…**
+
+Diagnose common GPU issues.
