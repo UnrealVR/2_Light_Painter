@@ -51,3 +51,15 @@ Forward hand controller actions to their actors.
 **After watching (learning outcomes)…**
 
 Use spline meshes for 3D drawing.
+
+### 5 Frame Rate In VR ###
+
+**In this video (objectives)…**
+
+1. Why frame rate matters in VR.
+2. Viewing the frame rate.
+3. What changes the frame rate?
+
+**After watching (learning outcomes)…**
+
+Why frame rate is important and how to measure it.
