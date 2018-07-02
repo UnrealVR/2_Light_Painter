@@ -83,7 +83,20 @@ Identify CPU or GPU bottlenecks in own games.
 1. Likely causes of bottlenecks.
 2. Identifying vertex vs pixel bound.
 3. Improving the empty scene frame time.
+4. Forward rendering vs deferred rendering.
 
 **After watching (learning outcomes)…**
 
 Diagnose common GPU issues.
+
+### 8 Reducing DrawCalls With Instancing ###
+
+**In this video (objectives)…**
+
+1. Log the number of DrawCalls.
+2. Recapping the Instanced Static Mesh.
+3. Replacing the meshes in the stroke.
+
+**After watching (learning outcomes)…**
+
+Replace multiple meshes with an Instanced Static Mesh.
