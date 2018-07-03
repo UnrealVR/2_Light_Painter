@@ -20,6 +20,13 @@ public:
 	void Update(FVector CursorLocation);
 
 private:
+
+	FTransform GetNextSegmentTransform(FVector CurrentLocation) const;
+
+	FVector GetNextSegmentScale(FVector CurrentLocation) const;
+	FQuat GetNextSegmentRotation(FVector CurrentLocation) const;
+	FVector GetNextSegmentLocation(FVector CurrentLocation) const;
+
 	// Components
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Root;

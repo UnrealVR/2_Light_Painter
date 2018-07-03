@@ -100,3 +100,15 @@ Diagnose common GPU issues.
 **After watching (learning outcomes)…**
 
 Replace multiple meshes with an Instanced Static Mesh.
+
+### 9 Rotating & Scaling Stroke Meshes ###
+
+**In this video (objectives)…**
+
+1. The rotation and scaling maths.
+2. The code outline.
+3. Rotating and scaling APIs.
+
+**After watching (learning outcomes)…**
+
+How to rotate and scale to fit between two points.
