@@ -112,3 +112,16 @@ Replace multiple meshes with an Instanced Static Mesh.
 **After watching (learning outcomes)…**
 
 How to rotate and scale to fit between two points.
+
+### 10 Instanced Mesh Materials ###
+
+**In this video (objectives)…**
+
+1. Importing new meshes.
+2. Creating a material.
+3. Enabling the material for instanced static meshes.
+4. Hiding the stroke joints.
+
+**After watching (learning outcomes)…**
+
+How to add materials to instanced static meshes.
