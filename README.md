@@ -151,3 +151,16 @@ Be able to create and save a `SaveGame`.
 **After watching (learning outcomes)…**
 
 Load data from a save game file.
+
+### 13 Serialising The Game State ###
+
+**In this video (objectives)…**
+
+1. What is the state of our level?
+2. Defining the UPROPERTY.
+3. The SaveGame serialising API.
+4. Capture and spawn the strokes.
+
+**After watching (learning outcomes)…**
+
+How to serialise simple game state.
