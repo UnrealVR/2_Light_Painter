@@ -17,6 +17,14 @@ class LIGHTPAINTER_API UPainterSaveGame : public USaveGame
 public:
 	static UPainterSaveGame* Create();
 	bool Save();
-	
+	static UPainterSaveGame* Load();
+
+	void SetState(FString NewState) { State = NewState; }
+	FString GetState() const { return State; }
+
+private:
+	//State
+	UPROPERTY()
+	FString State;
 	
 };

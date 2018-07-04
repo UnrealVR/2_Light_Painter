@@ -138,3 +138,16 @@ How to add materials to instanced static meshes.
 **After watching (learning outcomes)…**
 
 Be able to create and save a `SaveGame`.
+
+### 12 Loading A SaveGame ###
+
+**In this video (objectives)…**
+
+1. Setup saving from user input.
+2. Loading API.
+3. Using the loading API.
+4. Saving and loading a UPROPERTY.
+
+**After watching (learning outcomes)…**
+
+Load data from a save game file.
