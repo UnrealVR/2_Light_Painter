@@ -4,6 +4,8 @@
 
 #include "Engine/World.h"
 
+#include "Saving/PainterSaveGame.h"
+
 AVRPawn::AVRPawn()
 {
 	PrimaryActorTick.bCanEverTick = false;
@@ -24,6 +26,9 @@ void AVRPawn::BeginPlay()
 		RightHandController = GetWorld()->SpawnActor<AHandController>(HandControllerClass);
 		RightHandController->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
 	}
+
+	UPainterSaveGame* Painting = UPainterSaveGame::Create();
+	Painting->Save();
 }
 
 void AVRPawn::SetupPlayerInputComponent(UInputComponent * PlayerInputComponent)

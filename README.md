@@ -125,3 +125,16 @@ How to rotate and scale to fit between two points.
 **After watching (learning outcomes)…**
 
 How to add materials to instanced static meshes.
+
+### 11 Saving Game State ###
+
+**In this video (objectives)…**
+
+1. Creating a `USaveGame` subclass.
+2. Saving and Creating APIs.
+3. Our `SaveGame` header file.
+4. Implementing `Save` and `Create`.
+
+**After watching (learning outcomes)…**
+
+Be able to create and save a `SaveGame`.
