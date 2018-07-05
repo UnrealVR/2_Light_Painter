@@ -176,3 +176,16 @@ How to serialise simple game state.
 **After watching (learning outcomes)…**
 
 How to use structs to serialise complex state.
+
+### 15 Renaming C++ Base Classes ###
+
+**In this video (objectives)…**
+
+1. Rename the HandController class.
+2. Setup an `ActiveClassRedirect`.
+3. Creating a base class.
+4. Extracting functionality.
+
+**After watching (learning outcomes)…**
+
+How to rename a C++ base class and extract functionality into a super class.

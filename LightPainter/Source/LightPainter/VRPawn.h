@@ -6,7 +6,7 @@
 #include "GameFramework/Pawn.h"
 
 #include "Camera/CameraComponent.h"
-#include "HandController.h"
+#include "HandControllerBase.h"
 
 #include "VRPawn.generated.h"
 
@@ -23,15 +23,15 @@ protected:
 	virtual void SetupPlayerInputComponent(UInputComponent * PlayerInputComponent) override;
 private:
 	
-	void RightTriggerPressed() { if (RightHandController) RightHandController->TriggerPressed(); }
-	void RightTriggerReleased() { if (RightHandController) RightHandController->TriggerReleased(); }
+	void RightTriggerPressed() { if (RightPaintBrushHandController) RightPaintBrushHandController->TriggerPressed(); }
+	void RightTriggerReleased() { if (RightPaintBrushHandController) RightPaintBrushHandController->TriggerReleased(); }
 
 	void Save();
 	void Load();
 
 	// Config
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<AHandController> HandControllerClass;
+	TSubclassOf<AHandControllerBase> PaintBrushHandControllerClass;
 
 	// Components
 	UPROPERTY(VisibleAnywhere)
@@ -42,5 +42,5 @@ private:
 
 	// Reference
 	UPROPERTY()
-	AHandController* RightHandController;
+	AHandControllerBase* RightPaintBrushHandController;
 };
