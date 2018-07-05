@@ -164,3 +164,15 @@ Load data from a save game file.
 **After watching (learning outcomes)…**
 
 How to serialise simple game state.
+
+### 14 Serialising Actors To Structs ###
+
+**In this video (objectives)…**
+
+1. Create Stroke state struct.
+2. The Stroke serialisation API.
+3. Implementing serialisation.
+
+**After watching (learning outcomes)…**
+
+How to use structs to serialise complex state.
