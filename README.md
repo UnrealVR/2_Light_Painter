@@ -203,3 +203,14 @@ How to rename a C++ base class and extract functionality into a super class.
 **After watching (learning outcomes)…**
 
 How to use Figma to create basic layouts.
+
+### 17 Understanding Good VR Design ###
+
+**In this video (objectives)…**
+
+1. Critique the Daydream designs.
+2. Critique you own design.
+
+**After watching (learning outcomes)…**
+
+How to critique user interface designs.
