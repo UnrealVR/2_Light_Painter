@@ -189,3 +189,17 @@ How to use structs to serialise complex state.
 **After watching (learning outcomes)…**
 
 How to rename a C++ base class and extract functionality into a super class.
+
+### 16 Introduction To Vector Design ###
+
+**In this video (objectives)…**
+
+1. Introduction to the Daydream sticker sheet.
+2. Importing Sketch files into Figma.
+3. The basic tools in Figma.
+4. Understanding the DMM.
+5. Creating a simple layout.
+
+**After watching (learning outcomes)…**
+
+How to use Figma to create basic layouts.
