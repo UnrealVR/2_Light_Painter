@@ -214,3 +214,15 @@ How to use Figma to create basic layouts.
 **After watching (learning outcomes)…**
 
 How to critique user interface designs.
+
+### 18 Designing User Interface For VR ###
+
+**In this video (objectives)…**
+
+1. Creating a design frame.
+2. Create/capture requirements.
+3. Assemble a design.
+
+**After watching (learning outcomes)…**
+
+How to build a UI design in Figma.
