@@ -226,3 +226,17 @@ How to critique user interface designs.
 **After watching (learning outcomes)…**
 
 How to build a UI design in Figma.
+
+### 19 Ergonomic 3D UI Layout In Unreal ###
+
+**In this video (objectives)…**
+
+1. Create a placeholder widget.
+2. Displaying the widget in the scene.
+3. Placing the widget with spline guides.
+4. Scaling the widget.
+5. Placing the buttons.
+
+**After watching (learning outcomes)…**
+
+How to accurately place UI from a design.
