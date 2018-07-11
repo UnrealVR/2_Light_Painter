@@ -240,3 +240,17 @@ How to build a UI design in Figma.
 **After watching (learning outcomes)…**
 
 How to accurately place UI from a design.
+
+### 20 UI Widget Interaction In 3D ###
+
+**In this video (objectives)…**
+
+1. Introducing the Widget Interaction Component.
+2. Creating a button to test with.
+3. Setting up the Blueprints.
+4. Adding a Widget Interaction Component.
+5. Clicking the button.
+
+**After watching (learning outcomes)…**
+
+How UI selection works in VR with Unreal.
