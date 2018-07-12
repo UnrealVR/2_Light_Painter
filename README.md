@@ -254,3 +254,16 @@ How to accurately place UI from a design.
 **After watching (learning outcomes)…**
 
 How UI selection works in VR with Unreal.
+
+### 21 Converting A Design To UMG - Part 1 ###
+
+**In this video (objectives)…**
+
+1. Setting up the grid layout.
+2. Exporting the card button graphics.
+3. Setting up the card button.
+4. Creating all the states.
+
+**After watching (learning outcomes)…**
+
+Converting button designs to working UMG buttons.
