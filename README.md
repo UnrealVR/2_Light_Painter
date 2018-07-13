@@ -279,3 +279,14 @@ Converting button designs to working UMG buttons.
 **After watching (learning outcomes)…**
 
 How buttons scale with their contents.
+
+### 23 Converting A Design To UMG - Part 3 ###
+
+**In this video (objectives)…**
+
+1. Layout the images.
+2. Exporting the graphics.
+
+**After watching (learning outcomes)…**
+
+How to use a horizontal layout.
