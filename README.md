@@ -267,3 +267,15 @@ How UI selection works in VR with Unreal.
 **After watching (learning outcomes)…**
 
 Converting button designs to working UMG buttons.
+
+### 22 Converting A Design To UMG - Part 2 ###
+
+**In this video (objectives)…**
+
+1. Creating the action bar widget.
+2. Laying out the buttons.
+3. Creating the button variations.
+
+**After watching (learning outcomes)…**
+
+How buttons scale with their contents.
