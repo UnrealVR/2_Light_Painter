@@ -13,7 +13,18 @@ UCLASS()
 class LIGHTPAINTER_API UPainterListSaveGame : public USaveGame
 {
 	GENERATED_BODY()
-	
+
+public:
+	static UPainterListSaveGame* Load();
+	bool Save();
+	void AddPainting(class UPainterSaveGame* PainterSaveGame);
+	TArray<FString> GetPaintings() const { return PainterSaveGameSlotNames; }
+
 private:
-	
+	static const FString SLOT_NAME;
+
+	// State
+	UPROPERTY()
+	TArray<FString> PainterSaveGameSlotNames;
+
 };

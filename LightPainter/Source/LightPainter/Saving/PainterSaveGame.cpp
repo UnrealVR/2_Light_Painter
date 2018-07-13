@@ -5,12 +5,18 @@
 #include "Kismet/GameplayStatics.h"
 #include "EngineUtils.h"
 
+#include "PainterListSaveGame.h"
+
 #include "Stroke.h"
 
 UPainterSaveGame * UPainterSaveGame::Create()
 {
 	UPainterSaveGame* NewSaveGame = Cast<UPainterSaveGame>(UGameplayStatics::CreateSaveGameObject(StaticClass()));
 	NewSaveGame->SlotName = FGuid::NewGuid().ToString();
+	auto Index = UPainterListSaveGame::Load();
+	Index->AddPainting(NewSaveGame);
+	Index->Save();
+	NewSaveGame->Save(); // Because don't want it to disappear now.
 	return NewSaveGame;
 }
 
@@ -21,6 +27,11 @@ bool UPainterSaveGame::Save()
 
 UPainterSaveGame * UPainterSaveGame::Load(FString SlotName)
 {
+	UE_LOG(LogTemp, Warning, TEXT("Painting Index:"));
+	for (auto PaintingName : UPainterListSaveGame::Load()->GetPaintings())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Painting: %s"), *PaintingName);
+	}
 	return Cast<UPainterSaveGame>(UGameplayStatics::LoadGameFromSlot(SlotName, 0));
 }
 
