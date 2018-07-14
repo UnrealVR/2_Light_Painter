@@ -2,6 +2,13 @@
 
 #include "PaintingGameMode.h"
 
+#include "Kismet/GameplayStatics.h"
 
+void APaintingGameMode::InitGame(const FString & MapName, const FString & Options, FString & ErrorMessage)
+{
+	Super::InitGame(MapName, Options, ErrorMessage);
+
+	FString PaintingName = UGameplayStatics::ParseOption(Options, "PaintingName");
+}
 
 
