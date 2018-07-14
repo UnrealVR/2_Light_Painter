@@ -2,8 +2,19 @@
 
 #include "PaintingGrid.h"
 
+#include "Saving/PainterSaveGame.h"
+
 #include "Components/SizeBox.h"
 
+
+bool UPaintingGrid::Initialize()
+{
+	if (!Super::Initialize()) return false;
+
+	if (!AddButton) return false;
+	AddButton->OnClicked.AddDynamic(this, &UPaintingGrid::CreatePainting);
+	return true;
+}
 
 void UPaintingGrid::AddPainting(int32 Index, FString PaintingName)
 {
