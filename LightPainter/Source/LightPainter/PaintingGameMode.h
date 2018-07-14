@@ -16,5 +16,11 @@ class LIGHTPAINTER_API APaintingGameMode : public AGameModeBase
 
 public:
 	void InitGame(const FString & MapName, const FString & Options, FString & ErrorMessage) override;
+
+	void StartPlay() override;
+
+private:
+	// State
+	FString PaintingName;
 	
 };
