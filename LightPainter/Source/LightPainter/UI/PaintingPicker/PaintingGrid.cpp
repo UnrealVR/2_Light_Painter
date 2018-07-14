@@ -5,9 +5,9 @@
 #include "Components/SizeBox.h"
 
 
-void UPaintingGrid::AddPainting()
+void UPaintingGrid::AddPainting(int32 Index, FString PaintingName)
 {
-	USizeBox* GridCell = Cast<USizeBox>(PaintingGrid->GetChildAt(0));
+	USizeBox* GridCell = Cast<USizeBox>(PaintingGrid->GetChildAt(Index));
 	if (!GridCell) return;
 	UUserWidget* GridCard = CreateWidget<UUserWidget>(GetWorld(), GridCardClass);
 	GridCell->AddChild(GridCard);

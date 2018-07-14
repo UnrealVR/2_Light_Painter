@@ -23,6 +23,8 @@ protected:
 
 private:
 
+	void ReloadPaintings();
+
 	// Components
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Root;

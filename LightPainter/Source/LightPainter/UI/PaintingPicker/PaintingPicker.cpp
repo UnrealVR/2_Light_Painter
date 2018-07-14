@@ -4,6 +4,8 @@
 
 #include "PaintingGrid.h"
 
+#include "Saving/PainterListSaveGame.h"
+
 
 // Sets default values
 APaintingPicker::APaintingPicker()
@@ -25,11 +27,19 @@ void APaintingPicker::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UPaintingGrid* Grid = Cast<UPaintingGrid>(PaintingGrid->GetUserWidgetObject());
-	if (Grid)
-	{
-		Grid->AddPainting();
-	}
+	ReloadPaintings();
 }
 
+void APaintingPicker::ReloadPaintings()
+{
+	UPaintingGrid* Grid = Cast<UPaintingGrid>(PaintingGrid->GetUserWidgetObject());
+	if (!Grid) return;
+	
+	int32 Index = 0;
+	for (FString PaintingName : UPainterListSaveGame::Load()->GetPaintings())
+	{
+		Grid->AddPainting(Index, PaintingName);
+		++Index;
+	}
+}
 
