@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+
+#include "Components/TextBlock.h"
+
 #include "PaintingGridCard.generated.h"
 
 /**
@@ -16,6 +19,11 @@ class LIGHTPAINTER_API UPaintingGridCard : public UUserWidget
 	
 public:
 	void SetPaintingName(FString PaintingName);
+
+private:
+	// Components
+	UPROPERTY(VisibleAnywhere, meta=(BindWidget))
+	UTextBlock* PaintingNameText;
 	
 	
 };

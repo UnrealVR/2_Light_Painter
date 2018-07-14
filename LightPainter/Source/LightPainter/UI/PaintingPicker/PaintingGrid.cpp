@@ -9,6 +9,12 @@ void UPaintingGrid::AddPainting(int32 Index, FString PaintingName)
 {
 	USizeBox* GridCell = Cast<USizeBox>(PaintingGrid->GetChildAt(Index));
 	if (!GridCell) return;
-	UUserWidget* GridCard = CreateWidget<UUserWidget>(GetWorld(), GridCardClass);
+	UPaintingGridCard* GridCard = CreateWidget<UPaintingGridCard>(GetWorld(), GridCardClass);
+	if (!GridCard)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Must provide a GridCard class to spawn."));
+		return;
+	}
+	GridCard->SetPaintingName(PaintingName);
 	GridCell->AddChild(GridCard);
 }

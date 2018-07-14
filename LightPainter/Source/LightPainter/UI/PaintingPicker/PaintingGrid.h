@@ -6,6 +6,7 @@
 #include "Blueprint/UserWidget.h"
 
 #include "Components/UniformGridPanel.h"
+#include "PaintingGridCard.h"
 
 #include "PaintingGrid.generated.h"
 
@@ -26,6 +27,6 @@ protected:
 	UUniformGridPanel* PaintingGrid;
 	
 	UPROPERTY(EditAnywhere)
-	TSubclassOf<UUserWidget> GridCardClass;
+	TSubclassOf<UPaintingGridCard> GridCardClass;
 	
 };
