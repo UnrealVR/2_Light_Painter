@@ -6,6 +6,7 @@
 #include "Blueprint/UserWidget.h"
 
 #include "Components/TextBlock.h"
+#include "Components/Button.h"
 
 #include "PaintingGridCard.generated.h"
 
@@ -21,9 +22,17 @@ public:
 	void SetPaintingName(FString PaintingName);
 
 private:
+	UFUNCTION()
+	void Clicked();
+
 	// Components
 	UPROPERTY(VisibleAnywhere, meta=(BindWidget))
 	UTextBlock* PaintingNameText;
 	
+	UPROPERTY(VisibleAnywhere, meta=(BindWidget))
+	UButton* PaintingButton;
+
+	// State
+	FString PaintingName;
 	
 };
