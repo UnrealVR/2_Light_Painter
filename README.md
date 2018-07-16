@@ -342,3 +342,17 @@ Practice at reparenting Blueprints.
 **After watching (learning outcomes)…**
 
 Using UUIDs to generate unique string names.
+
+### 28 Iterating Over All SaveGames ###
+
+**In this video (objectives)…**
+
+1. Creating the `PainterSaveGameIndex`.
+2. The Index API.
+3. Using the API.
+4. Implementing `Load()` and `Save()`.
+5. Implementing `AddPainting()` and `GetPaintings()`.
+
+**After watching (learning outcomes)…**
+
+How to use and index to iterate over all save games.
