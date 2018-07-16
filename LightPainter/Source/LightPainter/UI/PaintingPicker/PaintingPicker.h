@@ -18,6 +18,8 @@ public:
 	// Sets default values for this actor's properties
 	APaintingPicker();
 
+	void AddPainting();
+
 protected:
 	void BeginPlay() override;
 

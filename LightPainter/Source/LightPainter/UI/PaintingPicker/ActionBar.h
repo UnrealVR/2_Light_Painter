@@ -7,6 +7,8 @@
 
 #include "Components/Button.h"
 
+#include "PaintingPicker.h"
+
 #include "ActionBar.generated.h"
 
 /**
@@ -20,12 +22,16 @@ class LIGHTPAINTER_API UActionBar : public UUserWidget
 public:
 	bool Initialize() override;
 
+	void SetPaintingPicker(APaintingPicker* NewPaintingPicker) { PaintingPicker = NewPaintingPicker; }
+
 protected:
 	UPROPERTY(BlueprintReadonly, VisibleAnywhere, meta = (BindWidget))
 	UButton* AddButton;
 	
 private:
 	UFUNCTION()
-	void AddPainting() { UE_LOG(LogTemp, Warning, TEXT("Adding Painting")) };
+	void AddPainting() { if (PaintingPicker) PaintingPicker->AddPainting(); }
 
+	UPROPERTY()
+	APaintingPicker* PaintingPicker;
 };
