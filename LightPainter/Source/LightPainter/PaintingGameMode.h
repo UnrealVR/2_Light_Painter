@@ -19,6 +19,8 @@ public:
 
 	void StartPlay() override;
 
+	void SavePainting();
+
 private:
 	// State
 	FString PaintingName;

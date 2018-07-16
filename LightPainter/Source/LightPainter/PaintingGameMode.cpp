@@ -24,4 +24,16 @@ void APaintingGameMode::StartPlay()
 	UStereoLayerFunctionLibrary::HideSplashScreen();
 }
 
+void APaintingGameMode::SavePainting()
+{
+	UPainterSaveGame* Painting = UPainterSaveGame::Load(PaintingName);
+	if (Painting)
+	{
+		Painting->SetState("Hello World!");
+		Painting->SerializeFromWorld(GetWorld());
+		Painting->Save();
+	}
+}
+
+
 

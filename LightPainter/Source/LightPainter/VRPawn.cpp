@@ -3,8 +3,9 @@
 #include "VRPawn.h"
 
 #include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
 
-#include "Saving/PainterSaveGame.h"
+#include "PaintingGameMode.h"
 
 AVRPawn::AVRPawn()
 {
@@ -40,11 +41,11 @@ void AVRPawn::SetupPlayerInputComponent(UInputComponent * PlayerInputComponent)
 
 void AVRPawn::Save()
 {
-	UPainterSaveGame* Painting = UPainterSaveGame::Load(CurrentPaintingSlotName);
-	if (Painting)
-	{
-		Painting->SetState("Hello World!");
-		Painting->SerializeFromWorld(GetWorld());
-		Painting->Save();
-	}
+	
+	auto GameMode = Cast<APaintingGameMode>(GetWorld()->GetAuthGameMode());
+	if (!GameMode) return;
+	
+	GameMode->SavePainting();
+
+	UGameplayStatics::OpenLevel(this, "MainMenu");
 }
