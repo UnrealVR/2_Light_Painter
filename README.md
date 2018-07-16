@@ -328,3 +328,17 @@ How to spawn widgets and add them to PanelWidgets.
 **After watching (learning outcomes)…**
 
 Practice at reparenting Blueprints.
+
+### 27 Naming Each Slot Uniquely ###
+
+**In this video (objectives)…**
+
+1. Add a SlotName variable.
+2. Generate the variable on creation.
+3. Create a getter for SlotName.
+4. Update loading to take the SlotName.
+5. Create a new `PaintingSaveGame` on every load.
+
+**After watching (learning outcomes)…**
+
+Using UUIDs to generate unique string names.
