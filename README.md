@@ -314,4 +314,17 @@ How to bind a widget to C++.
 
 **After watching (learning outcomes)…**
 
-How to spawn widgets and add then to PanelWidgets.
+How to spawn widgets and add them to PanelWidgets.
+
+### 26 Converting PaintingPicker to C++ ###
+
+**In this video (objectives)…**
+
+1. Add `PaintingPicker` C++ parent.
+2. Create the essential components in C++.
+3. Copy the component values.
+4. Convert the blueprint to C++.
+
+**After watching (learning outcomes)…**
+
+Practice at reparenting Blueprints.
