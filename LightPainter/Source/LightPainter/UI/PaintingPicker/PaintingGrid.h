@@ -21,6 +21,8 @@ class LIGHTPAINTER_API UPaintingGrid : public UUserWidget
 public:
 	UFUNCTION(BlueprintCallable)
 	void AddPainting(int32 Index, FString PaintingName);
+
+	void ClearPaintings();
 	
 protected:
 	UPROPERTY(BlueprintReadonly, VisibleAnywhere, meta=(BindWidget))

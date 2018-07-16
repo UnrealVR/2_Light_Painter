@@ -50,6 +50,8 @@ void APaintingPicker::ReloadPaintings()
 	UPaintingGrid* Grid = Cast<UPaintingGrid>(PaintingGrid->GetUserWidgetObject());
 	if (!Grid) return;
 
+	Grid->ClearPaintings();
+
 	int32 Index = 0;
 	for (FString PaintingName : UPainterListSaveGame::Load()->GetPaintings())
 	{
