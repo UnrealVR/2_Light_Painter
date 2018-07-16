@@ -27,12 +27,6 @@ void APaintingPicker::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UPaintingGrid* Grid = Cast<UPaintingGrid>(PaintingGrid->GetUserWidgetObject());
-	if (Grid)
-	{
-		Grid->SetPaintingPicker(this);
-	}
-
 	ReloadPaintings();
 }
 

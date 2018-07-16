@@ -18,11 +18,6 @@ public:
 	// Sets default values for this actor's properties
 	APaintingPicker();
 
-	void CreatePainting() {
-		//TODO: fill in.
-		UE_LOG(LogTemp, Warning, TEXT("CreatePainting"));
-	}
-
 protected:
 	void BeginPlay() override;
 
