@@ -302,3 +302,16 @@ How to use a horizontal layout.
 **After watching (learning outcomes)…**
 
 How to bind a widget to C++.
+
+### 25 Spawning Widgets In C++ ###
+
+**In this video (objectives)…**
+
+1. Introduce the APIs. (CreateWidget, GetChildAt, AddChild)
+2. Creating the Card widget.
+3. Spawn a widget.
+4. Add to the size box.
+
+**After watching (learning outcomes)…**
+
+How to spawn widgets and add then to PanelWidgets.
