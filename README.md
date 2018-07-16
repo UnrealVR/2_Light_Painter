@@ -290,3 +290,15 @@ How buttons scale with their contents.
 **After watching (learning outcomes)…**
 
 How to use a horizontal layout.
+
+### 24 Binding UPROPERTY to UMG ###
+
+**In this video (objectives)…**
+
+1. Add base class and reparent `PaintingGrid`.
+2. Bind the Uniform Grid Panel.
+3. Create blueprint interface to `AddPainting` and call it.
+
+**After watching (learning outcomes)…**
+
+How to bind a widget to C++.
