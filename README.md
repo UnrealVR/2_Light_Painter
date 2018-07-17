@@ -395,3 +395,16 @@ How to make and bind UMG TextBlocks.
 **After watching (learning outcomes)…**
 
 How to set TextBlock text in C++.
+
+### 32 Button Actions And Splash Screens ###
+
+**In this video (objectives)…**
+
+1. How to use the `OpenLevel` API.
+2. Binding the button `OnClicked`.
+3. Opening the "Canvas" level.
+4. How to get around the hanging issue.
+
+**After watching (learning outcomes)…**
+
+How to open levels smoothly in VR.
