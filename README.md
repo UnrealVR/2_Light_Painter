@@ -369,3 +369,16 @@ How to use an index to iterate over all save games.
 **After watching (learning outcomes)…**
 
 How to populate the UI lists.
+
+### 30 Binding Text Widgets To C++ ###
+
+**In this video (objectives)…**
+
+1. Add a text box to the card.
+2. Improve spacing of the grid.
+3. Creating a `UPaintingGridCard` parent class.
+4. Binding the `TextBlock`.
+
+**After watching (learning outcomes)…**
+
+How to make and bind UMG TextBlocks.
