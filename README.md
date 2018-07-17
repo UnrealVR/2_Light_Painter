@@ -355,4 +355,17 @@ Using UUIDs to generate unique string names.
 
 **After watching (learning outcomes)…**
 
-How to use and index to iterate over all save games.
+How to use an index to iterate over all save games.
+
+### 29 Populating The Game List UI ###
+
+**In this video (objectives)…**
+
+1. Change the `AddPainting` interface.
+2. Add at index.
+3. Add as many paintings as there are.
+4. Correct the order of slots.
+
+**After watching (learning outcomes)…**
+
+How to populate the UI lists.
