@@ -34,7 +34,7 @@ void APaintingPicker::BeginPlay()
 	int32 Index = 0;
 	for (FString SlotName : UPainterSaveGameIndex::Load()->GetSlotNames())
 	{
-		PaintingGridWidget->AddPainting(Index);
+		PaintingGridWidget->AddPainting(Index, SlotName);
 		++Index;
 	}
 }

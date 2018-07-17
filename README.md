@@ -382,3 +382,16 @@ How to populate the UI lists.
 **After watching (learning outcomes)…**
 
 How to make and bind UMG TextBlocks.
+
+### 31 Setting TextBlock Content From C++ ###
+
+**In this video (objectives)…**
+
+1. Creating the `SetPaintingName` interface.
+2. Calling the `SetPaintingName` interface.
+3. The `UTextBlock` API and `FText`.
+4. Implementing `SetPaintingName`.
+
+**After watching (learning outcomes)…**
+
+How to set TextBlock text in C++.
