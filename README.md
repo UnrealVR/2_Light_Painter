@@ -408,3 +408,15 @@ How to set TextBlock text in C++.
 **After watching (learning outcomes)…**
 
 How to open levels smoothly in VR.
+
+### 33 Parsing Level Options In GameMode ###
+
+**In this video (objectives)…**
+
+1. Creating a GameMode.
+2. Handling the options with `InitGame`.
+3. Parsing out our option.
+
+**After watching (learning outcomes)…**
+
+How to parse level loading options.
