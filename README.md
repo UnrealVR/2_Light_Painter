@@ -431,4 +431,17 @@ How to parse level loading options.
 
 **After watching (learning outcomes)…**
 
-How to parse level loading options.
+When to hide a splash screen.
+
+### 35 Handling Saving In GameMode ###
+
+**In this video (objectives)…**
+
+1. Creating the GameMode `SavePainting` API.
+2. Calling the API.
+3. Making it save.
+4. Quitting to the Menu.
+
+**After watching (learning outcomes)…**
+
+When it's best to hide information and delegate.
