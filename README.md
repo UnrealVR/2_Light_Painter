@@ -420,3 +420,15 @@ How to open levels smoothly in VR.
 **After watching (learning outcomes)…**
 
 How to parse level loading options.
+
+### 34 Loading Save Games In GameMode ###
+
+**In this video (objectives)…**
+
+1. Why we can't load the game in InitGame.
+2. Loading the game at start.
+3. Why we should hide the splash screen.
+
+**After watching (learning outcomes)…**
+
+How to parse level loading options.
