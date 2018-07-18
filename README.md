@@ -445,3 +445,17 @@ When to hide a splash screen.
 **After watching (learning outcomes)…**
 
 When it's best to hide information and delegate.
+
+### 36 Initialize - BeginPlay For Widgets ###
+
+**In this video (objectives)…**
+
+1. Removing the old loading and creation code.
+2. When to bind buttons.
+3. Create an `ActionBar` C++ parent.
+4. Binding the "Add" button.
+5. Binding the "Delete" button.
+
+**After watching (learning outcomes)…**
+
+When to use Initialize in UserWidgets.
