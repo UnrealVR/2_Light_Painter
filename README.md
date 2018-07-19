@@ -459,3 +459,15 @@ When it's best to hide information and delegate.
 **After watching (learning outcomes)…**
 
 When to use Initialize in UserWidgets.
+
+### 37 Hooking Up The Add Functionality  ###
+
+**In this video (objectives)…**
+
+1. Passing a reference down to `ActionBar`.
+2. Calling back up to `PaintingPicker`.
+3. Create the painting and reload.
+
+**After watching (learning outcomes)…**
+
+How to call up to a Widget's parent.
