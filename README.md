@@ -471,3 +471,16 @@ When to use Initialize in UserWidgets.
 **After watching (learning outcomes)…**
 
 How to call up to a Widget's parent.
+
+### 38 Clearing Children of UPanelWidget ##
+
+**In this video(objectives)…**
+
+1. Create the API and the usage.
+2. Overview of the documentation you need.
+3. Iterating over the children.
+4. Clearing the children of the size box.
+
+**After watching(learning outcomes)…**
+
+How to iterate and clear children of a `UPanelWidget`.
