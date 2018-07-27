@@ -21,6 +21,8 @@ public:
 	virtual void TriggerPressed() {}
 	virtual void TriggerReleased() {}
 
+	void SetHand(EControllerHand Hand);
+
 private:
 
 	// Components

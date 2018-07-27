@@ -14,3 +14,8 @@ AHandControllerBase::AHandControllerBase()
 	MotionController->SetTrackingSource(EControllerHand::Right);
 	MotionController->SetShowDeviceModel(true);
 }
+
+void AHandControllerBase::SetHand(EControllerHand Hand)
+{
+	MotionController->SetTrackingSource(Hand);
+}
