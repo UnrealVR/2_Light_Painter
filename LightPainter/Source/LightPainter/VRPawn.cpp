@@ -4,8 +4,6 @@
 
 #include "Engine/World.h"
 
-#include "Kismet/GameplayStatics.h"
-
 #include "Saving/PainterSaveGame.h"
 #include "PaintingGameMode.h"
 
@@ -52,7 +50,5 @@ void AVRPawn::Save()
 {
 	auto GameMode = Cast<APaintingGameMode>(GetWorld()->GetAuthGameMode());
 	if (!GameMode) return;
-	GameMode->Save();
-
-	UGameplayStatics::OpenLevel(GetWorld(), TEXT("MainMenu"));
+	GameMode->SaveAndQuit();
 }
