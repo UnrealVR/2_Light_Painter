@@ -30,6 +30,13 @@ void UPaintingGrid::ClearPaintings()
 	}
 }
 
+void UPaintingGrid::ClearPaginationDots()
+{
+	if (!PaginationDots) return;
+
+	PaginationDots->ClearChildren();	
+}
+
 void UPaintingGrid::AddPaginationDot(bool Active)
 {
 	if (!PaginationDots) return;

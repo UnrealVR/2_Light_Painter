@@ -43,4 +43,7 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	UWidgetComponent* ActionBar;
 
+	// State
+	int CurrentPage = 2;
+
 };

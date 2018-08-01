@@ -27,6 +27,8 @@ public:
 
 	void ClearPaintings();
 
+	void ClearPaginationDots();
+
 	void AddPaginationDot(bool Active);
 
 	int GetNumberOfSlots() const { return PaintingGrid ? PaintingGrid->GetSlots().Num() : 0; }

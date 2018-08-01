@@ -56,9 +56,11 @@ void APaintingPicker::RefreshPagination()
 {
 	if (!GetPaintingGrid()) return;
 
+	GetPaintingGrid()->ClearPaginationDots();
+
 	for (int i = 0; i < GetNumberOfPages(); ++i)
 	{
-		GetPaintingGrid()->AddPaginationDot(false);
+		GetPaintingGrid()->AddPaginationDot(CurrentPage == i);
 	}
 }
 
