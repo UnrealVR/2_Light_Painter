@@ -36,6 +36,7 @@ void UPaintingGrid::AddPaginationDot(bool Active)
 
 	UPaginationDot* Dot = CreateWidget<UPaginationDot>(GetWorld(), PaginationDotClass);
 	if (!Dot) return;
+	Dot->SetActive(Active);
 
 	UHorizontalBoxSlot* Slot = PaginationDots->AddChildToHorizontalBox(Dot);
 	if (!Slot) return;

@@ -44,6 +44,8 @@ void APaintingPicker::RefreshSlots()
 	if (!PaintingGridWidget) return;
 
 	PaintingGridWidget->AddPaginationDot(true);
+	PaintingGridWidget->AddPaginationDot(false);
+	PaintingGridWidget->AddPaginationDot(false);
 
 	PaintingGridWidget->ClearPaintings();
 

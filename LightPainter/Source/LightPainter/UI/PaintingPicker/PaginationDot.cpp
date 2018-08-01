@@ -3,5 +3,11 @@
 #include "PaginationDot.h"
 
 
+void UPaginationDot::SetActive(bool Active)
+{
+	if (!DotImage) return;
 
+	float Opacity = Active ? 1 : DeactivatedOpacity;
+	DotImage->SetOpacity(Opacity);
+}
 
