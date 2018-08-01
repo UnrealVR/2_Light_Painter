@@ -42,5 +42,8 @@ private:
 
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<UPaginationDot> PaginationDotClass;
+
+	UPROPERTY(EditDefaultsOnly)
+	float PaginationDotPadding = 8;
 	
 };
