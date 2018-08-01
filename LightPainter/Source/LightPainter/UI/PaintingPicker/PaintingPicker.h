@@ -26,7 +26,13 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	void Refresh() { RefreshSlots(); RefreshPagination(); }
 	void RefreshSlots();
+	void RefreshPagination();
+
+	int GetNumberOfPages() const;
+
+	class UPaintingGrid* GetPaintingGrid() const;
 
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Root;

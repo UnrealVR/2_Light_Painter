@@ -28,6 +28,8 @@ public:
 	void ClearPaintings();
 
 	void AddPaginationDot(bool Active);
+
+	int GetNumberOfSlots() const { return PaintingGrid ? PaintingGrid->GetSlots().Num() : 0; }
 	
 protected:
 	UPROPERTY(BlueprintReadonly, VisibleAnywhere, meta = (BindWidget))
