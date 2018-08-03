@@ -21,6 +21,9 @@ public:
 	void AddPainting();
 	void ToggleDeleteMode();
 
+	UFUNCTION(BlueprintCallable)
+	void Paginate(int Offset);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

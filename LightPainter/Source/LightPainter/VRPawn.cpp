@@ -4,6 +4,7 @@
 
 #include "Engine/World.h"
 #include "EngineUtils.h"
+#include "UI/PaintingPicker/PaintingPicker.h"
 
 #include "Saving/PainterSaveGame.h"
 #include "PaintingGameMode.h"
@@ -70,5 +71,13 @@ void AVRPawn::PaginateAxisInput(float AxisValue)
 	if (Offset == 0)
 	{
 		PaginatedSinceReset = false;
+	}
+}
+
+void AVRPawn::Paginate(int Offset)
+{
+	for (TActorIterator<APaintingPicker> PaintingPickerItr(GetWorld()); PaintingPickerItr; ++PaintingPickerItr)
+	{
+		PaintingPickerItr->Paginate(Offset);
 	}
 }

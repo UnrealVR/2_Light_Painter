@@ -92,3 +92,12 @@ UPaintingGrid * APaintingPicker::GetPaintingGrid() const
 {
 	return Cast<UPaintingGrid>(PaintingGrid->GetUserWidgetObject());
 }
+
+void APaintingPicker::Paginate(int Offset)
+{
+	CurrentPage = FMath::Clamp(CurrentPage + Offset, 0, GetNumberOfPages() - 1);
+
+	UE_LOG(LogTemp, Warning, TEXT("CurrentPage: %d"), CurrentPage);
+
+	Refresh();
+}
