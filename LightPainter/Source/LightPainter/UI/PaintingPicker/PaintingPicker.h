@@ -47,6 +47,6 @@ private:
 	UWidgetComponent* ActionBar;
 
 	// State
-	int CurrentPage = 2;
+	int CurrentPage = 0;
 
 };
