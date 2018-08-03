@@ -23,14 +23,16 @@ protected:
 	virtual void SetupPlayerInputComponent(UInputComponent * PlayerInputComponent) override;
 private:
 	
-	void RightTriggerPressed() { if (RightPaintBrushHandController) RightPaintBrushHandController->TriggerPressed(); }
-	void RightTriggerReleased() { if (RightPaintBrushHandController) RightPaintBrushHandController->TriggerReleased(); }
+	void RightTriggerPressed() { if (RightHandController) RightHandController->TriggerPressed(); }
+	void RightTriggerReleased() { if (RightHandController) RightHandController->TriggerReleased(); }
 
 	void Save();
 
 	// Config
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<AHandControllerBase> PaintBrushHandControllerClass;
+	TSubclassOf<AHandControllerBase> RightHandControllerClass;
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AHandControllerBase> LeftHandControllerClass;
 
 	// Components
 	UPROPERTY(VisibleAnywhere)
@@ -41,5 +43,8 @@ private:
 
 	// Reference
 	UPROPERTY()
-	AHandControllerBase* RightPaintBrushHandController;
+	AHandControllerBase* RightHandController;
+	UPROPERTY()
+	AHandControllerBase* LeftHandController;
+
 };

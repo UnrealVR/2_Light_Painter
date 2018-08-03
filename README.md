@@ -484,3 +484,16 @@ How to call up to a Widget's parent.
 **After watching(learning outcomes)…**
 
 How to iterate and clear children of a `UPanelWidget`.
+
+### 39 Connecting a LeftHandController ###
+
+**In this video(objectives)…**
+
+1. Create the `PaletteMenuHandController`.
+2. Add and spawn a left hand controller.
+3. Connecting in blueprint.
+4. Setting the `MotionController` hand.
+
+**After watching(learning outcomes)…**
+
+Revision of the HandController architecture.
