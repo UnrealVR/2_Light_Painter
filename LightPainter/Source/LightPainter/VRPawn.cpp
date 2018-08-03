@@ -3,6 +3,7 @@
 #include "VRPawn.h"
 
 #include "Engine/World.h"
+#include "EngineUtils.h"
 
 #include "Saving/PainterSaveGame.h"
 #include "PaintingGameMode.h"
@@ -44,6 +45,8 @@ void AVRPawn::SetupPlayerInputComponent(UInputComponent * PlayerInputComponent)
 	PlayerInputComponent->BindAction(TEXT("RightTrigger"), EInputEvent::IE_Released, this, &AVRPawn::RightTriggerReleased);
 
 	PlayerInputComponent->BindAction(TEXT("Save"), EInputEvent::IE_Released, this, &AVRPawn::Save);
+
+	PlayerInputComponent->BindAxis(TEXT("Paginate"), this, &AVRPawn::PaginateAxisInput);
 }
 
 void AVRPawn::Save()
@@ -51,4 +54,21 @@ void AVRPawn::Save()
 	auto GameMode = Cast<APaintingGameMode>(GetWorld()->GetAuthGameMode());
 	if (!GameMode) return;
 	GameMode->SaveAndQuit();
+}
+
+void AVRPawn::PaginateAxisInput(float AxisValue)
+{
+	int Offset = 0;
+	Offset += AxisValue < -0.9 ? -1 : 0;
+	Offset += AxisValue > 0.9 ? 1 : 0;
+
+	if (Offset != 0 && !PaginatedSinceReset)
+	{
+		Paginate(Offset);
+		PaginatedSinceReset = true;
+	}
+	if (Offset == 0)
+	{
+		PaginatedSinceReset = false;
+	}
 }

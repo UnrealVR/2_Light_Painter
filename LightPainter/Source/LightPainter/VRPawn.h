@@ -25,6 +25,7 @@ private:
 	
 	void RightTriggerPressed() { if (RightHandController) RightHandController->TriggerPressed(); }
 	void RightTriggerReleased() { if (RightHandController) RightHandController->TriggerReleased(); }
+	void PaginateAxisInput(float AxisValue);
 
 	void Save();
 
@@ -49,4 +50,7 @@ private:
 
 	UPROPERTY()
 	AHandControllerBase* LeftHandController;
+
+	// State
+	bool PaginatedSinceReset = true;
 };
