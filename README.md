@@ -485,7 +485,7 @@ How to call up to a Widget's parent.
 
 How to iterate and clear children of a `UPanelWidget`.
 
-### 39 Connecting a LeftHandController ###
+### 39 Connecting A LeftHandController ###
 
 **In this video(objectives)…**
 
@@ -497,3 +497,14 @@ How to iterate and clear children of a `UPanelWidget`.
 **After watching(learning outcomes)…**
 
 Revision of the HandController architecture.
+
+### 40 Adding Menus To Hand Controllers ###
+
+**In this video(objectives)…**
+
+1. Add a widget component to the controller.
+2. Create and setup a widget.
+
+**After watching(learning outcomes)…**
+
+Revision of the widget components.
