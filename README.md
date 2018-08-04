@@ -546,3 +546,15 @@ How to call GameMode functions from Blueprint.
 **After watching(learning outcomes)…**
 
 Overview of the pagination system.
+
+### 44 Spawning a Pagination Dot ###
+
+**In this video(objectives)…**
+
+1. Creating the API.
+2. Temporarily calling the API.
+3. Implementing the spawning.
+
+**After watching(learning outcomes)…**
+
+Revision of spawning widgets.

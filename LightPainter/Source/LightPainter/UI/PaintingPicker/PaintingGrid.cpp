@@ -28,3 +28,13 @@ void UPaintingGrid::ClearPaintings()
 		CardContainer->ClearChildren();
 	}
 }
+
+void UPaintingGrid::AddPaginationDot(bool Active)
+{
+	if (!PaginationDots) return;
+
+	auto Dot = CreateWidget<UPaginationDot>(GetWorld(), PaginationDotClass);
+	if (!Dot) return;
+
+	PaginationDots->AddChild(Dot);
+}
