@@ -521,3 +521,15 @@ Revision of the widget components.
 **After watching(learning outcomes)…**
 
 How to query the interface from a `UWidgetInteractionComponent`.
+
+### 42 Refactoring `SaveAndQuit` ###
+
+**In this video(objectives)…**
+
+1. Create `UFUNCTION` on GameMode.
+2. Calling the `UFUNCTION`.
+3. Moving the implementation.
+
+**After watching(learning outcomes)…**
+
+How to call GameMode functions from Blueprint.
