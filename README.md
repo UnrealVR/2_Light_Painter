@@ -508,3 +508,16 @@ Revision of the HandController architecture.
 **After watching(learning outcomes)…**
 
 Revision of the widget components.
+
+### 41 Overriding a Scene Component ###
+
+**In this video(objectives)…**
+
+1. Create new C++ derived class.
+2. Adding a custom widget to Blueprints.
+3. Overview of `IsOverInteractableWidget` API.
+4. Implementing the click behaviour.
+
+**After watching(learning outcomes)…**
+
+How to query the interface from a `UWidgetInteractionComponent`.
