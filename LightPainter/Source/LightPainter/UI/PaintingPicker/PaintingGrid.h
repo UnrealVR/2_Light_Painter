@@ -27,6 +27,8 @@ public:
 	void AddPaginationDot(bool Active);
 
 	void ClearPaintings();
+
+	int32 GetNumberOfSlots() const;
 	
 protected:
 	UPROPERTY(BlueprintReadonly, VisibleAnywhere, meta = (BindWidget))

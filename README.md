@@ -584,3 +584,16 @@ What a `UPanelSlot` does and how to use it.
 **After watching(learning outcomes)…**
 
 The differences between blend modes and when to use them.
+
+### 47 Calculating Number Of Pages ###
+
+**In this video(objectives)…**
+
+1. How to calculate number of pages.
+2. Implementing `GetNumberOfSlots()`.
+3. Calculating the number of slots.
+4. Implementing Number of pages.
+
+**After watching(learning outcomes)…**
+
+How to calculate the number of pages to paginate a given number of items.
