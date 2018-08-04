@@ -522,7 +522,7 @@ Revision of the widget components.
 
 How to query the interface from a `UWidgetInteractionComponent`.
 
-### 42 Refactoring `SaveAndQuit` ###
+### 42 Refactoring SaveAndQuit ###
 
 **In this video(objectives)…**
 
@@ -533,3 +533,16 @@ How to query the interface from a `UWidgetInteractionComponent`.
 **After watching(learning outcomes)…**
 
 How to call GameMode functions from Blueprint.
+
+### 43 Create a Pagination Dot Widget ###
+
+**In this video(objectives)…**
+
+1. Create the C++ parent.
+2. Create the widget Blueprint and reparent.
+3. Setup with the image widget.
+4. Replace in the grid widget.
+
+**After watching(learning outcomes)…**
+
+Overview of the pagination system.
