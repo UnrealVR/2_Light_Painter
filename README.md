@@ -558,3 +558,15 @@ Overview of the pagination system.
 **After watching(learning outcomes)…**
 
 Revision of spawning widgets.
+
+### 45 Editing UPanelSlot in C++ ###
+
+**In this video(objectives)…**
+
+1. What is a `UPanelSlot`.
+2. Getting the right slot type.
+3. Changing the padding.
+
+**After watching(learning outcomes)…**
+
+What a `UPanelSlot` does and how to use it.
