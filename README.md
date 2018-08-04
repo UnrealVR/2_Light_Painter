@@ -570,3 +570,17 @@ Revision of spawning widgets.
 **After watching(learning outcomes)…**
 
 What a `UPanelSlot` does and how to use it.
+
+### 46 Transparent Widgets In The World ###
+
+**In this video(objectives)…**
+
+1. Creating the `SetActive` API.
+2. Binding the image.
+3. Blend modes: transparent vs masked.
+4. Implementing `SetActive`.
+5. Reproducing the dots in code.
+
+**After watching(learning outcomes)…**
+
+The differences between blend modes and when to use them.
