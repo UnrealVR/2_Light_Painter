@@ -607,3 +607,15 @@ How to calculate the number of pages to paginate a given number of items.
 3. Add one dot per page.
 4. Clearing the pagination dots.
 5. Selecting the current page.
+
+### 49 Latching an Analogue Input ###
+
+**In this video(objectives)…**
+
+1. Binding an axis for pagination.
+2. Overview of a latching mechanism.
+3. Log latched offsets.
+
+**After watching(learning outcomes)…**
+
+How to turn an analogue input into an action.
