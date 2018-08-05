@@ -597,3 +597,13 @@ The differences between blend modes and when to use them.
 **After watching(learning outcomes)…**
 
 How to calculate the number of pages to paginate a given number of items.
+
+### 48 Refreshing The Pagination State ###
+
+**In this video(objectives)…**
+
+1. Refactoring refresh.
+2. Adding a current page variable.
+3. Add one dot per page.
+4. Clearing the pagination dots.
+5. Selecting the current page.
