@@ -631,3 +631,15 @@ How to turn an analogue input into an action.
 **After watching(learning outcomes)…**
 
 How to implement an absorbing boundary.
+
+### 51 Updating The Pages ###
+
+**In this video(objectives)…**
+
+1. Calculating the `StartOffset`.
+2. For loop over the slots.
+3. Checking the last page.
+
+**After watching(learning outcomes)…**
+
+How to display paginated results.
