@@ -5,8 +5,10 @@
 #include "Engine/World.h"
 
 #include "Kismet/GameplayStatics.h"
+#include "EngineUtils.h"
 
 #include "Saving/PainterSaveGame.h"
+#include "UI/PaintingPicker/PaintingPicker.h"
 #include "PaintingGameMode.h"
 
 AVRPawn::AVRPawn()
@@ -57,8 +59,16 @@ void AVRPawn::PaginateRightAxisInput(float AxisValue)
 
 	if (PaginationOffset != LastPaginationOffset && PaginationOffset != 0)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Paginate %d"), PaginationOffset);
+		UpdateCurrentPage(PaginationOffset);
 	}
 
 	LastPaginationOffset = PaginationOffset;
+}
+
+void AVRPawn::UpdateCurrentPage(int32 Offset)
+{
+	for (TActorIterator<APaintingPicker> PaintingPickerItr(GetWorld()); PaintingPickerItr; ++PaintingPickerItr)
+	{
+		PaintingPickerItr->UpdateCurrentPage(Offset);
+	}
 }

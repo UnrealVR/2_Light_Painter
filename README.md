@@ -619,3 +619,15 @@ How to calculate the number of pages to paginate a given number of items.
 **After watching(learning outcomes)…**
 
 How to turn an analogue input into an action.
+
+### 50 Moving Between Pages ###
+
+**In this video(objectives)…**
+
+1. Creating the pagination API.
+2. Using the API with `TActorIterator`.
+3. Implementing an absorbing boundary.
+
+**After watching(learning outcomes)…**
+
+How to implement an absorbing boundary.

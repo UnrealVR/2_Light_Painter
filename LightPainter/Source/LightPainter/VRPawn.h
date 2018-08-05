@@ -27,6 +27,7 @@ private:
 	void RightTriggerReleased() { if (RightHandController) RightHandController->TriggerReleased(); }
 
 	void PaginateRightAxisInput(float AxisValue);
+	void UpdateCurrentPage(int32 Offset);
 
 	// Config
 	UPROPERTY(EditDefaultsOnly)
