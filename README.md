@@ -643,3 +643,15 @@ How to implement an absorbing boundary.
 **After watching(learning outcomes)…**
 
 How to display paginated results.
+
+### 52 How To Become A VR Master ###
+
+**In this video(objectives)…**
+
+1. How to read the prototype code
+2. Overview of the features
+3. MEGA Challenge!
+
+**After watching(learning outcomes)…**
+
+To have the confidence to continue your VR journey.
