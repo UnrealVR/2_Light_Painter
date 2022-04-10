@@ -31,6 +31,7 @@ void AVRPawn::BeginPlay()
 		RightHandController = GetWorld()->SpawnActor<AHandControllerBase>(RightHandControllerClass);
 		RightHandController->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
 		RightHandController->SetHand(EControllerHand::Right);
+		RightHandController->SetOwner(this);
 	}
 
 	if (LeftHandControllerClass)
@@ -38,6 +39,7 @@ void AVRPawn::BeginPlay()
 		LeftHandController = GetWorld()->SpawnActor<AHandControllerBase>(LeftHandControllerClass);
 		LeftHandController->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::SnapToTargetIncludingScale);
 		LeftHandController->SetHand(EControllerHand::Left);
+		LeftHandController->SetOwner(this);
 	}
 }
 
